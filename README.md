@@ -1,0 +1,2 @@
+# 38-COLLABORATION-iOS-MELON
+LET'S SOPT 38기 합동세미나 iOS 1조 멜론 🍈
