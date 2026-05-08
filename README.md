@@ -2,23 +2,33 @@
 🍈 LET'S SOPT 38기 합동세미나 iOS 1조 멜론 🍈
 
 ##  iOS Developer
-| **이상엽** | **임성환** | **이승희** | **최주희** |
+| [**이상엽**](https://github.com/sangyup12) | [**임성환**](https://github.com/limtjdghks) | [**이승희**](https://github.com/sssthnnhee) | [**최주희**](https://github.com/dearosmar) |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/d448927b-bd85-4c1b-aea2-e29cc2884ac4" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/64931cab-7f0d-450d-b865-076c17f60d70" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/d448927b-bd85-4c1b-aea2-e29cc2884ac4" src="https://github.com/user-attachments/assets/5f1c9f05-a2be-4b15-ab2d-e8b1fed0d658" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/64931cab-7f0d-450d-b865-076c17f60d70" width="170" alt="-"> |
+| <img src="https://github.com/user-attachments/assets/842c9eff-1930-41d6-865a-f2735f297243" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/2ecccdd4-0e5b-45e1-8e03-6b18264d8490" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/d6e20740-b9cf-49e0-96b9-c1bb219ffdf5" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/aa7d4818-bbf8-4f24-9897-14029ae9bc59" width="170" alt="-"> |
 | `iOS Lead`<br>`-` | `iOS Developer`<br>`-` | `iOS Developer`<br>`-` | `iOS Developer`<br>`-` |
 
 ## 🛠️ Library & Stack
 
-| 기술 | 설명 |
-|-----------|------|
-| **UIKit** | 안정적이고 풍부한 레퍼런스, 우수한 호환성, 예측 가능한 UI 레이아웃 작업 |
-| **Snapkit** | 간편한 Auto Layout 적용 |
-| **Then** | 객체 생성과 속성 설정을 하나의 흐름 구성으로 가독성을 향상 |
-| **MVC** | 소규모 프로젝트에 적합한 View·Controller 중심 구조로 직관적인 흐름 구성 |
-| **URLSession** | Apple이 제공하는 기본 네트워크 통신 API |
-| **Kingfisher** | 이미지 캐싱과 네트워크 병목 방지 |
-| **Git, GitHub** | 브랜치 전략 기반 협업, PR·코드리뷰 활용 |
-| **Figma, Notion** | 디자인·기능 흐름 시각화 및 문서화 협업 |
+### Language & UI
+![Swift](https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=swift&logoColor=white)
+![UIKit](https://img.shields.io/badge/UIKit-2396F3?style=for-the-badge&logo=apple&logoColor=white)
+
+### Architecture
+![MVC](https://img.shields.io/badge/MVC-6DB33F?style=for-the-badge)
+
+### Libraries (via SPM)
+![SnapKit](https://img.shields.io/badge/SnapKit-orange?style=for-the-badge)
+![Then](https://img.shields.io/badge/Then-green?style=for-the-badge)
+![Kingfisher](https://img.shields.io/badge/Kingfisher-yellow?style=for-the-badge)
+
+### Network
+![URLSession](https://img.shields.io/badge/URLSession-000000?style=for-the-badge&logo=apple&logoColor=white)
+
+### Collaboration
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)
 
 
 ## 🌱 Git Flow
@@ -53,6 +63,8 @@ Add/#3
 2. 내용은 한글로 작성합니다.
 3. 어떤 작업을 했는지 헷갈리지 않게 구체적으로 작성합니다.
 ```
+[태그] #이슈번호 - 작업내용
+
 [Feat] #3 - 업장 상세페이지 컴포넌트 사용하도록 수정 및 관리자 조회 API 추가
 ```
 ## 📁 Foldering
