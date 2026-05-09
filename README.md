@@ -4,7 +4,7 @@
 ##  iOS Developer
 | [**이상엽**](https://github.com/sangyup12) | [**임성환**](https://github.com/limtjdghks) | [**이승희**](https://github.com/sssthnnhee) | [**최주희**](https://github.com/dearosmar) |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/842c9eff-1930-41d6-865a-f2735f297243" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/2ecccdd4-0e5b-45e1-8e03-6b18264d8490" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/d6e20740-b9cf-49e0-96b9-c1bb219ffdf5" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/aa7d4818-bbf8-4f24-9897-14029ae9bc59" width="170" alt="-"> |
+| <img src="https://github.com/user-attachments/assets/d6e20740-b9cf-49e0-96b9-c1bb219ffdf5" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/2ecccdd4-0e5b-45e1-8e03-6b18264d8490" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/842c9eff-1930-41d6-865a-f2735f297243" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/aa7d4818-bbf8-4f24-9897-14029ae9bc59" width="170" alt="-"> |
 | `iOS Lead`<br>`-` | `iOS Developer`<br>`-` | `iOS Developer`<br>`-` | `iOS Developer`<br>`-` |
 
 ## 🛠️ Library & Stack
