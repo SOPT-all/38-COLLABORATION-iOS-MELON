@@ -48,13 +48,11 @@ final class ActiveViewSectionHeader: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - SetUI
+    // MARK: - Setup Methods
     
     override func setUI() {
     addSubviews(headerLabel,iconImageView,captionLabel)
     }
-    
-    // MARK: - SetLayout
     
     override func setLayout() {
         
@@ -74,4 +72,4 @@ final class ActiveViewSectionHeader: BaseView {
             $0.centerY.equalTo(headerLabel.snp.centerY)
         }
     }
-} //end
+}
