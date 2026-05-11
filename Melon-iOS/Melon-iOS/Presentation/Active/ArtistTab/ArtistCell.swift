@@ -58,7 +58,11 @@ class ArtistCell: UICollectionViewCell {
             $0.trailing.equalTo(artistImage.snp.trailing).inset(2)
         }
     }
-  //func configure(image: UIImage?) {
-    //  artistImage.image = image
-//  }
+}
+
+extension ArtistCell {
+    func dataBind(_ imageData: ImageModel) {
+        artistImage.image = imageData.artistPicture
+        artistLabel.text = imageData.artistName
+    }
 }
