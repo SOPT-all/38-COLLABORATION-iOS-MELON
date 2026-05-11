@@ -67,6 +67,7 @@ final class ActiveViewSectionHeader: BaseView {
         headerLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
             $0.centerY.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         iconImageView.snp.makeConstraints {
