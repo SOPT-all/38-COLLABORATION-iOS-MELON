@@ -14,12 +14,12 @@ final class ActiveTopNavigateBar: BaseView {
     // MARK: - UI Properties
     
     private let previousButton = UIButton()
-    private let morebutton = UIButton()
+    private let moreButton = UIButton()
     
     // MARK: - UI Setting
     
     override func setUI() {
-        addSubviews(previousButton, morebutton)
+        addSubviews(previousButton, moreButton)
     }
     
     override func setStyle() {
@@ -27,7 +27,7 @@ final class ActiveTopNavigateBar: BaseView {
             $0.setImage(.icChevronLeft, for: .normal)
         }
         
-        morebutton.do {
+        moreButton.do {
             $0.setImage(.icMoreVertical1, for: .normal)
         }
     }
@@ -39,7 +39,7 @@ final class ActiveTopNavigateBar: BaseView {
             $0.size.equalTo(44)
         }
         
-        morebutton.snp.makeConstraints {
+        moreButton.snp.makeConstraints {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.size.equalTo(44)
