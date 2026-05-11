@@ -44,16 +44,18 @@ final class ActiveViewSectionHeader: BaseView {
             $0.text = title
             $0.font = .title_b_20
             $0.textColor = .appWhite
-            }
+        }
+        
         iconImageView.do {
             $0.image = iconImage
             $0.isHidden = (iconImage == nil)
-            }
+        }
+        
         captionButton.do {
             $0.setTitle("전체보기", for: .normal)
             $0.titleLabel?.font = .body_r_15
             $0.setTitleColor(.gray300, for: .normal)
-            }
+        }
     }
     
     override func setUI() {
