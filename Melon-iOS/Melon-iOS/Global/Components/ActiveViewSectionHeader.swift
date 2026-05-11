@@ -30,10 +30,11 @@ final class ActiveViewSectionHeader: BaseView {
         $0.isHidden = (iconImage == nil)
     }
     
-    private let captionLabel = UILabel().then {
-        $0.text = "전체보기"
-        $0.font = .body_r_15
-        $0.textColor = .gray300
+    private let captionButton = UIButton().then {
+        $0.setTitle("전체보기", for: .normal)
+        $0.titleLabel?.font = .body_r_15
+        $0.setTitleColor(.gray300, for: .normal)
+
     }
     
     // MARK: - Init
@@ -51,7 +52,7 @@ final class ActiveViewSectionHeader: BaseView {
     // MARK: - Setup Methods
     
     override func setUI() {
-    addSubviews(headerLabel,iconImageView,captionLabel)
+    addSubviews(headerLabel,iconImageView,captionButton)
     }
     
     override func setLayout() {
@@ -67,7 +68,7 @@ final class ActiveViewSectionHeader: BaseView {
             $0.size.equalTo(20)
         }
         
-        captionLabel.snp.makeConstraints {
+        captionButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(20)
             $0.centerY.equalTo(headerLabel.snp.centerY)
         }
