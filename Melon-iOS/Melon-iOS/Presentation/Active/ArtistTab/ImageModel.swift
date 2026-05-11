@@ -18,7 +18,7 @@ extension ImageModel {
             ImageModel(artistPicture: .imgActiveArtistH2Hjiwoo, artistName: "지우(JIWOO)"),
             ImageModel(artistPicture: .imgActiveArtistH2Hcarmen, artistName: "카르멘(CARMEN)"),
             ImageModel(artistPicture: .imgActiveArtistH2Hyuha, artistName: "유하(YUHA)"),
-            ImageModel(artistPicture: .imgActiveArtistH2Hstella, artistName: "스텔라(STELLA)"),
+            ImageModel(artistPicture: .imgActiveArtistH2Hstella, artistName: "스텔라(STELLA)")
         ]
     }
 }
