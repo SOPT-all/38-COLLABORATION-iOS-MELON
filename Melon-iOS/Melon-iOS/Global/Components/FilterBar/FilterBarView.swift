@@ -11,38 +11,42 @@ import SnapKit
 import Then
 
 final class FilterBarView: UIView {
-
-    var onSelect: ((Filterable) -> Void)?
     
-    private var items: [Filterable] = []
-    private var selectedID: String?
-    
-    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: FilterBarLayout.make())
-    
-    func configure(items: [Filterable], selectedID: String? = nil) {
-        self.items = items
-        self.selectedID = selectedID ?? items.first?.id
-        collectionView.reloadData()
+    struct Item: Filterable {
+        let id: String
+        let title: String
     }
+
+    var onSelect: ((_ id: String, _ title: String) -> Void)?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    init(items: KeyValuePairs<String, String>, selectedID: String? = nil) {
+        super.init(frame: .zero)
         setUI()
         setLayout()
         setDelegate()
         setStyle()
         register()
+        configure(items: items, selectedID: selectedID)
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
+    func configure(items: KeyValuePairs<String, String>, selectedID: String? = nil) {
+        self.items = items.map { Item(id: $0.key, title: $0.value) }
+        self.selectedID = selectedID ?? self.items.first?.id
+        collectionView.reloadData()
+    }
+    
+    private var items: [Item] = []
+    private var selectedID: String?
+    
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: FilterBarLayout.make())
+    
     
     private func setUI() {
         addSubview(collectionView)
-        backgroundColor = .black
     }
     
     private func setLayout() {
@@ -87,12 +91,11 @@ extension FilterBarView: UICollectionViewDataSource {
 }
 
 extension FilterBarView: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
         selectedID = item.id
         collectionView.reloadData()
-        onSelect?(item)
+        onSelect?(item.id, item.title)
     }
 }

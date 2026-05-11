@@ -37,12 +37,12 @@ final class FilterBarChipCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(title: String, isSelected: Bool){
+        label.text = title
+        setStyle(isSelected: isSelected)
+    }
+    
     private func setUI() {
-        contentView.do {
-            $0.clipsToBounds = true
-            $0.layer.borderWidth = 1
-            $0.layer.cornerRadius = Style.cornerRadius
-        }
         contentView.addSubview(label)
     }
     
@@ -53,12 +53,13 @@ final class FilterBarChipCell: UICollectionViewCell {
         }
     }
     
-    func configure(title: String, isSelected: Bool){
-        label.text = title
-        setStyle(isSelected: isSelected)
-    }
-    
     private func setStyle(isSelected: Bool) {
+        contentView.do {
+            $0.clipsToBounds = true
+            $0.layer.borderWidth = 1
+            $0.layer.cornerRadius = Style.cornerRadius
+        }
+        
         if isSelected {
             contentView.do {
                 $0.backgroundColor = .green03
