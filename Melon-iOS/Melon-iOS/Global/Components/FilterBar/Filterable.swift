@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol Filterable {
+    var id: String { get }
+    var title: String { get }
+}
