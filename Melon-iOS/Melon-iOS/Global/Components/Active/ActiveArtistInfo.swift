@@ -51,8 +51,8 @@ final class ActiveArtistInfo: BaseView {
     // MARK: - UI Settings
     
     override func setUI() {
-        [starButton, starCountLabel].forEach(metaInfoStarStackView.addArrangedSubview)
-        [chatButton, chatCountLabel].forEach(metaInfoChatStackView.addArrangedSubview)
+        metaInfoStarStackView.addArrangedSubviews(starButton, starCountLabel)
+        metaInfoChatStackView.addArrangedSubviews(chatButton, chatCountLabel)
         addSubviews(artistNameLabel, degreeIcon, metaInfoStarStackView, metaInfoChatStackView, shareButton)
     }
     
