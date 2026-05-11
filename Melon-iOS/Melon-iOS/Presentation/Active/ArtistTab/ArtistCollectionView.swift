@@ -10,12 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class ArtistCollectionView: UIView {
+final class ArtistCollectionView: BaseView {
     
     private let flowLayout = UICollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: 100, height: 127)
         $0.scrollDirection = .horizontal
-        $0.minimumInteritemSpacing = 10
+        $0.minimumLineSpacing = 10
     }
     
     private let imageList = ImageModel.dummy()
@@ -25,30 +25,28 @@ final class ArtistCollectionView: UIView {
         collectionViewLayout: flowLayout
     )
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func setStyle() {
         
-        backgroundColor = .appBlack
-        addSubview(collectionView)
-        collectionView.backgroundColor = .clear
-        collectionView.snp.makeConstraints {
-            $0.height.equalTo(130)
-            $0.leading.equalToSuperview().inset(20)
-            $0.verticalEdges.equalToSuperview()
-            $0.trailing.equalToSuperview()
+        collectionView.do {
+            $0.backgroundColor = .clear
+            $0.dataSource = self
+            $0.showsHorizontalScrollIndicator = false
         }
-        collectionView.dataSource = self
-        register()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
-    private func register() {
-        collectionView.register(
-            ArtistCell.self,forCellWithReuseIdentifier: ArtistCell.identifier
+    override func setUI() {
+        addSubview(collectionView)
+        collectionView.register(ArtistCell.self,
+        forCellWithReuseIdentifier: ArtistCell.identifier
         )
+    }
+    
+    override func setLayout() {
+        collectionView.snp.makeConstraints {
+            $0.top.bottom.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
+            $0.height.equalTo(127)
+        }
     }
 }
 
