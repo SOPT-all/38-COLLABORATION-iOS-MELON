@@ -65,10 +65,3 @@ extension ArtistCollectionView: UICollectionViewDataSource {
         return cell
     }
 }
-
-#Preview {
-    let view = ArtistCollectionView()
-    view.backgroundColor = .appBlack
-    view.frame = CGRect(x: 0, y: 0, width: 393, height: 130)
-    return view
-}
