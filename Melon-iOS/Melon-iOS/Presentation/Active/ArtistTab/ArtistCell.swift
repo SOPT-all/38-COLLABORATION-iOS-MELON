@@ -42,11 +42,13 @@ class ArtistCell: UICollectionViewCell {
             $0.text = "지우"
             $0.font = .body_r_15
             $0.textColor = .appWhite
+            $0.setContentCompressionResistancePriority(.required,for: .horizontal)
         }
         artistLabelEn.do{
             $0.text = "(JIWOO)"
             $0.font = .body_r_15
             $0.textColor = .appWhite
+            $0.setContentCompressionResistancePriority(.defaultLow,for: .horizontal)
         }
         
     }
