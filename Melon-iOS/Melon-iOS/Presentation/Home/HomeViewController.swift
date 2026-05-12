@@ -16,13 +16,9 @@ final class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setView()
-        setAction()
-        setDelegate()
     }
     
-    override func setView() {
+    override func loadView() {
         view = rootView
     }
 }

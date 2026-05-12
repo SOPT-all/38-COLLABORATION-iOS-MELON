@@ -14,7 +14,7 @@ final class HomeDetailSectionHeaderView: BaseView {
     private let subtitleLabel = UILabel()
     let titleLabel = UILabel()
     private let iconImageView = UIImageView()
-    let seeAllButton = UIButton()
+    private let seeAllButton = UIButton()
     
     init(subtitle: String, title: String, icon: UIImage) {
         super.init(frame: .zero)

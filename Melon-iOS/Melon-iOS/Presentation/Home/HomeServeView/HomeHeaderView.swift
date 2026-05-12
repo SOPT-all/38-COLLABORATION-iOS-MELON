@@ -42,16 +42,16 @@ final class HomeHeaderView: BaseView {
             $0.size.equalTo(44)
         }
         
+        diamondButton.snp.makeConstraints {
+            $0.trailing.equalTo(cashButton.snp.leading).offset(-20)
+            $0.centerY.equalToSuperview()
+            $0.height.equalTo(20)
+        }
+        
         cashButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(19)
             $0.centerY.equalToSuperview()
             $0.size.equalTo(26)
-        }
-        
-        diamondButton.snp.makeConstraints {
-            $0.leading.equalTo(cashButton.snp.leading).offset(-79)
-            $0.centerY.equalToSuperview()
-            $0.height.equalTo(20)
         }
     }
 }
