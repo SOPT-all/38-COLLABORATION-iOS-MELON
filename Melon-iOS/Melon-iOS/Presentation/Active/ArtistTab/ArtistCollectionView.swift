@@ -29,8 +29,16 @@ final class ArtistCollectionView: BaseView {
         collectionView.register(ArtistCell.self,forCellWithReuseIdentifier: ArtistCell.identifier)
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        register()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func setStyle() {
-        
         collectionView.do {
             $0.backgroundColor = .clear
             $0.dataSource = self
@@ -40,7 +48,6 @@ final class ArtistCollectionView: BaseView {
     
     override func setUI() {
         addSubview(collectionView)
-        register()
     }
     
     override func setLayout() {
