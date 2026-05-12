@@ -15,7 +15,9 @@ class ArtistCell: UICollectionViewCell {
     
     private let artistImage = UIImageView()
     
-    private let artistLabel = UILabel()
+    private let artistLabelKr = UILabel()
+    
+    private let artistLabelEn = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,15 +38,21 @@ class ArtistCell: UICollectionViewCell {
             $0.clipsToBounds = true
         }
         
-        artistLabel.do {
-            $0.text = "지우 (JIWOO)"
+        artistLabelKr.do {
+            $0.text = "지우"
             $0.font = .body_r_15
             $0.textColor = .appWhite
         }
+        artistLabelEn.do{
+            $0.text = "(JIWOO)"
+            $0.font = .body_r_15
+            $0.textColor = .appWhite
+        }
+        
     }
     
     private func setUI() {
-        contentView.addSubviews(artistImage,artistLabel)
+        contentView.addSubviews(artistImage,artistLabelKr, artistLabelEn)
     }
     
     private func setLayout() {
@@ -63,7 +71,9 @@ class ArtistCell: UICollectionViewCell {
 
 extension ArtistCell {
     func dataBind(_ imageData: ArtistModel) {
+        let name = imageData.artistName.split(separator: " ")
         artistImage.image = imageData.artistPicture
-        artistLabel.text = imageData.artistName
+        artistLabelKr.text = String(name[0])
+        artistLabelEn.text = String(name[1])
     }
 }
