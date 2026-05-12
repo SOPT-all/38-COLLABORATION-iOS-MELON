@@ -30,7 +30,8 @@ final class MusicPlayerBar: UIButton {
     
     private let playerButtonStackView = UIStackView()
     
-    // MARK: - Inintializer
+    // MARK: - Initializer
+    
     init(title: String, artist: String) {
         self.songTitle = title
         self.songArtist = artist

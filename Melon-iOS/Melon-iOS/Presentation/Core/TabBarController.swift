@@ -9,7 +9,7 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     enum Tab: Int, CaseIterable {
         case home
@@ -69,7 +69,7 @@ final class TabBarController: UITabBarController {
         }
     }
     
-    //MARK: - Life Cycle
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ final class TabBarController: UITabBarController {
         setTabBarAppearance()
     }
     
-    //MARK: - Private Methods
+    // MARK: - Private Methods
     
     private func setViewControllers() {
         self.viewControllers = Tab.allCases.map { tab in
