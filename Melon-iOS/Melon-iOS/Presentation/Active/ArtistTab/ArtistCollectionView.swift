@@ -12,13 +12,13 @@ import Then
 
 final class ArtistCollectionView: BaseView {
     
+    private let imageList = ArtistModel.dummy()
+    
     private let flowLayout = UICollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: 100, height: 127)
         $0.scrollDirection = .horizontal
         $0.minimumLineSpacing = 10
     }
-    
-    private let imageList = ArtistModel.dummy()
     
     private lazy var collectionView = UICollectionView(
         frame: .zero,

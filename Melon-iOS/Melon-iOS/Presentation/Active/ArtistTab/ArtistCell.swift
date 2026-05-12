@@ -35,6 +35,7 @@ class ArtistCell: UICollectionViewCell {
             $0.layer.cornerRadius = 50
             $0.clipsToBounds = true
         }
+        
         artistLabel.do {
             $0.text = "지우 (JIWOO)"
             $0.font = .body_r_15
@@ -50,7 +51,7 @@ class ArtistCell: UICollectionViewCell {
         artistImage.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(100)
+            $0.size.equalTo(100)
         }
         artistLabel.snp.makeConstraints {
             $0.top.equalTo(artistImage.snp.bottom).offset(8)
