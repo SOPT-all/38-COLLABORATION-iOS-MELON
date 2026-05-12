@@ -78,13 +78,6 @@ final class RecommendationCard: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(image: UIImage, tag: String, title: String, hashtag: String) {
-        imageView.image = image
-        tagLabel.text = tag
-        titleLabel.text = title
-        hashtagLabel.text = hashtag
-    }
-    
     override func setUI() {
         tagChipView.addSubview(tagLabel)
         addSubviews(imageView, tagChipView, playIconButton, titleLabel, hashtagLabel)
@@ -170,6 +163,13 @@ final class RecommendationCard: BaseView {
             $0.font = style.hashtagFont
             $0.numberOfLines = 1
             $0.lineBreakMode = .byTruncatingTail
+        }
+        
+        func configure(image: UIImage, tag: String, title: String, hashtag: String) {
+            imageView.image = image
+            tagLabel.text = tag
+            titleLabel.text = title
+            hashtagLabel.text = hashtag
         }
     }
 }
