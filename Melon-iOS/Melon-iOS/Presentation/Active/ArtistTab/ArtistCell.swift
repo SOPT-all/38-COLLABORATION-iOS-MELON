@@ -61,10 +61,18 @@ class ArtistCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.size.equalTo(100)
         }
-        artistLabel.snp.makeConstraints {
+        
+        artistLabelKr.snp.makeConstraints {
             $0.top.equalTo(artistImage.snp.bottom).offset(8)
             $0.leading.equalTo(artistImage.snp.leading).offset(5)
+            $0.bottom.equalToSuperview()
+        }
+        
+        artistLabelEn.snp.makeConstraints {
+            $0.top.equalTo(artistImage.snp.bottom).offset(8)
+            $0.leading.equalTo(artistLabelKr.snp.trailing).offset(4)
             $0.trailing.equalTo(artistImage.snp.trailing).inset(2)
+            $0.bottom.equalToSuperview()
         }
     }
 }
