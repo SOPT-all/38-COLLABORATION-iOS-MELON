@@ -19,7 +19,7 @@ final class HomeView: BaseView {
     override func setUI() {
         addSubview(scrollView)
         scrollView.addSubview(contentStackView)
-        contentStackView.addArrangedSubviews(homeHeader,  recommendationView)
+        contentStackView.addArrangedSubviews(homeHeader, recommendationView)
     }
     
     override func setStyle() {
