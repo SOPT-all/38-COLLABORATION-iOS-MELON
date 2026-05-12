@@ -15,7 +15,7 @@ final class RecommendationView: BaseView {
     private let mainStackView = UIStackView()
     private let rightStackView = UIStackView()
     
-    private let recommendHeaderView = ReuseHeaderView(subtitle: "김렛솝 님을 위한", title: "맞춤 추천", icon: .iconBrand1Green)
+    private let recommendHeaderView = HomeDetailSectionHeaderView(subtitle: "김렛솝 님을 위한", title: "맞춤 추천", icon: .iconBrand1Green)
     
     private let largeCard = RecommendationCard(style: .large, image: .imgHomeMoodplay1, tag: "좋아요 많은", title: "요즘 좋아요를 많이 받은 노래", hashtag: "#요즘뜨는 #장르무관")
         

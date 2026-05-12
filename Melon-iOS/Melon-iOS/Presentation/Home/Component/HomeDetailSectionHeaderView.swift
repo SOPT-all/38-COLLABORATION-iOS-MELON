@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class ReuseHeaderView: BaseView {
+final class HomeDetailSectionHeaderView: BaseView {
     private let subtitleLabel = UILabel()
     let titleLabel = UILabel()
     private let iconImageView = UIImageView()
