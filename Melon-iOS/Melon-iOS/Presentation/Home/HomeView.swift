@@ -35,6 +35,7 @@ final class HomeView: BaseView {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
+        
         contentStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalTo(scrollView.snp.width)

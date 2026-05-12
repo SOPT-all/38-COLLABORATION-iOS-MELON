@@ -76,5 +76,4 @@ final class ReuseHeaderView: BaseView {
     }
     
     @objc private func didTapSeeAll() {}
-
 }
