@@ -25,8 +25,4 @@ final class HomeViewController: BaseViewController {
     override func setView() {
         view = rootView
     }
-    
-    override func setAction() {}
-    
-    override func setDelegate() {}
 }

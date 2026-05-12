@@ -38,20 +38,20 @@ final class HomeHeaderView: BaseView {
     override func setLayout() {
         logoImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(10)
-            $0.verticalEdges.equalToSuperview().inset(8)
-            $0.size.equalTo(28)
-        }
-        
-        diamondButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(251)
-            $0.centerY.equalToSuperview()
-            $0.height.equalTo(20)
+            $0.verticalEdges.equalToSuperview()
+            $0.size.equalTo(44)
         }
         
         cashButton.snp.makeConstraints {
-            $0.leading.equalTo(diamondButton.snp.leading).offset(79)
+            $0.trailing.equalToSuperview().inset(19)
             $0.centerY.equalToSuperview()
             $0.size.equalTo(26)
+        }
+        
+        diamondButton.snp.makeConstraints {
+            $0.leading.equalTo(cashButton.snp.leading).offset(-79)
+            $0.centerY.equalToSuperview()
+            $0.height.equalTo(20)
         }
     }
 }
