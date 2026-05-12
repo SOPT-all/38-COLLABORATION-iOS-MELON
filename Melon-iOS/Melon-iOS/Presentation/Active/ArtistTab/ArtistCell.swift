@@ -81,8 +81,9 @@ class ArtistCell: UICollectionViewCell {
 
 extension ArtistCell {
     func dataBind(_ imageData: ArtistModel) {
-        let name = imageData.artistName.split(separator: " ")
         artistImage.image = imageData.artistPicture
+        
+        let name = imageData.artistName.split(separator: " ")
         artistLabelKr.text = String(name[0])
         artistLabelEn.text = String(name[1])
     }
