@@ -25,6 +25,10 @@ final class ArtistCollectionView: BaseView {
         collectionViewLayout: flowLayout
     )
     
+    private func register() {
+        collectionView.register(ArtistCell.self,forCellWithReuseIdentifier: ArtistCell.identifier)
+    }
+    
     override func setStyle() {
         
         collectionView.do {
@@ -36,9 +40,7 @@ final class ArtistCollectionView: BaseView {
     
     override func setUI() {
         addSubview(collectionView)
-        collectionView.register(ArtistCell.self,
-        forCellWithReuseIdentifier: ArtistCell.identifier
-        )
+        register()
     }
     
     override func setLayout() {
@@ -49,6 +51,7 @@ final class ArtistCollectionView: BaseView {
         }
     }
 }
+
 
 extension ArtistCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,numberOfItemsInSection section: Int) -> Int {
