@@ -44,6 +44,8 @@ final class ChartSectionView: BaseView {
         listenButton.snp.makeConstraints {
             $0.top.equalTo(chartView.snp.bottom).offset(14)
             $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(48
+            )
         }
     }
     
@@ -83,9 +85,9 @@ final class ChartSectionView: BaseView {
 
     private let chartItems: [ChartSong] = [
         .init(image: UIImage(resource: .imgHomeMelonchart1), rank: 1, title: "소문의 낙원", rankChange: "-", singer: "AKMU (악뮤)"),
-        .init(image: UIImage(resource: .imgHomeMelonchart1), rank: 2, title: "기쁨, 슬픔, 아름다운 마음", rankChange: "▲ 2", singer: "AKMU (악뮤)"),
+        .init(image: UIImage(resource: .imgHomeMelonchart1), rank: 2, title: "기쁨, 슬픔, 아름다운 마음", rankChange: "-", singer: "AKMU (악뮤)"),
         .init(image: UIImage(resource: .imgHomeMelonchart2), rank: 3, title: "RUDE!", rankChange: "new", singer: "Hearts2Hearts"),
-        .init(image: UIImage(resource: .imgHomeMelonchart3), rank: 4, title: "IVE", rankChange: "▼ 1", singer: "IVE (아이브)"),
+        .init(image: UIImage(resource: .imgHomeMelonchart3), rank: 4, title: "IVE", rankChange: "-", singer: "IVE (아이브)"),
         .init(image: UIImage(resource: .imgHomeMelonchart4), rank: 5, title: "404(New Era)", rankChange: "-", singer: "KiiiKiii (키키)"),
         .init(image: UIImage(resource: .imgHomeMelonchart5), rank: 6, title: "SWIM", rankChange: "-", singer: "방탄소년단"),
         .init(image: UIImage(resource: .imgHomeMelonchart6), rank: 7, title: "사랑하게 될 거야", rankChange: "-", singer: "한로로"),
@@ -121,3 +123,19 @@ extension ChartSectionView: UICollectionViewDataSource {
         return cell
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+#Preview {
+    let vc = UIViewController()
+    vc.view.backgroundColor = .appBlack
+    let section = ChartSectionView()
+    vc.view.addSubview(section)
+    section.snp.makeConstraints {
+        $0.top.equalTo(vc.view.safeAreaLayoutGuide).offset(20)
+        $0.horizontalEdges.equalToSuperview()
+    }
+    return vc
+}
+#endif
