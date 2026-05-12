@@ -61,7 +61,7 @@ class ArtistCell: UICollectionViewCell {
 }
 
 extension ArtistCell {
-    func dataBind(_ imageData: ImageModel) {
+    func dataBind(_ imageData: ArtistModel) {
         artistImage.image = imageData.artistPicture
         artistLabel.text = imageData.artistName
     }

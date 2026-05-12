@@ -18,7 +18,7 @@ final class ArtistCollectionView: BaseView {
         $0.minimumLineSpacing = 10
     }
     
-    private let imageList = ImageModel.dummy()
+    private let imageList = ArtistModel.dummy()
     
     private lazy var collectionView = UICollectionView(
         frame: .zero,
