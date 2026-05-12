@@ -12,16 +12,13 @@ import Then
 
 final class ReuseHeaderView: BaseView {
     private let subtitleLabel = UILabel()
-    private let titleLabel = UILabel()
+    let titleLabel = UILabel()
     private let iconImageView = UIImageView()
-    private let seeAllButton = UIButton()
+    let seeAllButton = UIButton()
     
     init(subtitle: String, title: String, icon : UIImage) {
         super.init(frame: .zero)
         configure(subtitle: subtitle, title: title, icon: icon)
-        setUI()
-        setLayout()
-        setStyle()
     }
     
     required init?(coder: NSCoder) {
@@ -47,6 +44,7 @@ final class ReuseHeaderView: BaseView {
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(subtitleLabel.snp.bottom).offset(5)
             $0.leading.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview()
         }
         
         iconImageView.snp.makeConstraints {
@@ -57,6 +55,7 @@ final class ReuseHeaderView: BaseView {
         
         seeAllButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalTo(titleLabel)
         }
     }
     
