@@ -12,11 +12,7 @@ import Then
 
 final class HomeViewController: BaseViewController {
     
-    private let homeHeader = HomeHeaderView()
-    private let recommendationView = RecommendationView()
-    
-    private let scrollView = UIScrollView()
-    private let contentStackView = UIStackView()
+    private let rootView = HomeView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,41 +23,10 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setView() {
-        view.backgroundColor = .appBlack
-        
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentStackView)
-        [homeHeader, recommendationView].forEach (contentStackView.addArrangedSubview)
-        
-        contentStackView.do {
-            $0.axis = .vertical
-            $0.alignment = .fill
-        }
-        
-        scrollView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.horizontalEdges.bottom.equalToSuperview()
-        }
-                
-        contentStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalTo(scrollView.snp.width)
-        }
-        
-        homeHeader.snp.makeConstraints {
-            $0.height.equalTo(44)
-        }
+        view = rootView
     }
     
     override func setAction() {}
     
     override func setDelegate() {}
 }
-
-#if DEBUG
-import SwiftUI
-
-#Preview("Home") {
-    HomeViewController()
-}
-#endif
