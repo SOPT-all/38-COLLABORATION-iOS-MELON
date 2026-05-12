@@ -11,15 +11,15 @@ import SnapKit
 import Then
 
 final class HomeView: BaseView {
-    let scrollView = UIScrollView()
-    let contentStackView = UIStackView()
-    let homeHeader = HomeHeaderView()
-    let recommendationView = RecommendationView()
+    private let scrollView = UIScrollView()
+    private let contentStackView = UIStackView()
+    private let homeHeader = HomeHeaderView()
+    private let recommendationView = RecommendationView()
     
     override func setUI() {
         addSubview(scrollView)
         scrollView.addSubview(contentStackView)
-        [homeHeader, recommendationView].forEach(contentStackView.addArrangedSubview)
+        contentStackView.addArrangedSubviews(homeHeader,  recommendationView)
     }
     
     override func setStyle() {

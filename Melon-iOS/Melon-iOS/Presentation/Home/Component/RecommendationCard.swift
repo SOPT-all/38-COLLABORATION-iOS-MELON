@@ -87,7 +87,7 @@ final class RecommendationCard: BaseView {
     
     override func setUI() {
         tagChipView.addSubview(tagLabel)
-        addSubviews(imageView, tagChipView,playIconButton, titleLabel,hashtagLabel)
+        addSubviews(imageView, tagChipView, playIconButton, titleLabel, hashtagLabel)
     }
     
     override func setLayout() {

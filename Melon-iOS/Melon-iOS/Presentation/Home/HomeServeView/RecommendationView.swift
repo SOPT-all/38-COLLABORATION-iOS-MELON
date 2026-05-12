@@ -32,8 +32,8 @@ final class RecommendationView: BaseView {
     }
     
     override func setUI() {
-        [smallCard1, smallCard2].forEach(rightStackView.addArrangedSubview)
-        [largeCard, rightStackView].forEach(mainStackView.addArrangedSubview)
+        rightStackView.addArrangedSubviews(smallCard1, smallCard2)
+        mainStackView.addArrangedSubviews(largeCard, rightStackView)
         
         addSubviews(recommendHeaderView, mainStackView)
     }

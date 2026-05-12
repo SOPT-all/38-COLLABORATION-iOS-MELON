@@ -16,7 +16,7 @@ final class HomeDetailSectionHeaderView: BaseView {
     private let iconImageView = UIImageView()
     let seeAllButton = UIButton()
     
-    init(subtitle: String, title: String, icon : UIImage) {
+    init(subtitle: String, title: String, icon: UIImage) {
         super.init(frame: .zero)
         configure(subtitle: subtitle, title: title, icon: icon)
     }
@@ -65,7 +65,9 @@ final class HomeDetailSectionHeaderView: BaseView {
             $0.textColor = .appWhite
         }
         
-        titleLabel.textColor = .appWhite
+        titleLabel.do {
+            $0.textColor = .appWhite
+        }
         
         seeAllButton.do {
             $0.setTitle("전체보기", for: .normal)
