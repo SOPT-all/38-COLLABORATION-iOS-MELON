@@ -57,7 +57,6 @@ final class RecommendationView: BaseView {
     }
     
     override func setStyle() {
-        backgroundColor = .appBlack
         recommendHeaderView.do {
             $0.setStyle()
             $0.titleLabel.font = .title_b_20

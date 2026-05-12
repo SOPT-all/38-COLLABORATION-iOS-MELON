@@ -17,9 +17,10 @@ final class HomeView: BaseView {
     private let recommendationView = RecommendationView()
     
     override func setUI() {
-        addSubview(scrollView)
-        scrollView.addSubview(contentStackView)
         contentStackView.addArrangedSubviews(homeHeader, recommendationView)
+        scrollView.addSubview(contentStackView)
+        addSubview(scrollView)
+        
     }
     
     override func setStyle() {
