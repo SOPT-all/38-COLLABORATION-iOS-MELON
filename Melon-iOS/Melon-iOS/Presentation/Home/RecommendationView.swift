@@ -39,7 +39,6 @@ final class RecommendationView: BaseView {
     }
     
     override func setLayout() {
-        
         recommendHeaderView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
