@@ -82,13 +82,13 @@ final class MusicPlayerBar: UIButton {
     
     private func setStyle() {
         songTitleLabel.do {
-            $0.text = songTitle //"KARMA COLLECTOR"
+            $0.text = songTitle
             $0.font = .body_sb_15
             $0.textColor = .appWhite
         }
         
         songArtistLabel.do {
-            $0.text = songArtist //"식케이 (Sik-k), 김하온 (HAON),N..."
+            $0.text = songArtist
             $0.font = .caption_r_12
             $0.textColor = .gray500
         }
