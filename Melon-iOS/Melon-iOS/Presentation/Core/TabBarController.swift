@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     //MARK: - Properties
     
     enum Tab: Int, CaseIterable {
-        case home = 0
+        case home
         case forYou
         case search
         case drawer
