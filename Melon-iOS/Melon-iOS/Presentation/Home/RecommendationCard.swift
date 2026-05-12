@@ -51,13 +51,6 @@ final class RecommendationCard: BaseView {
             }
         }
         
-        var playButtonPadding: CGFloat {
-            switch self {
-            case .large: return 152
-            case .small: return 103
-            }
-        }
-        
         var titleSize: CGFloat {
             switch self {
             case .large: return 18
@@ -100,7 +93,6 @@ final class RecommendationCard: BaseView {
     override func setLayout() {
         let leadingInset = style.contentLeadingInset
         let padding = style.contentPadding
-        let playButtonPadding = style.playButtonPadding
         let topInset = style.contentTopInset
         let titleSize = style.titleSize
         
@@ -121,18 +113,18 @@ final class RecommendationCard: BaseView {
         
         playIconButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(6)
-            $0.leading.equalTo(imageView.snp.leading).inset(playButtonPadding)
+            $0.trailing.equalTo(imageView.snp.trailing).offset(-8)
             $0.size.equalTo(28)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(leadingInset)
+            $0.horizontalEdges.equalToSuperview().inset(leadingInset)
             $0.top.equalTo(tagChipView.snp.bottom).offset(padding)
             $0.height.equalTo(titleSize)
         }
         
         hashtagLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(leadingInset)
+            $0.horizontalEdges.equalToSuperview().inset(leadingInset)
             $0.top.equalTo(titleLabel.snp.bottom).offset(padding)
         }
         
@@ -164,6 +156,8 @@ final class RecommendationCard: BaseView {
         titleLabel.do {
             $0.textColor = .appWhite
             $0.font = style.titleFont
+            $0.numberOfLines = 1
+            $0.lineBreakMode = .byTruncatingTail
         }
         
         playIconButton.do {
@@ -174,6 +168,8 @@ final class RecommendationCard: BaseView {
         hashtagLabel.do {
             $0.textColor = .gray300
             $0.font = style.hashtagFont
+            $0.numberOfLines = 1
+            $0.lineBreakMode = .byTruncatingTail
         }
     }
 }
