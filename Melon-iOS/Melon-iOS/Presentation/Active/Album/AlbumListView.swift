@@ -24,6 +24,7 @@ final class AlbumListView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setDelegate()
         register()
     }
     
@@ -41,7 +42,6 @@ final class AlbumListView: BaseView {
         collcetionView.register(AlbumListCell.self, forCellWithReuseIdentifier: AlbumListCell.identifier)
     }
 
-    
     // MARK: - UI Settings
     
     override func setUI() {
