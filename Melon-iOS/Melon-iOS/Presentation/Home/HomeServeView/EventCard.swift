@@ -30,12 +30,6 @@ final class EventCard: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with item: EventItem) {
-        imageView.image = item.image
-        titleLabel.text = item.title
-        subtitleLabel.text = item.subtitle
-    }
-    
     private func setUI() {
         addSubviews(imageView, titleLabel, subtitleLabel)
     }
@@ -71,6 +65,14 @@ final class EventCard: UICollectionViewCell {
             $0.font = .caption_r_12
             $0.textColor = .gray300
         }
+    }
+}
+
+extension EventCard {
+    func configure(with item: EventItem) {
+        imageView.image = item.image
+        titleLabel.text = item.title
+        subtitleLabel.text = item.subtitle
     }
 }
 
