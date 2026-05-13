@@ -12,6 +12,8 @@ import Then
 
 final class ChartSectionView: BaseView {
     
+    private let chartItems: [ChartSong] = ChartSongDTO.dummy
+    
     private let chartHeaderView = HomeDetailSectionHeaderView(subtitle: "오늘 16:00 기준", title: "실시간 트렌드 멜론차트", icon: .iconBrand3Purple)
     
     private let filterView = FilterBarView(items: ["1": "TOP100", "2": "HOT100", "3": "2006년 해외", "4": "달달한"], selectedID: "1")
@@ -19,8 +21,6 @@ final class ChartSectionView: BaseView {
     private let chartView = UICollectionView(frame: .zero, collectionViewLayout: ChartLayout.make())
 
     private let listenButton = ListenButton(title: "TOP100 전체 듣기")
-    
-    private let chartItems: [ChartSong] = ChartSongDTO.dummy
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,7 +70,6 @@ final class ChartSectionView: BaseView {
         chartView.do {
             $0.backgroundColor = .appBlack
             $0.showsHorizontalScrollIndicator = false
-            $0.dataSource = self
             $0.canCancelContentTouches = true
         }
     }
