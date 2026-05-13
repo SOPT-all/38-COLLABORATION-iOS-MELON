@@ -20,7 +20,7 @@ final class ChartSectionView: BaseView {
     
     private let chartView = UICollectionView(frame: .zero, collectionViewLayout: ChartLayout.make())
 
-    private let listenButton = ListenButton(title: "TOP100 전체 듣기")
+    private let listenButton = ListenButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -11,9 +11,6 @@ import SnapKit
 import Then
 
 final class ListenButton: UIButton {
-    
-    private let title: String
-    
     private let listenTitlelabel = UILabel()
     private let listenIconView = UIImageView()
     
@@ -22,8 +19,7 @@ final class ListenButton: UIButton {
     private var normalBackgroundColor: UIColor = .gray600
     private var highlightedBackgroundColor: UIColor = .gray900
     
-    init(title: String) {
-        self.title = title
+    init() {
         super.init(frame: .zero)
         
         setUI()
@@ -62,7 +58,7 @@ final class ListenButton: UIButton {
         }
         
         listenTitlelabel.do {
-            $0.text = title
+            $0.text = "TOP100 전체 듣기"
             $0.font = .body_r_15
             $0.textColor = .appWhite
         }
