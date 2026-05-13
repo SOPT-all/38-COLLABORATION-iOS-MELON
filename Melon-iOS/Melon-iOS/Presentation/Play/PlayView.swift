@@ -70,13 +70,7 @@ final class PlayView: BaseView {
     
     private let playListButton = UIButton()
     
-    private let listViewTitleLabel = UILabel()
-    
-    private let firstSong = PlaylistCell()
-    
-    private let secondSong = PlaylistCell()
-            
-    private let playlistContainerView = UIView()
+    private let playlistContainerView = PlaylistContainerView()
     
     // MARK: - Setup Methods
     
@@ -85,7 +79,6 @@ final class PlayView: BaseView {
         songCustomButtonStackView.addArrangedSubviews(heartButton, addSongButton, lyricsButton)
         swipeGuideContainerView.addSubviews(playMessageImage, leftMessageLabel, rightMesageLabel)
         playButtonStackView.addArrangedSubviews(previousButton, playButton, nextButton)
-        playlistContainerView.addSubviews(listViewTitleLabel, firstSong, secondSong)
         
         addSubviews(
             optionButton,
@@ -209,7 +202,7 @@ final class PlayView: BaseView {
         }
         
         songProgressView.do {
-            $0.progress = 0.4
+            $0.progress = 0.15
             $0.progressTintColor = .green02
             $0.trackTintColor = .gray600
         }
@@ -264,16 +257,6 @@ final class PlayView: BaseView {
             $0.setImage(UIImage(resource: .icPlaylistThin), for: .normal)
         }
         
-        listViewTitleLabel.do {
-            $0.text = "재생 순서"
-            $0.textColor = .appWhite
-            $0.font = .body_r_15
-        }
-        
-        playlistContainerView.do {
-            $0.backgroundColor = .gray600
-            $0.layer.cornerRadius = 20
-        }
     }
     
     override func setLayout() {
@@ -382,22 +365,6 @@ final class PlayView: BaseView {
         playListButton.snp.makeConstraints {
             $0.top.equalTo(equalizerButton.snp.top)
             $0.trailing.equalToSuperview().inset(20)
-        }
-        
-        listViewTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(14)
-            $0.leading.equalToSuperview().inset(12)
-        }
-        
-        firstSong.snp.makeConstraints {
-            $0.top.equalTo(listViewTitleLabel.snp.bottom).offset(8)
-            $0.horizontalEdges.equalToSuperview().inset(12)
-        }
-        
-        secondSong.snp.makeConstraints {
-            $0.top.equalTo(firstSong.snp.bottom).offset(4)
-            $0.horizontalEdges.equalToSuperview().inset(12)
-            $0.bottom.equalToSuperview().inset(14)
         }
         
         playlistContainerView.snp.makeConstraints {
