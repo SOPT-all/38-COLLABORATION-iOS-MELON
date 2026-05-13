@@ -74,3 +74,11 @@ final class AlbumListCell: UICollectionViewCell {
         }
     }
 }
+
+extension AlbumListCell {
+    func configure(_ albumListData: AlbumListModel) {
+        albumCoverImageView.image = albumListData.imageUrl
+        albumNameLabel.text = albumListData.title
+        artistNameLabel.text = albumListData.artistName
+    }
+}
