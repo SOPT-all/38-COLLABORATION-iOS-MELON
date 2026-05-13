@@ -31,7 +31,6 @@ final class SongListView: BaseView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
     // MARK: - Functions
 
@@ -87,7 +86,7 @@ extension SongListView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.dataBind(itemList[indexPath.item])
+        cell.configure(itemList[indexPath.item])
         return cell
     }
 }

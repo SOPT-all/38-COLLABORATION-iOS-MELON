@@ -103,7 +103,7 @@ final class SongListCell: UICollectionViewCell {
 }
 
 extension SongListCell {
-    func dataBind(_ songListData: SongListItemModel) {
+    func configure(_ songListData: SongListItemModel) {
         songImage.image = songListData.albumImageUrl
         trackTitle.text = songListData.title
         artistName.text = songListData.artist.name
