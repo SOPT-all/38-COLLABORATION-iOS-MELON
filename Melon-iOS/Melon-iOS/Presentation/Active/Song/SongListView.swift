@@ -5,9 +5,10 @@
 //  Created by 성환 on 5/12/26.
 //
 
+import UIKit
+
 import SnapKit
 import Then
-import UIKit
 
 final class SongListView: BaseView {
     // MARK: - Properties
@@ -91,6 +92,4 @@ extension SongListView: UICollectionViewDataSource {
     }
 }
 
-extension SongListView: UICollectionViewDelegate {
-
-}
+extension SongListView: UICollectionViewDelegate {}
