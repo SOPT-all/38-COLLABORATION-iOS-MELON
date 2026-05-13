@@ -51,6 +51,7 @@ final class EventSectionView: BaseView {
             $0.top.equalTo(eventTitleLabel.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(204)
+            $0.bottom.equalToSuperview()
         }
     }
     
