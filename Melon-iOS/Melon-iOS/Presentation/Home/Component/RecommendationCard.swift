@@ -164,12 +164,12 @@ final class RecommendationCard: BaseView {
             $0.numberOfLines = 1
             $0.lineBreakMode = .byTruncatingTail
         }
-        
-        func configure(image: UIImage, tag: String, title: String, hashtag: String) {
-            imageView.image = image
-            tagLabel.text = tag
-            titleLabel.text = title
-            hashtagLabel.text = hashtag
-        }
+    }
+    
+    func configure(image: UIImage, tag: String, title: String, hashtag: String) {
+        imageView.image = image
+        tagLabel.text = tag
+        titleLabel.text = title
+        hashtagLabel.text = hashtag
     }
 }
