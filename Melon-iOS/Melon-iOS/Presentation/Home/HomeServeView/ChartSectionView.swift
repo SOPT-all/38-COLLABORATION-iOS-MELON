@@ -19,6 +19,8 @@ final class ChartSectionView: BaseView {
     private let listenButton = ListenButton(title: "TOP100 전체 듣기")
     private let chartView = UICollectionView(frame: .zero, collectionViewLayout: ChartLayout.make())
     
+    private let chartItems: [ChartSong] = ChartSongDTO.dummy
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setDelegate()
@@ -36,7 +38,7 @@ final class ChartSectionView: BaseView {
     override func setLayout() {
         chartHeaderView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview()
         }
         
         filterView.snp.makeConstraints {
@@ -79,36 +81,17 @@ final class ChartSectionView: BaseView {
     private func register() {
         chartView.register(ChartCell.self, forCellWithReuseIdentifier: ChartCell.identifier)
     }
-    
-    struct ChartSong {
-        let image: UIImage
-        let rank: Int
-        let title: String
-        let rankChange: String
-        let singer: String
-    }
-
-    private let chartItems: [ChartSong] = [
-        .init(image: UIImage(resource: .imgHomeMelonchart1), rank: 1, title: "소문의 낙원", rankChange: "-", singer: "AKMU (악뮤)"),
-        .init(image: UIImage(resource: .imgHomeMelonchart1), rank: 2, title: "기쁨, 슬픔, 아름다운 마음", rankChange: "-", singer: "AKMU (악뮤)"),
-        .init(image: UIImage(resource: .imgHomeMelonchart2), rank: 3, title: "RUDE!", rankChange: "new", singer: "Hearts2Hearts"),
-        .init(image: UIImage(resource: .imgHomeMelonchart3), rank: 4, title: "IVE", rankChange: "-", singer: "IVE (아이브)"),
-        .init(image: UIImage(resource: .imgHomeMelonchart4), rank: 5, title: "404(New Era)", rankChange: "-", singer: "KiiiKiii (키키)"),
-        .init(image: UIImage(resource: .imgHomeMelonchart5), rank: 6, title: "SWIM", rankChange: "-", singer: "방탄소년단"),
-        .init(image: UIImage(resource: .imgHomeMelonchart6), rank: 7, title: "사랑하게 될 거야", rankChange: "-", singer: "한로로"),
-        .init(image: UIImage(resource: .imgHomeMelonchart7), rank: 8, title: "Drowning", rankChange: "-", singer: "WOODZ")
-    ]
 }
 
 extension ChartSectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
-                       numberOfItemsInSection section: Int) -> Int {
+                        numberOfItemsInSection section: Int) -> Int {
         return chartItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ChartCell.identifier,
             for: indexPath
@@ -117,13 +100,7 @@ extension ChartSectionView: UICollectionViewDataSource {
         }
         
         let song = chartItems[indexPath.item]
-        cell.configure(
-            image: song.image,
-            rank: song.rank,
-            title: song.title,
-            rankChange: song.rankChange,
-            singer: song.singer
-        )
+        cell.configure(with: song)
         
         return cell
     }
