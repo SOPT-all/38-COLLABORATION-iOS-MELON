@@ -24,15 +24,27 @@ final class PlayView: BaseView {
     
     private let downButton = UIButton()
     
-    private let titleStackView = UIStackView()
-    
-    private lazy var artistChannelButton = UIButton()
+    private let artistChannelButton = UIButton()
     
     private let albumImageView = UIImageView()
     
+    private let playMessageImage = UIImageView()
+    
+    private let leftMessageLabel = UILabel()
+    
+    private let rightMesageLabel = UILabel()
+    
     private let swipeGuideContainerView = UIView()
     
+    private let heartButton = ChipButton(text: "12,686", image: .icMiniheart)
+    
+    private let addSongButton = ChipButton(text: "담기", image: .icPlus)
+    
+    private let lyricsButton = ChipButton(text: "가사보기")
+    
     private let songCustomButtonStackView = UIStackView()
+    
+    private let mixupButton = UIButton()
     
     private let songProgressView = UIProgressView()
     
@@ -42,9 +54,13 @@ final class PlayView: BaseView {
     
     private let playlistContainerView = UIView()
     
+    // MARK: - Setup Methods
+    
     override func setUI() {
         musicInformationStackView.addArrangedSubviews(songTitleLabel, artistNameLabel)
-                
+        songCustomButtonStackView.addArrangedSubviews(heartButton, addSongButton, lyricsButton)
+        swipeGuideContainerView.addSubviews(playMessageImage, leftMessageLabel, rightMesageLabel)
+        
         addSubviews(
             optionButton,
             musicInformationStackView,
@@ -52,6 +68,7 @@ final class PlayView: BaseView {
             artistChannelButton,
             albumImageView,
             swipeGuideContainerView,
+            mixupButton,
             songCustomButtonStackView,
             songProgressView,
             playButtonStackView,
@@ -61,13 +78,6 @@ final class PlayView: BaseView {
     }
     
     override func setStyle() {
-        backgroundColor = .appBlue
-        titleStackView.do {
-            $0.axis = .horizontal
-            $0.alignment = .center
-            $0.spacing = 16
-        }
-        
         optionButton.do {
             $0.setImage(UIImage(resource: .icMoreVertical2), for: .normal)
         }
@@ -77,7 +87,7 @@ final class PlayView: BaseView {
             $0.alignment = .leading
             $0.spacing = 0
         }
-               
+        
         songTitleLabel.do {
             $0.text = "LOV3 (Feet. Bryan Chase어쩌구저쩌구잘리는부분"
             $0.textColor = .appWhite
@@ -92,6 +102,78 @@ final class PlayView: BaseView {
         
         downButton.do {
             $0.setImage(UIImage(resource: .icChevronDown), for: .normal)
+        }
+        
+        artistChannelButton.do {
+            var config = UIButton.Configuration.bordered()
+            config.background.strokeWidth = 1
+            config.background.strokeColor = .green03
+            config.image = UIImage(resource: .icHuman)
+                .resize(to: CGSize(width: 16, height: 16))
+                .withRenderingMode(.alwaysTemplate)
+            config.baseForegroundColor = .green03
+            config.imagePadding = 3
+            config.baseBackgroundColor = .clear
+            config.background.cornerRadius = 50
+            config.contentInsets = NSDirectionalEdgeInsets(top: 5.5, leading: 9, bottom: 5.5, trailing: 9)
+            config.attributedTitle = AttributedString(
+                "아티스트 채널로 이동",
+                attributes: AttributeContainer([
+                    .font: UIFont.body_r_13,
+                    .foregroundColor: UIColor.green03
+                ])
+            )
+            
+            $0.configuration = config
+        }
+        
+        albumImageView.do {
+            $0.image = .imgPlayThumnail2
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        playMessageImage.do {
+            $0.image = .playMessage
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        leftMessageLabel.do {
+            $0.text = "스와이프 이전 곡으로"
+            $0.font = .caption_r_11
+            $0.textColor = .appWhite
+        }
+        
+        rightMesageLabel.do {
+            $0.text = "스와이프 다음 곡으로"
+            $0.font = .caption_r_11
+            $0.textColor = .appWhite
+        }
+        
+        songCustomButtonStackView.do {
+            $0.axis = .horizontal
+            $0.alignment = .center
+            $0.spacing = 9
+        }
+        
+        mixupButton.do {
+            var config = UIButton.Configuration.bordered()
+            config.background.strokeWidth = 0.25
+            config.background.strokeColor = .gray300
+            config.image = UIImage(resource: .imgMixup)
+                .resize(to: CGSize(width: 21, height: 21))
+            config.imagePadding = 3
+            config.baseBackgroundColor = .clear
+            config.background.cornerRadius = 40
+            config.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 9, bottom: 3, trailing: 9)
+            config.attributedTitle = AttributedString(
+                "믹스업",
+                attributes: AttributeContainer([
+                    .font: UIFont.body_r_13,
+                    .foregroundColor: UIColor.appWhite
+                ])
+            )
+            
+            $0.configuration = config
         }
         
         playlistContainerView.do {
@@ -116,6 +198,50 @@ final class PlayView: BaseView {
             $0.top.equalTo(safeAreaLayoutGuide).inset(16)
             $0.trailing.equalToSuperview().inset(20)
             $0.size.equalTo(24)
+        }
+        
+        artistChannelButton.snp.makeConstraints {
+            $0.top.equalTo(musicInformationStackView.snp.bottom).offset(16)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(27)
+        }
+        
+        albumImageView.snp.makeConstraints {
+            $0.top.equalTo(artistChannelButton.snp.bottom).offset(21)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(291)
+        }
+        
+        playMessageImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        leftMessageLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(18)
+        }
+        
+        rightMesageLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(18)
+        }
+        
+        swipeGuideContainerView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(albumImageView.snp.top).offset(120)
+            $0.horizontalEdges.equalToSuperview()
+        }
+        
+        songCustomButtonStackView.snp.makeConstraints {
+            $0.top.equalTo(albumImageView.snp.bottom).offset(22)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
+        mixupButton.snp.makeConstraints {
+            $0.top.equalTo(songCustomButtonStackView.snp.top)
+            $0.trailing.equalToSuperview().inset(20)
         }
         
         playlistContainerView.snp.makeConstraints {
