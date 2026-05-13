@@ -48,6 +48,10 @@ final class PlayView: BaseView {
     
     private let songProgressView = UIProgressView()
     
+    private let nowTimeLabel = UILabel()
+    
+    private let songTimeLabel = UILabel()
+    
     private let playButtonStackView = UIStackView()
     
     private let utilButtonStackView = UIStackView()
@@ -71,6 +75,8 @@ final class PlayView: BaseView {
             mixupButton,
             songCustomButtonStackView,
             songProgressView,
+            nowTimeLabel,
+            songTimeLabel,
             playButtonStackView,
             utilButtonStackView,
             playlistContainerView
@@ -176,8 +182,26 @@ final class PlayView: BaseView {
             $0.configuration = config
         }
         
+        songProgressView.do {
+            $0.progress = 0.4
+            $0.progressTintColor = .green02
+            $0.trackTintColor = .gray600
+        }
+        
+        nowTimeLabel.do {
+            $0.text = "1:07"
+            $0.textColor = .appWhite
+            $0.font = .caption_r_12
+        }
+        
+        songTimeLabel.do {
+            $0.text = "2:50"
+            $0.textColor = .gray600
+            $0.font = .caption_r_12
+        }
+        
         playlistContainerView.do {
-            $0.backgroundColor = .gray300
+            $0.backgroundColor = .gray600
         }
     }
     
@@ -241,6 +265,21 @@ final class PlayView: BaseView {
         
         mixupButton.snp.makeConstraints {
             $0.top.equalTo(songCustomButtonStackView.snp.top)
+            $0.trailing.equalToSuperview().inset(20)
+        }
+        
+        songProgressView.snp.makeConstraints {
+            $0.top.equalTo(songCustomButtonStackView.snp.bottom).offset(24)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
+        
+        nowTimeLabel.snp.makeConstraints {
+            $0.top.equalTo(songProgressView.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
+        songTimeLabel.snp.makeConstraints {
+            $0.top.equalTo(nowTimeLabel.snp.top)
             $0.trailing.equalToSuperview().inset(20)
         }
         
