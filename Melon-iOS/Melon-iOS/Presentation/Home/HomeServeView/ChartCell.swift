@@ -32,15 +32,6 @@ final class ChartCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
-    func configure(with song: ChartSong) {
-            albumImageView.image = song.albumImageUrl
-            rankLabel.text = "\(song.songId)"
-            titleLabel.text = song.title
-            rankChangeLabel.text = "-"
-            artistLabel.text = song.artistName
-        }
         
     private func setUI() {
         contentView.addSubviews(
@@ -118,3 +109,12 @@ final class ChartCell: UICollectionViewCell {
     }
 }
 
+extension ChartCell {
+    func configure(with song: ChartSong) {
+            albumImageView.image = song.albumImageUrl
+            rankLabel.text = "\(song.songId)"
+            titleLabel.text = song.title
+            rankChangeLabel.text = "-"
+            artistLabel.text = song.artistName
+        }
+}
