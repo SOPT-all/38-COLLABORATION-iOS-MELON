@@ -59,16 +59,19 @@ final class MyActivityListView: BaseView {
             $0.leading.equalToSuperview()
             $0.size.equalTo(44)
         }
+        
         iconImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(10)
             $0.centerY.equalTo(iconView.snp.centerY)
             $0.size.equalTo(24)
         }
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(2.5)
             $0.leading.equalTo(iconView.snp.trailing).offset(10)
             $0.trailing.equalToSuperview()
         }
+        
         subLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(2.5)
             $0.leading.equalTo(iconView.snp.trailing).offset(10)

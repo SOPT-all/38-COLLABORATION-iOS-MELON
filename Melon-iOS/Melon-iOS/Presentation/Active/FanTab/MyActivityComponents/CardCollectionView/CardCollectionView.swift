@@ -12,6 +12,7 @@ import Then
 
 final class CardCollectionView: BaseView {
     //MARK: - Properties
+    
     private let cardList = CardModel.dummy()
     
     private let flowLayout = UICollectionViewFlowLayout().then {
@@ -20,15 +21,14 @@ final class CardCollectionView: BaseView {
         $0.minimumLineSpacing = 10
     }
     
-    private lazy var collectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: flowLayout
-    )
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     //MARK: - Private Methods
+    
     private func register() {
         collectionView.register(CardCell.self,forCellWithReuseIdentifier: CardCell.identifier)
     }
     //MARK: - Initializer
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         register()
@@ -38,6 +38,7 @@ final class CardCollectionView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: Setup Methods
+    
     override func setStyle() {
         collectionView.do {
             $0.backgroundColor = .clear
@@ -58,7 +59,6 @@ final class CardCollectionView: BaseView {
         }
     }
 }
-
 
 extension CardCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,numberOfItemsInSection section: Int) -> Int {

@@ -14,16 +14,14 @@ class CardCell: UICollectionViewCell {
     //MARK: - Properties
     
     static let identifier = "CardCell"
-    
     private let cardImage = UIImageView()
-    
     private let cardLabel = UILabel()
-    
     private let cardSong = UILabel()
     //MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setStyle()
         setUI()
         setLayout()
@@ -33,6 +31,7 @@ class CardCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: - Setup Methods
+    
     private func setStyle() {
         cardImage.do {
             $0.image = .imgActiveFeaturedtrackcard1
@@ -51,7 +50,6 @@ class CardCell: UICollectionViewCell {
             $0.font = .body_sb_15
             $0.textColor = .appWhite
         }
-        
     }
     
     private func setUI() {
@@ -80,7 +78,7 @@ class CardCell: UICollectionViewCell {
 
 extension CardCell {
     func configure(_ data: CardModel) {
-        cardImage.image = data.cardImg
+        cardImage.image = data.card
         cardLabel.text = data.cardText
         cardSong.text = data.cardTitle
     }

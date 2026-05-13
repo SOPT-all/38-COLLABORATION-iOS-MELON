@@ -8,7 +8,7 @@
 import UIKit
 
 struct CardModel {
-    let cardImg: UIImage
+    let card: UIImage
     let cardText: String
     let cardTitle : String
 }
@@ -17,9 +17,9 @@ struct CardModel {
 extension CardModel {
     static func dummy() -> [CardModel] {
         return [
-            CardModel(cardImg: .imgActiveFeaturedtrackcard1, cardText: "처음 좋아요한 곡", cardTitle: "FOCUS"),
-            CardModel(cardImg: .imgActiveFeaturedtrackcard2, cardText: "처음 댓글남긴 곡", cardTitle: "RUDE!"),
-            CardModel(cardImg: .imgActiveFeaturedtrackcard3, cardText: "처음 저장한 곡", cardTitle: "THE CHASE")
+            CardModel(card: .imgActiveFeaturedtrackcard1, cardText: "처음 좋아요한 곡", cardTitle: "FOCUS"),
+            CardModel(card: .imgActiveFeaturedtrackcard2, cardText: "처음 댓글남긴 곡", cardTitle: "RUDE!"),
+            CardModel(card: .imgActiveFeaturedtrackcard3, cardText: "처음 저장한 곡", cardTitle: "THE CHASE")
         ]
     }
 }

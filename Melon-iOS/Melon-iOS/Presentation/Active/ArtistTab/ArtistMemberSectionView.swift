@@ -15,10 +15,11 @@ final class ArtistMemberSectionView: BaseView {
     
     private let artistHeader = ActiveViewSectionHeader(title: "아티스트")
     private let artistBody = ArtistCollectionView()
-    //MARK: Setup Methods
+    
+    //MARK: - Setup Methods
     
     override func setUI() {
-        addSubviews(artistHeader,artistBody)
+        addSubviews(artistHeader, artistBody)
     }
     
     override func setLayout() {
