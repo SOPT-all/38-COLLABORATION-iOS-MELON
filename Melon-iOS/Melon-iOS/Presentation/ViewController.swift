@@ -12,14 +12,8 @@ import Then
 
 class ViewController: UIViewController {
 
-    private let albumListView = AlbumListView()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        view.addSubview(albumListView)
-        albumListView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        // Do any additional setup after loading the view.
     }
 }
