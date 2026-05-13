@@ -31,7 +31,7 @@ final class EventCard: UICollectionViewCell {
     }
     
     private func setUI() {
-        addSubviews(imageView, titleLabel, subtitleLabel)
+        contentView.addSubviews(imageView, titleLabel, subtitleLabel)
     }
     
     private func setLayout() {
@@ -54,6 +54,7 @@ final class EventCard: UICollectionViewCell {
     private func setStyle() {
         imageView.do {
             $0.layer.cornerRadius = 4
+            $0.clipsToBounds = true
         }
         
         titleLabel.do {

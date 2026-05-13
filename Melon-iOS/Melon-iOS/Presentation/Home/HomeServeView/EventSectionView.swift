@@ -37,7 +37,7 @@ final class EventSectionView: BaseView {
     
     override func setLayout() {
         eventHeaderView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
         }
         
