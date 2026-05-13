@@ -10,9 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-final class ArtistMemberView: BaseView {
-    let artistHeader = ActiveViewSectionHeader(title: "아티스트")
-    let artistBody = ArtistCollectionView()
+final class ArtistMemberSectionView: BaseView {
+    //MARK: - Properties
+    
+    private let artistHeader = ActiveViewSectionHeader(title: "아티스트")
+    private let artistBody = ArtistCollectionView()
+    //MARK: Setup Methods
+    
     override func setUI() {
         addSubviews(artistHeader,artistBody)
     }
