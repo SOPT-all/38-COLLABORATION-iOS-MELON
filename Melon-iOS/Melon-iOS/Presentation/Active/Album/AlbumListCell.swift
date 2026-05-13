@@ -25,6 +25,9 @@ final class AlbumListCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUI()
+        setStyle()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {

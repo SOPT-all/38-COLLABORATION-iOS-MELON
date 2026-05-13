@@ -44,6 +44,10 @@ final class AlbumListView: BaseView {
 
     // MARK: - UI Settings
     
+    override func setStyle() {
+        collcetionView.backgroundColor = .clear
+    }
+    
     override func setUI() {
         addSubviews(collcetionView)
     }
