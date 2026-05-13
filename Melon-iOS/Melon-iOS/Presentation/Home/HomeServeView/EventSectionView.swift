@@ -37,22 +37,28 @@ final class EventSectionView: BaseView {
     
     override func setLayout() {
         eventHeaderView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
         }
         
         eventTitleLabel.snp.makeConstraints {
             $0.top.equalTo(eventHeaderView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(22)
         }
         
         collectionView.snp.makeConstraints {
             $0.top.equalTo(eventTitleLabel.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(188)
+            $0.height.equalTo(204)
         }
     }
     
     override func setStyle() {
+        eventHeaderView.do {
+            $0.titleLabel.font = .title_b_20
+        }
+        
         eventTitleLabel.do {
             $0.font = .body_sb_18
             $0.textColor = .appWhite
@@ -62,6 +68,8 @@ final class EventSectionView: BaseView {
         collectionView.do {
             $0.backgroundColor = .appBlack
             $0.showsHorizontalScrollIndicator = false
+            $0.alwaysBounceVertical = false
+            $0.bounces = false
         }
     }
     
