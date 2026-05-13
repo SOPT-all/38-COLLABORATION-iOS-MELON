@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum EventLayout {
     static func make() -> UICollectionViewLayout {
         let wideItem = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(252), heightDimension: .absolute(188)))
