@@ -37,7 +37,7 @@ final class CardCollectionView: BaseView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //MARK: Setup Methods
+    //MARK: - Setup Methods
     
     override func setStyle() {
         collectionView.do {
