@@ -33,7 +33,7 @@ enum ActiveLayout {
             top: 22,
             leading: 20,
             bottom: 0,
-            trailing: 0
+            trailing: 20
         )
 
         return UICollectionViewCompositionalLayout(section: section)
