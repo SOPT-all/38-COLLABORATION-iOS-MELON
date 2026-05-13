@@ -52,10 +52,30 @@ final class PlayView: BaseView {
     
     private let songTimeLabel = UILabel()
     
+    private let shuffleButton = UIButton()
+    
+    private let previousButton = UIButton()
+    
+    private let playButton = UIButton()
+    
+    private let nextButton = UIButton()
+    
     private let playButtonStackView = UIStackView()
     
-    private let utilButtonStackView = UIStackView()
+    private let repeatButton = UIButton()
+        
+    private let equalizerButton = UIButton()
     
+    private let mirroringButton = UIButton()
+    
+    private let playListButton = UIButton()
+    
+    private let listViewTitleLabel = UILabel()
+    
+    private let firstSong = PlaylistCell()
+    
+    private let secondSong = PlaylistCell()
+            
     private let playlistContainerView = UIView()
     
     // MARK: - Setup Methods
@@ -64,6 +84,8 @@ final class PlayView: BaseView {
         musicInformationStackView.addArrangedSubviews(songTitleLabel, artistNameLabel)
         songCustomButtonStackView.addArrangedSubviews(heartButton, addSongButton, lyricsButton)
         swipeGuideContainerView.addSubviews(playMessageImage, leftMessageLabel, rightMesageLabel)
+        playButtonStackView.addArrangedSubviews(previousButton, playButton, nextButton)
+        playlistContainerView.addSubviews(listViewTitleLabel, firstSong, secondSong)
         
         addSubviews(
             optionButton,
@@ -77,8 +99,12 @@ final class PlayView: BaseView {
             songProgressView,
             nowTimeLabel,
             songTimeLabel,
+            shuffleButton,
             playButtonStackView,
-            utilButtonStackView,
+            repeatButton,
+            equalizerButton,
+            mirroringButton,
+            playListButton,
             playlistContainerView
         )
     }
@@ -200,8 +226,53 @@ final class PlayView: BaseView {
             $0.font = .caption_r_12
         }
         
+        shuffleButton.do {
+            $0.setImage(UIImage(resource: .icShuffle), for: .normal)
+        }
+        
+        previousButton.do {
+            $0.setImage(UIImage(resource: .icPlaynext), for: .normal)
+        }
+        
+        playButton.do {
+            $0.setImage(UIImage(resource: .icPlayBig), for: .normal)
+        }
+        
+        nextButton.do {
+            $0.setImage(UIImage(resource: .icPlaynext), for: .normal)
+        }
+        
+        playButtonStackView.do {
+            $0.axis = .horizontal
+            $0.alignment = .center
+            $0.spacing = 40
+        }
+        
+        repeatButton.do {
+            $0.setImage(UIImage(resource: .icRepeat), for: .normal)
+        }
+        
+        equalizerButton.do {
+            $0.setImage(UIImage(resource: .icEq), for: .normal)
+        }
+        
+        mirroringButton.do {
+            $0.setImage(UIImage(resource: .icMiddle), for: .normal)
+        }
+        
+        playListButton.do {
+            $0.setImage(UIImage(resource: .icPlaylistThin), for: .normal)
+        }
+        
+        listViewTitleLabel.do {
+            $0.text = "재생 순서"
+            $0.textColor = .appWhite
+            $0.font = .body_r_15
+        }
+        
         playlistContainerView.do {
             $0.backgroundColor = .gray600
+            $0.layer.cornerRadius = 20
         }
     }
     
@@ -283,10 +354,56 @@ final class PlayView: BaseView {
             $0.trailing.equalToSuperview().inset(20)
         }
         
+        shuffleButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(20)
+            $0.centerY.equalTo(playButtonStackView)
+        }
+        
+        playButtonStackView.snp.makeConstraints {
+            $0.top.equalTo(songProgressView.snp.bottom).offset(35)
+            $0.centerX.equalToSuperview()
+        }
+        
+        repeatButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalTo(playButtonStackView)
+        }
+        
+        equalizerButton.snp.makeConstraints {
+            $0.top.equalTo(repeatButton.snp.bottom).offset(19)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
+        mirroringButton.snp.makeConstraints {
+            $0.top.equalTo(equalizerButton.snp.top)
+            $0.centerX.equalToSuperview()
+        }
+        
+        playListButton.snp.makeConstraints {
+            $0.top.equalTo(equalizerButton.snp.top)
+            $0.trailing.equalToSuperview().inset(20)
+        }
+        
+        listViewTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(14)
+            $0.leading.equalToSuperview().inset(12)
+        }
+        
+        firstSong.snp.makeConstraints {
+            $0.top.equalTo(listViewTitleLabel.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(12)
+        }
+        
+        secondSong.snp.makeConstraints {
+            $0.top.equalTo(firstSong.snp.bottom).offset(4)
+            $0.horizontalEdges.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(14)
+        }
+        
         playlistContainerView.snp.makeConstraints {
+            $0.top.equalTo(mirroringButton.snp.bottom).offset(12)
             $0.bottom.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(147)
+            $0.horizontalEdges.equalToSuperview().inset(9)
         }
     }
 }
