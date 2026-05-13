@@ -11,13 +11,14 @@ import SnapKit
 import Then
 
 final class EventSectionView: BaseView {
+    
+    private let items: [EventItem] = EventItem.dummy
+    
     private let eventHeaderView = HomeDetailSectionHeaderView(subtitle: "아티스트와 함께", title: "이벤트", icon: .iconBrand2Green)
     
     private let eventTitleLabel = UILabel()
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: EventLayout.make())
-    
-    private let items: [EventItem] = EventItem.dummy
     
     override init(frame: CGRect) {
         super.init(frame: frame)
