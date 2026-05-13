@@ -24,6 +24,7 @@ final class AlbumListView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setDelegate()
         register()
     }

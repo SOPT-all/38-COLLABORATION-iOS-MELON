@@ -25,6 +25,7 @@ final class AlbumListCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUI()
         setStyle()
         setLayout()
@@ -57,7 +58,11 @@ final class AlbumListCell: UICollectionViewCell {
     }
     
     private func setUI() {
-        addSubviews(albumCoverImageView, albumNameLabel, artistNameLabel)
+        addSubviews(
+            albumCoverImageView,
+            albumNameLabel,
+            artistNameLabel
+        )
     }
     
     private func setLayout() {
