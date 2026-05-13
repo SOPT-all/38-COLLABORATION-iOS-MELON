@@ -23,7 +23,7 @@ final class ChartCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.clipsToBounds = true
+
         setUI()
         setLayout()
         setStyle()
@@ -35,8 +35,12 @@ final class ChartCell: UICollectionViewCell {
         
     private func setUI() {
         contentView.addSubviews(
-            albumImageView, rankLabel, titleLabel,
-            rankChangeIcon, artistLabel, playButton
+            albumImageView,
+            rankLabel,
+            titleLabel,
+            rankChangeIcon,
+            artistLabel,
+            playButton
         )
     }
     
@@ -44,7 +48,6 @@ final class ChartCell: UICollectionViewCell {
         albumImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
             $0.size.equalTo(40)
         }
         
