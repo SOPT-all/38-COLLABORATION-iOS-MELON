@@ -11,6 +11,8 @@ import SnapKit
 import Then
 
 class ArtistCell: UICollectionViewCell {
+    //MARK: - Properties
+    
     static let identifier = "ArtistCell"
     
     private let artistImage = UIImageView()
@@ -18,6 +20,7 @@ class ArtistCell: UICollectionViewCell {
     private let artistLabelKr = UILabel()
     
     private let artistLabelEn = UILabel()
+    //MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +32,7 @@ class ArtistCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    //MARK: - Setup Methods
     
     private func setStyle() {
         artistImage.do {
@@ -80,7 +84,7 @@ class ArtistCell: UICollectionViewCell {
 }
 
 extension ArtistCell {
-    func dataBind(_ imageData: ArtistModel) {
+    func configure(_ imageData: ArtistModel) {
         artistImage.image = imageData.artistPicture
         
         let name = imageData.artistName.split(separator: " ")
