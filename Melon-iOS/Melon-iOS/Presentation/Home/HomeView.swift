@@ -34,7 +34,7 @@ final class HomeView: BaseView {
         contentStackView.do {
             $0.axis = .vertical
             $0.alignment = .fill
-            $0.spacing = 0
+            $0.spacing = 36
         }
     }
 
@@ -49,7 +49,6 @@ final class HomeView: BaseView {
             $0.width.equalTo(scrollView.snp.width)
         }
 
-        contentStackView.setCustomSpacing(36, after: recommendationView)
-        contentStackView.setCustomSpacing(36, after: chartView)
+        contentStackView.setCustomSpacing(0, after: homeHeader)
     }
 }
