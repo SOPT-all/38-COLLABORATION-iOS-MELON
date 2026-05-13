@@ -14,10 +14,11 @@ final class HomeView: BaseView {
     private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
     private let homeHeader = HomeHeaderView()
-    private let recommendationView = RecommendationView()
+    private let recommendationView = RecommendationSectionView()
+    private let chartView = ChartSectionView()
     
     override func setUI() {
-        contentStackView.addArrangedSubviews(homeHeader, recommendationView)
+        contentStackView.addArrangedSubviews(homeHeader, recommendationView, chartView)
         scrollView.addSubview(contentStackView)
         addSubview(scrollView)
         
@@ -28,6 +29,7 @@ final class HomeView: BaseView {
         contentStackView.do {
             $0.axis = .vertical
             $0.alignment = .fill
+            $0.spacing = 0
         }
     }
     
@@ -41,5 +43,7 @@ final class HomeView: BaseView {
             $0.edges.equalToSuperview()
             $0.width.equalTo(scrollView.snp.width)
         }
+        
+        contentStackView.setCustomSpacing(36, after: recommendationView)
     }
 }
