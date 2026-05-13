@@ -25,11 +25,12 @@ enum ActiveLayout {
             repeatingSubitem: item,
             count: 1
         )
-        group.interItemSpacing = .fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = 10
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
-        
+
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
