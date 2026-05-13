@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 final class CardCollectionView: BaseView {
-    
+    //MARK: - Properties
     private let cardList = CardModel.dummy()
     
     private let flowLayout = UICollectionViewFlowLayout().then {
@@ -24,11 +24,11 @@ final class CardCollectionView: BaseView {
         frame: .zero,
         collectionViewLayout: flowLayout
     )
-    
+    //MARK: - Private Methods
     private func register() {
         collectionView.register(CardCell.self,forCellWithReuseIdentifier: CardCell.identifier)
     }
-    
+    //MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         register()
@@ -37,7 +37,7 @@ final class CardCollectionView: BaseView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //MARK: Setup Methods
     override func setStyle() {
         collectionView.do {
             $0.backgroundColor = .clear
@@ -69,7 +69,7 @@ extension CardCollectionView: UICollectionViewDataSource {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier, for: indexPath
         ) as! CardCell
-        cell.dataBind(cardList[indexPath.row])
+        cell.configure(cardList[indexPath.row])
         return cell
     }
 }
