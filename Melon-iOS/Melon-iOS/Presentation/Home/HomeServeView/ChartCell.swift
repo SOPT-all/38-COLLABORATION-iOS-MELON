@@ -17,13 +17,13 @@ final class ChartCell: UICollectionViewCell {
     private let albumImageView = UIImageView()
     private let rankLabel = UILabel()
     private let titleLabel = UILabel()
-    private let rankChangeLabel = UILabel()
+    private let rankChangeIcon = UIImageView()
     private let artistLabel = UILabel()
     private let playButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        contentView.clipsToBounds = true
         setUI()
         setLayout()
         setStyle()
@@ -36,7 +36,7 @@ final class ChartCell: UICollectionViewCell {
     private func setUI() {
         contentView.addSubviews(
             albumImageView, rankLabel, titleLabel,
-            rankChangeLabel, artistLabel, playButton
+            rankChangeIcon, artistLabel, playButton
         )
     }
     
@@ -58,7 +58,7 @@ final class ChartCell: UICollectionViewCell {
             $0.top.equalToSuperview().inset(14)
         }
         
-        rankChangeLabel.snp.makeConstraints {
+        rankChangeIcon.snp.makeConstraints {
             $0.top.equalTo(rankLabel.snp.bottom).offset(8)
             $0.leading.equalTo(albumImageView.snp.trailing).offset(19)
         }
@@ -92,9 +92,8 @@ final class ChartCell: UICollectionViewCell {
             $0.textColor = .appWhite
         }
         
-        rankChangeLabel.do {
-            $0.font = .body_r_15
-            $0.textColor = .appWhite
+        rankChangeIcon.do {
+            $0.image = .icChartChange
         }
         
         artistLabel.do {
@@ -111,10 +110,9 @@ final class ChartCell: UICollectionViewCell {
 
 extension ChartCell {
     func configure(with song: ChartSong) {
-            albumImageView.image = song.albumImageUrl
-            rankLabel.text = "\(song.songId)"
-            titleLabel.text = song.title
-            rankChangeLabel.text = "-"
-            artistLabel.text = song.artistName
-        }
+        albumImageView.image = song.albumImageUrl
+        rankLabel.text = "\(song.songId)"
+        titleLabel.text = song.title
+        artistLabel.text = song.artistName
+    }
 }
