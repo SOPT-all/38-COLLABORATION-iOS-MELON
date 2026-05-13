@@ -19,6 +19,9 @@ final class ListenButton: UIButton {
     
     private let listenButtonStackView = UIStackView()
     
+    private var normalBackgroundColor: UIColor = .gray600
+    private var highlightedBackgroundColor: UIColor = .gray900
+    
     init(title: String) {
         self.title = title
         super.init(frame: .zero)
@@ -34,33 +37,28 @@ final class ListenButton: UIButton {
     
     private func setUI() {
         listenButtonStackView.addArrangedSubviews(listenIconView, listenTitlelabel)
-        addSubviews(listenButtonStackView)
+        addSubview(listenButtonStackView)
     }
     
     private func setLayout() {
         listenIconView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(11)
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(103)
             $0.size.equalTo(22)
-        }
-        
-        listenTitlelabel.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(11)
-            $0.centerY.equalTo(listenIconView.snp.centerY)
-            $0.leading.equalToSuperview().inset(131)
         }
         
         listenButtonStackView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.height.equalTo(22)
         }
     }
 
     private func setStyle() {
+        backgroundColor = normalBackgroundColor
+        layer.cornerRadius = 4
+        clipsToBounds = true
+        
         listenIconView.do {
             $0.image = .icPlayFilled
             $0.tintColor = .appWhite
+            $0.contentMode = .scaleAspectFit
         }
         
         listenTitlelabel.do {
@@ -73,7 +71,15 @@ final class ListenButton: UIButton {
             $0.axis = .horizontal
             $0.spacing = 6
             $0.alignment = .center
+            $0.isUserInteractionEnabled = false
         }
     }
     
+    override var isHighlighted: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.15) {
+                self.backgroundColor = self.isHighlighted ? self.highlightedBackgroundColor : self.normalBackgroundColor
+            }
+        }
+    }
 }

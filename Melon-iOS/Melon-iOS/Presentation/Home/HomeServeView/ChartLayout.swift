@@ -16,9 +16,9 @@ enum ChartLayout {
         let column = NSCollectionLayoutGroup.vertical(layoutSize: columnSize, subitem: item, count: 4)
 
         let section = NSCollectionLayoutSection(group: column)
-        section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .groupPaging
         section.interGroupSpacing = 7
-        section.contentInsets = .init(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         return UICollectionViewCompositionalLayout(section: section)
     }

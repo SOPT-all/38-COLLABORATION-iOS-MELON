@@ -54,8 +54,8 @@ final class ChartSectionView: BaseView {
         listenButton.snp.makeConstraints {
             $0.top.equalTo(chartView.snp.bottom).offset(14)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(48
-            )
+            $0.height.equalTo(48)
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -67,30 +67,8 @@ final class ChartSectionView: BaseView {
         chartView.do {
             $0.backgroundColor = .appBlack
             $0.showsHorizontalScrollIndicator = false
-        }
-        
-        listenButton.do {
-            $0.layer.cornerRadius = 4
-            
-            var configure = UIButton.Configuration.filled()
-            configure.baseBackgroundColor = .gray600
-            configure.baseForegroundColor = .appWhite
-            
-            
-            var titleAttibute = AttributeContainer()
-            titleAttibute.font = .body_r_15
-            
-            $0.configuration = configure
-            
-            $0.configurationUpdateHandler = { button in
-                var updated = button.configuration
-                switch button.state {
-                case .highlighted:
-                    updated?.baseBackgroundColor = .gray900
-                default:
-                        updated?.baseBackgroundColor = .gray600
-                }
-            }
+            $0.dataSource = self
+            $0.canCancelContentTouches = true
         }
     }
     

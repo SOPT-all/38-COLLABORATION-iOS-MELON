@@ -1,5 +1,5 @@
 //
-//  RecommendationView.swift
+//  RecommendationSectionView.swift
 //  Melon-iOS
 //
 //  Created by h2e on 5/11/26.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class RecommendationView: BaseView {
+final class RecommendationSectionView: BaseView {
     
     private let mainStackView = UIStackView()
     private let rightStackView = UIStackView()
