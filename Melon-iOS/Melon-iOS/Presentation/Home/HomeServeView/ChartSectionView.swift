@@ -12,9 +12,11 @@ import Then
 
 final class ChartSectionView: BaseView {
     
+    private let chartHeaderView = HomeDetailSectionHeaderView(subtitle: "오늘 16:00 기준", title: "실시간 트렌드 멜론차트", icon: .iconBrand3Purple)
+    
     private let filterView = FilterBarView(items: ["1": "TOP100", "2": "HOT100", "3": "2006년 해외", "4": "달달한"], selectedID: "1")
 
-    private let listenButton = UIButton()
+    private let listenButton = ListenButton(title: "TOP100 전체 듣기")
     private let chartView = UICollectionView(frame: .zero, collectionViewLayout: ChartLayout.make())
     
     override init(frame: CGRect) {
@@ -28,17 +30,25 @@ final class ChartSectionView: BaseView {
     }
     
     override func setUI() {
-        addSubviews(filterView, chartView, listenButton)
+        addSubviews(chartHeaderView, filterView, chartView, listenButton)
     }
     
     override func setLayout() {
+        chartHeaderView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+        
         filterView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.equalTo(chartHeaderView.snp.bottom).offset(11)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(52)
         }
         
         chartView.snp.makeConstraints {
             $0.top.equalTo(filterView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(240)
         }
         
         listenButton.snp.makeConstraints {
@@ -50,20 +60,37 @@ final class ChartSectionView: BaseView {
     }
     
     override func setStyle() {
-        backgroundColor = .appBlack
+        chartHeaderView.do {
+            $0.titleLabel.font = .body_sb_18
+        }
         
         chartView.do {
             $0.backgroundColor = .appBlack
-            $0.dataSource = self
             $0.showsHorizontalScrollIndicator = false
         }
         
         listenButton.do {
-            $0.setTitle("TOP 100 전체 듣기", for: .normal)
-            $0.setTitleColor(.appWhite, for: .normal)
-            $0.backgroundColor = .gray600
             $0.layer.cornerRadius = 4
-            $0.titleLabel?.font = .body_r_15
+            
+            var configure = UIButton.Configuration.filled()
+            configure.baseBackgroundColor = .gray600
+            configure.baseForegroundColor = .appWhite
+            
+            
+            var titleAttibute = AttributeContainer()
+            titleAttibute.font = .body_r_15
+            
+            $0.configuration = configure
+            
+            $0.configurationUpdateHandler = { button in
+                var updated = button.configuration
+                switch button.state {
+                case .highlighted:
+                    updated?.baseBackgroundColor = .gray900
+                default:
+                        updated?.baseBackgroundColor = .gray600
+                }
+            }
         }
     }
     
@@ -123,19 +150,3 @@ extension ChartSectionView: UICollectionViewDataSource {
         return cell
     }
 }
-
-#if DEBUG
-import SwiftUI
-
-#Preview {
-    let vc = UIViewController()
-    vc.view.backgroundColor = .appBlack
-    let section = ChartSectionView()
-    vc.view.addSubview(section)
-    section.snp.makeConstraints {
-        $0.top.equalTo(vc.view.safeAreaLayoutGuide).offset(20)
-        $0.horizontalEdges.equalToSuperview()
-    }
-    return vc
-}
-#endif
