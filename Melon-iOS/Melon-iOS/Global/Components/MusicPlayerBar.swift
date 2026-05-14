@@ -33,8 +33,8 @@ final class MusicPlayerBar: UIButton {
     // MARK: - Initializer
     
     init(title: String, artist: String) {
-        self.songTitle = title
-        self.songArtist = artist
+        songTitle = title
+        songArtist = artist
         super.init(frame: .zero)
         
         setUI()
