@@ -8,8 +8,13 @@
 import UIKit
 
 final class PlayViewController: BaseViewController {
-    let rootView = PlayView()
+    
+    // MARK: - Properties
+    
+    private let rootView = PlayView()
 
+    // MARK: - Life Cycle
+    
     override func loadView() {
         view = rootView
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -21,12 +26,23 @@ final class PlayViewController: BaseViewController {
         rootView.hideSwipeGuide()
     }
     
+    // MARK: - Setup Methods
+    
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
+        
+        rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
     }
+    
+    // MARK: - Actions
     
     @objc
     private func heartButtonDidTap() {
         rootView.toggleHeart()
+    }
+    
+    @objc
+    private func playButtonDidTap() {
+        rootView.togglePlay()
     }
 }

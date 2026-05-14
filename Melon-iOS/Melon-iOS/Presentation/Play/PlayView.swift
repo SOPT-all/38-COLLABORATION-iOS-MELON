@@ -16,8 +16,9 @@ final class PlayView: BaseView {
     // MARK: - Properties
     
     private var isHeartSelected = false
-    private var isSwipeGuideHidden = false
     
+    private var isSwipeGuideHidden = false
+        
     // MARK: - UI Components
     
     private let optionButton = UIButton()
@@ -64,7 +65,7 @@ final class PlayView: BaseView {
     
     private let previousButton = UIButton()
     
-    private let playButton = UIButton()
+    lazy var playButton = UIButton()
     
     private let nextButton = UIButton()
     
@@ -442,5 +443,10 @@ final class PlayView: BaseView {
         heartAnimationView.stop()
         heartAnimationView.currentProgress = 0
         heartAnimationView.isHidden = true
+    }
+    
+    func togglePlay() {
+        playButton.isSelected.toggle()
+        playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
     }
 }
