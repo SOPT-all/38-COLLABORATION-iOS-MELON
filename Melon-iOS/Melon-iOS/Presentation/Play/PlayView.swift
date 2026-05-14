@@ -224,7 +224,7 @@ final class PlayView: BaseView {
         }
         
         previousButton.do {
-            $0.setImage(UIImage(resource: .icPlaynext), for: .normal)
+            $0.setImage(UIImage(resource: .icPlayprevious), for: .normal)
         }
         
         playButton.do {
