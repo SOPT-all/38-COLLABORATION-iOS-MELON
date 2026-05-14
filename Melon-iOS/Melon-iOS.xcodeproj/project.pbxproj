@@ -19,7 +19,6 @@
 		4FA08A652FAC8106004763AF /* Exceptions for "Melon-iOS" folder in "Melon-iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Global/Enums/.gitkeep,
 				Info.plist,
 			);
 			target = 4FA08A522FAC8104004763AF /* Melon-iOS */;
