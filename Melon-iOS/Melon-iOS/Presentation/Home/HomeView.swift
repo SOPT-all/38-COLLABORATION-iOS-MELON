@@ -5,9 +5,10 @@
 //  Created by h2e on 5/12/26.
 //
 
+import UIKit
+
 import SnapKit
 import Then
-import UIKit
 
 final class HomeView: BaseView {
     private let scrollView = UIScrollView()
