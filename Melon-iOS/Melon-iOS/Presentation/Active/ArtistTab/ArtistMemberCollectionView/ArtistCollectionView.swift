@@ -11,6 +11,7 @@ import SnapKit
 import Then
 
 final class ArtistCollectionView: BaseView {
+    
     //MARK: - Properties
     
     private let imageList = ArtistModel.dummy()
@@ -31,7 +32,9 @@ final class ArtistCollectionView: BaseView {
     private func register() {
         collectionView.register(ArtistCell.self,forCellWithReuseIdentifier: ArtistCell.identifier)
     }
+    
     //MARK: - Initializer
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         register()
@@ -40,7 +43,9 @@ final class ArtistCollectionView: BaseView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - Setup Methods
+    
     override func setStyle() {
         collectionView.do {
             $0.backgroundColor = .clear
@@ -56,7 +61,7 @@ final class ArtistCollectionView: BaseView {
     override func setLayout() {
         collectionView.snp.makeConstraints {
             $0.top.bottom.trailing.equalToSuperview()
-            $0.leading.equalToSuperview().inset(20)
+            $0.leading.equalToSuperview()
             $0.height.equalTo(127)
         }
     }

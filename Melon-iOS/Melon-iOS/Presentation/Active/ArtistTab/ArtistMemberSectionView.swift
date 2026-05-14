@@ -11,9 +11,11 @@ import SnapKit
 import Then
 
 final class ArtistMemberSectionView: BaseView {
+    
     //MARK: - Properties
     
     private let artistHeader = ActiveViewSectionHeader(title: "아티스트")
+    
     private let artistBody = ArtistCollectionView()
     
     //MARK: - Setup Methods

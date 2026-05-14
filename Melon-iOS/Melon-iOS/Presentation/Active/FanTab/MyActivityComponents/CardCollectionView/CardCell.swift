@@ -11,12 +11,17 @@ import SnapKit
 import Then
 
 class CardCell: UICollectionViewCell {
+    
     //MARK: - Properties
     
     static let identifier = "CardCell"
+    
     private let cardImage = UIImageView()
+    
     private let cardLabel = UILabel()
+    
     private let cardSong = UILabel()
+    
     //MARK: - Initializer
     
     override init(frame: CGRect) {
@@ -30,6 +35,7 @@ class CardCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - Setup Methods
     
     private func setStyle() {

@@ -11,6 +11,7 @@ import SnapKit
 import Then
 
 class ArtistCell: UICollectionViewCell {
+    
     //MARK: - Properties
     
     static let identifier = "ArtistCell"
@@ -20,6 +21,7 @@ class ArtistCell: UICollectionViewCell {
     private let artistLabelKr = UILabel()
     
     private let artistLabelEn = UILabel()
+    
     //MARK: - Initializer
     
     override init(frame: CGRect) {
@@ -32,6 +34,7 @@ class ArtistCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - Setup Methods
     
     private func setStyle() {

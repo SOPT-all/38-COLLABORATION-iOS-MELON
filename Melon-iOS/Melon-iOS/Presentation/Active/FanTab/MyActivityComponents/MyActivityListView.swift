@@ -10,12 +10,17 @@ import SnapKit
 import Then
 
 final class MyActivityListView: BaseView {
+    
     // MARK: - Properties
     
     private let iconView = UIView()
+    
     private let iconImageView = UIImageView()
+    
     private let titleLabel = UILabel()
+    
     private let subLabel = UILabel()
+    
     //MARK: - Initializer
     
     init(icon: UIImage,title: String,subtitle: String) {
@@ -29,6 +34,7 @@ final class MyActivityListView: BaseView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
     //MARK: - Setup Methods
     
     override func setStyle() {

@@ -22,11 +22,13 @@ final class CardCollectionView: BaseView {
     }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+    
     //MARK: - Private Methods
     
     private func register() {
         collectionView.register(CardCell.self,forCellWithReuseIdentifier: CardCell.identifier)
     }
+    
     //MARK: - Initializer
     
     override init(frame: CGRect) {
@@ -37,6 +39,7 @@ final class CardCollectionView: BaseView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - Setup Methods
     
     override func setStyle() {

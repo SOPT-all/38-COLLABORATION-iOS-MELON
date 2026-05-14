@@ -14,6 +14,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let a = MyActivitySectionView()
+        //  let a = ArtistMemberSectionView()
+        view.addSubview(a)
+        view.backgroundColor = .gray600
+        a.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(200)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            
+        }
+        
         // Do any additional setup after loading the view.
     }
     

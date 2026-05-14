@@ -17,7 +17,9 @@ final class MyActivitySectionView: BaseView {
     private let myActivityHeader = ActiveViewSectionHeader(title: "내 활동")
     
     private let myCardInfoView = UIView()
+    
     private let myCardInfoLabel = UILabel()
+    
     private let myCardChevron = UIImageView()
     
     private let myCardCollectionView = CardCollectionView()
@@ -25,7 +27,7 @@ final class MyActivitySectionView: BaseView {
     private let likeList = MyActivityListView(icon: .icBigheart.withTintColor(.gray200),title: "좋아한 곡", subtitle: "17곡")
     private let commentList = MyActivityListView(icon: .icChat.withTintColor(.gray200),title: "내가 작성한 댓글", subtitle: "23개")
     
-    //MARK: - Private Methods
+   //MARK: - Private Methods
     
     private func setInfoLabel() {
         let name = "김렛솝"
@@ -36,14 +38,9 @@ final class MyActivitySectionView: BaseView {
         myCardInfoLabel.attributedText = coloredText
     }
     
-    private func setMyCardInfo(){
-        setInfoLabel()
-    }
-    
     //MARK: - Setup Methods
     
     override func setStyle() {
-        setMyCardInfo()
         
         myCardInfoView.do{
             $0.backgroundColor = .gray800
@@ -59,6 +56,8 @@ final class MyActivitySectionView: BaseView {
         myCardChevron.do {
             $0.image = .icChevronRightS.withTintColor(.gray400)
         }
+        
+        setInfoLabel()
     }
     
     override func setUI() {
@@ -95,7 +94,8 @@ final class MyActivitySectionView: BaseView {
         }
         
         myCardCollectionView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
             $0.top.equalTo(myCardInfoView.snp.bottom).offset(19)
             $0.width.equalTo(470)
             $0.height.equalTo(150)
@@ -110,7 +110,7 @@ final class MyActivitySectionView: BaseView {
         
         commentList.snp.makeConstraints{
             $0.top.equalTo(likeList.snp.bottom).offset(10)
-            $0.leading.equalTo(myCardInfoView.snp.leading)
+            $0.leading.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview()
         }
     }
