@@ -16,6 +16,7 @@ final class PlayView: BaseView {
     // MARK: - Properties
     
     private var isHeartSelected = false
+    private var isSwipeGuideHidden = false
     
     // MARK: - UI Components
     
@@ -397,6 +398,21 @@ final class PlayView: BaseView {
     }
     
     // MARK: - Functions
+    
+    func hideSwipeGuide() {
+        guard !isSwipeGuideHidden else { return }
+        isSwipeGuideHidden = true
+        
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 5,
+            options: .curveEaseInOut
+        ) {
+            self.swipeGuideContainerView.alpha = 0
+        } completion: { [weak self] _ in
+            self?.swipeGuideContainerView.isHidden = true
+        }
+    }
     
     func toggleHeart() {
         isHeartSelected.toggle()

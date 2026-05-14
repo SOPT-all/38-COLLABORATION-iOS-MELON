@@ -15,6 +15,12 @@ final class PlayViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        rootView.hideSwipeGuide()
+    }
+    
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
     }
