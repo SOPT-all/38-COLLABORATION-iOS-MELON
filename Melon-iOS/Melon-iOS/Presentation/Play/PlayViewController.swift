@@ -30,7 +30,6 @@ final class PlayViewController: BaseViewController {
     
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
-        
         rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
     }
     
