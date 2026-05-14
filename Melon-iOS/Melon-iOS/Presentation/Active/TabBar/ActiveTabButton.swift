@@ -44,6 +44,7 @@ final class ActiveTabButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        layer.removeBorder(position: .bottom)
         layer.addBorder(position: .bottom, color: isSelected ? .green02 : .gray700, width: 2)
     }
 
