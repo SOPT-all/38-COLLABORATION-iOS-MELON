@@ -332,7 +332,7 @@ final class PlayView: BaseView {
         
         heartAnimationView.snp.makeConstraints {
             $0.centerX.equalTo(heartButton.snp.leading).offset(17)
-            $0.centerY.equalTo(heartButton).offset(-18)
+            $0.centerY.equalTo(heartButton).offset(-38)
             $0.size.equalTo(96)
         }
         
