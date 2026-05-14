@@ -12,10 +12,12 @@ import UIKit
 final class HomeView: BaseView {
     private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
+    
     private let homeHeader = HomeHeaderView()
     private let recommendationView = RecommendationSectionView()
     private let chartView = ChartSectionView()
     private let eventView = EventSectionView()
+    private let musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
 
     override func setUI() {
         contentStackView.addArrangedSubviews(
@@ -25,8 +27,7 @@ final class HomeView: BaseView {
             eventView
         )
         scrollView.addSubview(contentStackView)
-        addSubview(scrollView)
-
+        addSubviews(scrollView, musicPlayerBar)
     }
 
     override func setStyle() {
@@ -35,6 +36,10 @@ final class HomeView: BaseView {
             $0.axis = .vertical
             $0.alignment = .fill
             $0.spacing = 36
+        }
+        
+        scrollView.do {
+            $0.contentInset.bottom = 70
         }
     }
 
@@ -50,5 +55,11 @@ final class HomeView: BaseView {
         }
 
         contentStackView.setCustomSpacing(0, after: homeHeader)
+        
+        musicPlayerBar.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(70)
+        }
     }
 }
