@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F18C8182FB4E21200250CAB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4F18C8172FB4E21200250CAB /* Lottie */; };
 		4F5C7E052FB08907000DD8EA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5C7E042FB08907000DD8EA /* Then */; };
 		4F5C7E082FB0891A000DD8EA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5C7E072FB0891A000DD8EA /* SnapKit */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 			files = (
 				4F5C7E052FB08907000DD8EA /* Then in Frameworks */,
 				4F5C7E082FB0891A000DD8EA /* SnapKit in Frameworks */,
+				4F18C8182FB4E21200250CAB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				4F5C7E042FB08907000DD8EA /* Then */,
 				4F5C7E072FB0891A000DD8EA /* SnapKit */,
+				4F18C8172FB4E21200250CAB /* Lottie */,
 			);
 			productName = "Melon-iOS";
 			productReference = 4FA08A532FAC8104004763AF /* Melon-iOS.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				4F5C7E032FB08907000DD8EA /* XCRemoteSwiftPackageReference "Then" */,
 				4F5C7E062FB0891A000DD8EA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4F18C8162FB4E21100250CAB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4FA08A542FAC8104004763AF /* Products */;
@@ -358,6 +362,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4F18C8162FB4E21100250CAB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
+			};
+		};
 		4F5C7E032FB08907000DD8EA /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then.git";
@@ -377,6 +389,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4F18C8172FB4E21200250CAB /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F18C8162FB4E21100250CAB /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		4F5C7E042FB08907000DD8EA /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4F5C7E032FB08907000DD8EA /* XCRemoteSwiftPackageReference "Then" */;
