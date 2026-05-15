@@ -10,9 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-final class ActiveTabView: UIView {
+final class ActiveTabView: BaseView {
     // MARK: - Properties
 
+    private let titles: [String]
     private var buttons: [ActiveTabButton] = []
 
     // MARK: - UI Properties
@@ -22,12 +23,9 @@ final class ActiveTabView: UIView {
     // MARK: - Initializer
 
     init(titles: [String]) {
+        self.titles = titles
         super.init(frame: .zero)
 
-        makeButtons(titles: titles)
-        setUI()
-        setStyle()
-        setLayout()
         select(index: 0)
     }
 
@@ -37,19 +35,20 @@ final class ActiveTabView: UIView {
 
     // MARK: - UI Settings
 
-    private func setUI() {
+    override func setUI() {
+        makeButtons(titles: titles)
         buttons.forEach { buttonStackView.addArrangedSubview($0) }
         addSubview(buttonStackView)
     }
 
-    private func setStyle() {
+    override func setStyle() {
         buttonStackView.do {
             $0.axis = .horizontal
             $0.distribution = .fillEqually
         }
     }
 
-    private func setLayout() {
+    override func setLayout() {
         buttonStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
