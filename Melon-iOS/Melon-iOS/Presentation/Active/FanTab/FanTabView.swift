@@ -37,7 +37,7 @@ final class FanTabScrollView: BaseView {
         backgroundColor = .appBlack
         addSubview(scrollView)
         scrollView.addSubview(contentStackView)
-        contentStackView.addArrangedSubviews(fanTalkSection,myActivitySection)
+        contentStackView.addArrangedSubviews(fanTalkSection, myActivitySection)
     }
     
     override func setLayout() {
