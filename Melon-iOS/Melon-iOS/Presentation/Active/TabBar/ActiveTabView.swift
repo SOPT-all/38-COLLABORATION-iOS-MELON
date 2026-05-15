@@ -22,11 +22,11 @@ final class ActiveTabView: BaseView {
 
     // MARK: - Initializer
 
-    init(titles: [String]) {
+    init(titles: [String], seletedIndex: Int = 0) {
         self.titles = titles
         super.init(frame: .zero)
 
-        select(index: 0)
+        select(index: seletedIndex)
     }
 
     required init?(coder: NSCoder) {
