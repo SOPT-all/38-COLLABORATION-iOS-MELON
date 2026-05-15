@@ -16,13 +16,14 @@ final class ActiveTabButton: UIButton {
     override var isSelected: Bool {
         didSet {
             tabLabel.textColor = isSelected ? .green02 : .gray300
-            setNeedsLayout()
+            bottomBorder.backgroundColor = isSelected ? .green02: .gray700
         }
     }
 
     // MARK: - UI Properties
 
     private let tabLabel = UILabel()
+    private let bottomBorder = UIView()
 
     // MARK: - Initializer
 
@@ -39,25 +40,15 @@ final class ActiveTabButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Lift Cycle
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        layer.removeBorder(position: .bottom)
-        layer.addBorder(position: .bottom, color: isSelected ? .green02 : .gray700, width: 2)
-    }
-
     // MARK: - UI Settings
 
     private func setUI() {
-        addSubviews(tabLabel)
+        addSubviews(tabLabel, bottomBorder)
     }
 
     private func setStyle() {
         tabLabel.do {
             $0.font = .body_sb_15
-            $0.textColor = .gray300
         }
     }
 
@@ -66,6 +57,12 @@ final class ActiveTabButton: UIButton {
             $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(14)
+        }
+        
+        bottomBorder.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(2)
         }
     }
 }
