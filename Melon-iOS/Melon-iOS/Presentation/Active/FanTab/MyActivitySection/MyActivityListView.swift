@@ -35,7 +35,7 @@ final class MyActivityListView: BaseView {
         fatalError()
     }
     
-    //MARK: - Setup Methods
+    //MARK: - UI Setting
     
     override func setStyle() {
         iconView.do {
