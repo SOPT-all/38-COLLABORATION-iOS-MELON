@@ -61,7 +61,7 @@ final class ArtistCollectionView: BaseView {
     override func setLayout() {
         collectionView.snp.makeConstraints {
             $0.top.bottom.trailing.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
             $0.height.equalTo(127)
         }
     }
