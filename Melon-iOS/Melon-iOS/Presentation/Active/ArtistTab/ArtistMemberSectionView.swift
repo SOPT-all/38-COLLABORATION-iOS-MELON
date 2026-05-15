@@ -18,7 +18,7 @@ final class ArtistMemberSectionView: BaseView {
     
     private let artistBody = ArtistCollectionView()
     
-    //MARK: - Setup Methods
+    //MARK: - UI Setting
     
     override func setUI() {
         addSubviews(artistHeader, artistBody)

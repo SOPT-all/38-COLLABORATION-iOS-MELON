@@ -12,7 +12,7 @@ import Then
 
 final class MyActivitySectionView: BaseView {
     
-    //MARK: - UI Components
+    //MARK: - Properties
     
     private let myActivityHeader = ActiveViewSectionHeader(title: "내 활동")
     
@@ -38,7 +38,7 @@ final class MyActivitySectionView: BaseView {
         myCardInfoLabel.attributedText = coloredText
     }
     
-    //MARK: - Setup Methods
+    //MARK: - UI Setting
     
     override func setStyle() {
         

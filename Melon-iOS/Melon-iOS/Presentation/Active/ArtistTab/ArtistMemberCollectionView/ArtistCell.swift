@@ -35,7 +35,7 @@ class ArtistCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup Methods
+    //MARK: - UI Setting
     
     private func setStyle() {
         artistImage.do {
