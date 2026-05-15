@@ -20,5 +20,6 @@ final class HomeViewController: BaseViewController {
     
     override func loadView() {
         view = rootView
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
