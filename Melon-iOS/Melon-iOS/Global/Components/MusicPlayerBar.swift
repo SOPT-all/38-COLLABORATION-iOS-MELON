@@ -101,7 +101,7 @@ final class MusicPlayerBar: UIButton {
         }
         
         previousButton.do {
-            $0.setImage(UIImage(resource: .icPlayprevious), for: .normal)
+            $0.setImage(UIImage(resource: .icPlayPrevious), for: .normal)
         }
         
         playButton.do {
@@ -109,7 +109,7 @@ final class MusicPlayerBar: UIButton {
         }
         
         nextButton.do {
-            $0.setImage(UIImage(resource: .icPlaynext), for: .normal)
+            $0.setImage(UIImage(resource: .icPlayNext), for: .normal)
         }
         
         songListButton.do {
