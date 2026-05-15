@@ -12,11 +12,15 @@ import Then
 
 final class FanTabView: BaseView {
     
+    //MARK: - Properties
+    
     private let contentStackView = UIStackView()
     
     private let fanTalkSection = FanTalkSectionView()
     
     private let myActivitySection = MyActivitySectionView()
+    
+    //MARK: - UI Setting
     
     override func setStyle() {
         contentStackView.do {
