@@ -10,9 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
-final class FanTabScrollView: BaseView {
+final class FanTabView: BaseView {
     
-    private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
     
     private let fanTalkSection = FanTalkSectionView()
@@ -20,11 +19,6 @@ final class FanTabScrollView: BaseView {
     private let myActivitySection = MyActivitySectionView()
     
     override func setStyle() {
-        scrollView.do {
-            $0.showsVerticalScrollIndicator = false
-            $0.backgroundColor = .appBlack
-        }
-        
         contentStackView.do {
             $0.axis = .vertical
             $0.alignment = .fill
@@ -35,19 +29,13 @@ final class FanTabScrollView: BaseView {
     
     override func setUI() {
         backgroundColor = .appBlack
-        addSubview(scrollView)
-        scrollView.addSubview(contentStackView)
+        addSubview(contentStackView)
         contentStackView.addArrangedSubviews(fanTalkSection, myActivitySection)
     }
     
     override func setLayout() {
-        scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
         contentStackView.snp.makeConstraints {
-            $0.edges.equalTo(scrollView.contentLayoutGuide)
-            $0.width.equalTo(scrollView.frameLayoutGuide)
+            $0.edges.equalToSuperview()
         }
     }
 }

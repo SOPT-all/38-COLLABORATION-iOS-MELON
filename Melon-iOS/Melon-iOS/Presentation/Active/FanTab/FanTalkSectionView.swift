@@ -88,9 +88,9 @@ final class FanTalkSectionView : BaseView {
             $0.textColor = .gray100
         }
         
-        commentStackView.do{
-                $0.axis = .vertical
-                $0.spacing = 6
+        commentStackView.do {
+            $0.axis = .vertical
+            $0.spacing = 6
         }
         
         commentLabel.do {
