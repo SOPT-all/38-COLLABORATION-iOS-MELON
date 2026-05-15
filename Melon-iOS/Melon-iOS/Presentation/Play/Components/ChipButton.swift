@@ -23,7 +23,6 @@ final class ChipButton: UIButton {
         var config = UIButton.Configuration.bordered()
         config.background.strokeWidth = 0.25
         config.background.strokeColor = .gray300
-        config.baseForegroundColor = .gray300
         config.baseBackgroundColor = .clear
         config.background.cornerRadius = 50
         config.contentInsets = NSDirectionalEdgeInsets(top: 5.5, leading: 9, bottom: 5.5, trailing: 9)
@@ -37,8 +36,7 @@ final class ChipButton: UIButton {
         
         if let image {
             config.image = image
-                .resize(to: CGSize(width: 16, height: 16))
-                .withRenderingMode(.alwaysTemplate)
+                .withRenderingMode(.alwaysOriginal)
             config.imagePadding = 3
         }
         

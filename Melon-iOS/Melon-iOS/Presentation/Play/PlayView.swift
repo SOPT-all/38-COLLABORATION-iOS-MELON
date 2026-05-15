@@ -9,9 +9,16 @@ import UIKit
 
 import SnapKit
 import Then
+import Lottie
 
 final class PlayView: BaseView {
     
+    // MARK: - Properties
+    
+    private var isHeartSelected = false
+    
+    private var isSwipeGuideHidden = false
+        
     // MARK: - UI Components
     
     private let optionButton = UIButton()
@@ -36,7 +43,9 @@ final class PlayView: BaseView {
     
     private let swipeGuideContainerView = UIView()
     
-    private let heartButton = ChipButton(text: "12,686", image: .icMiniheart)
+    lazy var heartButton = ChipButton(text: "12,686", image: .icMiniheart)
+    
+    private let heartAnimationView = LottieAnimationView(name: "heart_animation")
     
     private let addSongButton = ChipButton(text: "담기", image: .icPlus)
     
@@ -56,7 +65,7 @@ final class PlayView: BaseView {
     
     private let previousButton = UIButton()
     
-    private let playButton = UIButton()
+    lazy var playButton = UIButton()
     
     private let nextButton = UIButton()
     
@@ -93,6 +102,7 @@ final class PlayView: BaseView {
             nowTimeLabel,
             songTimeLabel,
             shuffleButton,
+            heartAnimationView,
             playButtonStackView,
             repeatButton,
             equalizerButton,
@@ -172,6 +182,14 @@ final class PlayView: BaseView {
             $0.text = "스와이프 다음 곡으로"
             $0.font = .caption_r_11
             $0.textColor = .appWhite
+        }
+        
+        heartAnimationView.do {
+            $0.contentMode = .scaleAspectFit
+            $0.loopMode = .playOnce
+            $0.currentProgress = 0
+            $0.isHidden = true
+            $0.isUserInteractionEnabled = false
         }
         
         songCustomButtonStackView.do {
@@ -312,6 +330,12 @@ final class PlayView: BaseView {
             $0.horizontalEdges.equalToSuperview()
         }
         
+        heartAnimationView.snp.makeConstraints {
+            $0.centerX.equalTo(heartButton.snp.leading).offset(17)
+            $0.centerY.equalTo(heartButton).offset(-38)
+            $0.size.equalTo(96)
+        }
+        
         songCustomButtonStackView.snp.makeConstraints {
             $0.top.equalTo(albumImageView.snp.bottom).offset(22)
             $0.leading.equalToSuperview().inset(20)
@@ -372,5 +396,57 @@ final class PlayView: BaseView {
             $0.bottom.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(9)
         }
+    }
+    
+    // MARK: - Functions
+    
+    func hideSwipeGuide() {
+        guard !isSwipeGuideHidden else { return }
+        isSwipeGuideHidden = true
+        
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 5,
+            options: .curveEaseInOut
+        ) {
+            self.swipeGuideContainerView.alpha = 0
+        } completion: { [weak self] _ in
+            self?.swipeGuideContainerView.isHidden = true
+        }
+    }
+    
+    func toggleHeart() {
+        isHeartSelected.toggle()
+        
+        heartButton.configure(
+            text: "12,686",
+            image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
+        )
+        
+        if isHeartSelected {
+            playHeartAnimation()
+        } else {
+            stopHeartAnimation()
+        }
+    }
+    
+    private func playHeartAnimation() {
+        heartAnimationView.isHidden = false
+        heartAnimationView.stop()
+        heartAnimationView.currentProgress = 0
+        heartAnimationView.play { [weak self] _ in
+            self?.heartAnimationView.isHidden = true
+        }
+    }
+    
+    private func stopHeartAnimation() {
+        heartAnimationView.stop()
+        heartAnimationView.currentProgress = 0
+        heartAnimationView.isHidden = true
+    }
+    
+    func togglePlay() {
+        playButton.isSelected.toggle()
+        playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
     }
 }
