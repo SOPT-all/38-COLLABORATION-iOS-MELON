@@ -29,6 +29,7 @@ final class PlaylistContainerView: BaseView {
     override func setStyle() {
         backgroundColor = .gray600
         layer.cornerRadius = 20
+        clipsToBounds = true
         
         listViewTitleLabel.do {
             $0.text = "재생 순서"
