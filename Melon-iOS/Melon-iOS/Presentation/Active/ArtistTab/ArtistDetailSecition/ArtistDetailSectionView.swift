@@ -45,13 +45,14 @@ final class ArtistDetailSectionView: BaseView {
     
     override func setUI() {
         addSubviews(detailHeader, detailBodyStack)
-        detailBodyStack.addArrangedSubviews(stack1Credit,
-                                            stack2Debut,
-                                            stack3DebutSong,
-                                            stack4Type,
-                                            stack5Agency,
-                                            stack6Awards,
-                                            stack7Intro)
+        detailBodyStack.addArrangedSubviews(
+            stack1Credit,
+            stack2Debut,
+            stack3DebutSong,
+            stack4Type,
+            stack5Agency,
+            stack6Awards,
+            stack7Intro)
     }
     
     override func setLayout() {
