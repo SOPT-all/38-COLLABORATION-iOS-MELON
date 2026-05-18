@@ -33,7 +33,7 @@ final class ActiveView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setAction()
+        setTabAction()
     }
     
     required init?(coder: NSCoder) {
@@ -93,7 +93,7 @@ final class ActiveView: BaseView {
     
     // MARK: - Functions
     
-    private func setAction() {
+    private func setTabAction() {
         tabView.activeTabSelected = { [weak self] index in
             self?.showTabView(at: index)
         }
