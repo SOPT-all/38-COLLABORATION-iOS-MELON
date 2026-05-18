@@ -50,6 +50,7 @@ final class SongListView: BaseView {
 
     override func setStyle() {
         collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceVertical = false
     }
 
     override func setUI() {

@@ -47,6 +47,7 @@ final class AlbumListView: BaseView {
     
     override func setStyle() {
         collcetionView.backgroundColor = .clear
+        collcetionView.alwaysBounceVertical = false
     }
     
     override func setUI() {
