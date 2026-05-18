@@ -120,7 +120,7 @@ final class PlayView: BaseView {
         
         musicInformationStackView.do {
             $0.axis = .vertical
-            $0.alignment = .fill
+            $0.alignment = .leading
             $0.spacing = 0
         }
         
@@ -298,7 +298,7 @@ final class PlayView: BaseView {
         }
         
         artistChannelButton.snp.makeConstraints {
-            $0.top.equalTo(musicInformationStackView.snp.bottom).offset(16)
+            $0.top.lessThanOrEqualTo(musicInformationStackView.snp.bottom).offset(21)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(27)
         }
@@ -332,13 +332,13 @@ final class PlayView: BaseView {
         }
         
         heartAnimationView.snp.makeConstraints {
-            $0.centerX.equalTo(heartButton.snp.leading).offset(17)
+            $0.centerX.equalTo(heartButton.snp.leading).offset(28)
             $0.centerY.equalTo(heartButton).offset(-38)
             $0.size.equalTo(96)
         }
         
         songCustomButtonStackView.snp.makeConstraints {
-            $0.top.equalTo(albumImageView.snp.bottom).offset(22)
+            $0.top.equalTo(albumImageView.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
         }
         
