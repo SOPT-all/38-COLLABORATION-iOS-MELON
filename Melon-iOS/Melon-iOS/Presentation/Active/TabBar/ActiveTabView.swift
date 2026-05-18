@@ -15,6 +15,8 @@ final class ActiveTabView: BaseView {
 
     private let titles: [String]
     private var buttons: [ActiveTabButton] = []
+    
+    var activeTabSelected: ((Int) -> Void)?
 
     // MARK: - UI Properties
 
@@ -70,6 +72,7 @@ final class ActiveTabView: BaseView {
 
         buttons.forEach { $0.isSelected = false }
         buttons[index].isSelected = true
+        activeTabSelected?(index)
     }
 
     @objc
