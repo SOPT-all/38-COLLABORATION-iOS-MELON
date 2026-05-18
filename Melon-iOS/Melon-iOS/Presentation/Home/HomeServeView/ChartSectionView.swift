@@ -95,7 +95,7 @@ final class ChartSectionView: BaseView {
         }
     }
 
-    func update(items: [ChartSongDTO]) {
+    func updateChart(items: [ChartSongDTO]) {
         self.chartItems = items
         chartView.reloadData()
     }

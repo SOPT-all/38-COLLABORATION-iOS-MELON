@@ -16,7 +16,9 @@ final class HomeView: BaseView {
     
     private let homeHeader = HomeHeaderView()
     private let recommendationView = RecommendationSectionView()
-    private let chartView = ChartSectionView()
+    
+    let chartView = ChartSectionView()
+    
     private let eventView = EventSectionView()
     private let musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
     
@@ -67,9 +69,5 @@ final class HomeView: BaseView {
             $0.bottom.equalToSuperview()
             $0.height.equalTo(70)
         }
-    }
-    
-    func updateChart(items: [ChartSongDTO]) {
-        chartView.update(items: items)
     }
 }

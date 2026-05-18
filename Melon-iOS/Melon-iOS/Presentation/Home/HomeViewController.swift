@@ -28,7 +28,8 @@ final class HomeViewController: BaseViewController {
     }
     
     private func bindFilter() {
-        rootView.onChartFilterChanged = { [weak self] filter in self?.getChart(filter: filter)
+        rootView.onChartFilterChanged = { [weak self] filter in
+            self?.getChart(filter: filter)
         }
     }
     
@@ -38,7 +39,7 @@ final class HomeViewController: BaseViewController {
                 let response = try await service.getChart(filter: filter)
                 
                 await MainActor.run {
-                    self.rootView.updateChart(items: response.songs)
+                    self.rootView.chartView.updateChart(items: response.songs)
                 }
             } catch {
                 print("차트 조회 실패: \(error)")
