@@ -11,10 +11,6 @@ import SnapKit
 import Then
 
 final class ActiveView: BaseView {
-    // MARK: - Properties
-    
-    private var enabledTabview: UIView?
-
     // MARK: - UI Properties
 
     private let scrollView = UIScrollView()
@@ -25,6 +21,7 @@ final class ActiveView: BaseView {
     private let heroSection  = ActiveHeroSection()
     private let tabView = ActiveTabView(titles: ["곡•앨범", "팬 활동", "아티스트"], seletedIndex: 0)
     
+    private var enabledTabView: UIView?
     private let songAlbumTabView = SongAlbumTabView()
     private let fanTabView = FanTabView()
     private let artistTabView = ArtistTabView()
@@ -105,7 +102,7 @@ final class ActiveView: BaseView {
     private func showTabView(at index: Int) {
         let views: [UIView] = [songAlbumTabView, fanTabView, artistTabView]
         
-        enabledTabview?.removeFromSuperview()
+        enabledTabView?.removeFromSuperview()
         
         let newView = views[index]
         contentView.addSubview(newView)
@@ -114,6 +111,6 @@ final class ActiveView: BaseView {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview().inset(36)
         }
-        enabledTabview = newView
+        enabledTabView = newView
     }
 }
