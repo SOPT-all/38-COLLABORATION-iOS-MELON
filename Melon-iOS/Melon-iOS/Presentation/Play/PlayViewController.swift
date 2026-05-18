@@ -12,12 +12,19 @@ final class PlayViewController: BaseViewController {
     // MARK: - Properties
     
     private let rootView = PlayView()
+    private let service = DefaultSongDetailService()
 
     // MARK: - Life Cycle
     
     override func loadView() {
         view = rootView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
+        getSongDetail()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,5 +50,18 @@ final class PlayViewController: BaseViewController {
     @objc
     private func playButtonDidTap() {
         rootView.togglePlay()
+    }
+    
+    private func getSongDetail() {
+        Task {
+            do {
+                let song = try await service.getSongDetail(songId: 1)
+                let artistName = song.artists.map { $0.name }.joined(separator: ", ")
+                
+                rootView.configure(title: song.title, name: artistName, imgURL: song.album.imageUrl, likes: song.likeCount, isLiked: song.isLiked, playTime: song.playTime)
+            } catch {
+                print("곡 정보 조회 실패: \(error)")
+            }
+        }
     }
 }

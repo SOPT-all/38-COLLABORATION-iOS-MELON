@@ -15,9 +15,10 @@ final class PlayView: BaseView {
     
     // MARK: - Properties
     
+    private var heartCount: Int = 0
     private var isHeartSelected = false
-    
     private var isSwipeGuideHidden = false
+    private var items = SongModel(songId: 0, songTitle: "", artistName: "", likeCount: 0, isLiked: false, playTime: "", imageUrl: "")
         
     // MARK: - UI Components
     
@@ -43,7 +44,7 @@ final class PlayView: BaseView {
     
     private let swipeGuideContainerView = UIView()
     
-    lazy var heartButton = ChipButton(text: "12,686", image: .icMiniheart)
+    lazy var heartButton = ChipButton(text: "\(heartCount)", image: .icMiniheart)
     
     private let heartAnimationView = LottieAnimationView(name: "heart_animation")
     
@@ -119,18 +120,18 @@ final class PlayView: BaseView {
         
         musicInformationStackView.do {
             $0.axis = .vertical
-            $0.alignment = .leading
+            $0.alignment = .fill
             $0.spacing = 0
         }
         
         songTitleLabel.do {
-            $0.text = "LOV3 (Feet. Bryan Chase어쩌구저쩌구잘리는부분"
+            $0.text = items.songTitle
             $0.textColor = .appWhite
             $0.font = .title_b_20
         }
         
         artistNameLabel.do {
-            $0.text = "식케이 (Sik-K), 김하온 (HAON), NOWIMYOU어쩌구저쩌구잘리는부분"
+            $0.text = items.artistName
             $0.textColor = .appWhite
             $0.font = .body_r_13
         }
@@ -226,7 +227,7 @@ final class PlayView: BaseView {
         }
         
         nowTimeLabel.do {
-            $0.text = "1:07"
+            $0.text = items.playTime
             $0.textColor = .appWhite
             $0.font = .caption_r_12
         }
@@ -242,7 +243,7 @@ final class PlayView: BaseView {
         }
         
         previousButton.do {
-            $0.setImage(UIImage(resource: .icPlayPreviousBig), for: .normal)
+            $0.setImage(UIImage(resource: .icPlaypreviousBig), for: .normal)
         }
         
         playButton.do {
@@ -342,7 +343,7 @@ final class PlayView: BaseView {
         }
         
         mixupButton.snp.makeConstraints {
-            $0.top.equalTo(songCustomButtonStackView.snp.top)
+            $0.centerY.equalTo(songCustomButtonStackView.snp.centerY)
             $0.trailing.equalToSuperview().inset(20)
         }
         
@@ -419,7 +420,7 @@ final class PlayView: BaseView {
         isHeartSelected.toggle()
         
         heartButton.configure(
-            text: "12,686",
+            text: "\(heartCount)",
             image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
         )
         
@@ -448,5 +449,13 @@ final class PlayView: BaseView {
     func togglePlay() {
         playButton.isSelected.toggle()
         playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
+    }
+    
+    func configure(title: String, name: String, imgURL: String, likes: Int, isLiked: Bool, playTime: String) {
+        songTitleLabel.text = title
+        artistNameLabel.text = name
+        heartCount = likes
+        isHeartSelected = isLiked
+        nowTimeLabel.text = playTime
     }
 }
