@@ -33,7 +33,7 @@ enum EndPoint {
         case .songDetail:
             return HeaderType.auth.value
         case .artistDetail:
-            return HeaderType.basic.value
+            return HeaderType.auth.value
         }
     }
 }
