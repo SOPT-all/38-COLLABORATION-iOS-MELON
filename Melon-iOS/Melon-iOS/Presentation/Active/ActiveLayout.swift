@@ -55,7 +55,7 @@ enum ActiveLayout {
         section.interGroupSpacing = 13
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 22,
+            top: 0,
             leading: 20,
             bottom: 0,
             trailing: 20
