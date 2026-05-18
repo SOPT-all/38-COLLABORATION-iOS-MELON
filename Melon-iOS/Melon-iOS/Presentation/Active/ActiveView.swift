@@ -116,5 +116,4 @@ final class ActiveView: BaseView {
         }
         enabledTabview = newView
     }
-
 }
