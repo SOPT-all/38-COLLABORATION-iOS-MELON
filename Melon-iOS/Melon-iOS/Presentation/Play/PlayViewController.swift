@@ -13,6 +13,7 @@ final class PlayViewController: BaseViewController {
     
     private let rootView = PlayView()
     private let service = DefaultSongDetailService()
+    private var songId = 0
 
     // MARK: - Life Cycle
     
@@ -52,10 +53,12 @@ final class PlayViewController: BaseViewController {
         rootView.togglePlay()
     }
     
-    private func getSongDetail() {
+    // MARK: - Functions
+    
+    private func getSongDetail() {        
         Task {
             do {
-                let song = try await service.getSongDetail(songId: 1)
+                let song = try await service.getSongDetail(songId: makeRandomNumber())
                 let artistName = song.artists.map { $0.name }.joined(separator: ", ")
                 
                 rootView.configure(title: song.title, name: artistName, imgURL: song.album.imageUrl, likes: song.likeCount, isLiked: song.isLiked, playTime: song.playTime)
@@ -63,5 +66,10 @@ final class PlayViewController: BaseViewController {
                 print("곡 정보 조회 실패: \(error)")
             }
         }
+    }
+    
+    func makeRandomNumber() -> Int {
+        songId = Int.random(in: 1...84)
+        return songId
     }
 }
