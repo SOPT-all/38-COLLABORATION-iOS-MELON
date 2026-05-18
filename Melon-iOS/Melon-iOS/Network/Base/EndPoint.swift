@@ -7,11 +7,11 @@
 
 enum EndPoint {
     case songDetail(Int)
-    case artistDetail
+    case chartList(ChartFilter)
     
     var requestType: HTTPMethodType {
         switch self {
-        case .songDetail:
+        case .songDetail, .chartList:
             return .get
         case .artistDetail:
             return .get
@@ -22,9 +22,8 @@ enum EndPoint {
         switch self {
         case .songDetail(let songId):
             return "/v1/songs/\(songId)"
-        case .artistDetail(let aritistId):
-            return "/v1/artists/\(artistId)"
-        
+        case .chartList(let filter):
+            return "/v1/chart?chartFilter=\(filter.rawValue)"
         }
     }
     
@@ -32,8 +31,8 @@ enum EndPoint {
         switch self {
         case .songDetail:
             return HeaderType.auth.value
-        case .artistDetail:
-            return HeaderType.auth.value
+        case .chartList:
+            return HeaderType.basic.value
         }
     }
 }

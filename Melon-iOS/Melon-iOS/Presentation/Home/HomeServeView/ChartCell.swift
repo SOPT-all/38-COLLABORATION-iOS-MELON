@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import Kingfisher
 
 final class ChartCell: UICollectionViewCell {
     
@@ -112,10 +113,12 @@ final class ChartCell: UICollectionViewCell {
 }
 
 extension ChartCell {
-    func configure(with song: ChartSong) {
-        albumImageView.image = song.albumImageUrl
-        rankLabel.text = "\(song.songId)"
-        titleLabel.text = song.title
-        artistLabel.text = song.artistName
+    func configure(rank: Int, title: String, artistName: String, imgURL: String) {
+        rankLabel.text = "\(rank)"
+        titleLabel.text = title
+        artistLabel.text = artistName
+        
+        let url = URL(string: imgURL)
+        albumImageView.kf.setImage(with: url)
     }
 }
