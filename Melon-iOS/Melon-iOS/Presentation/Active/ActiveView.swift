@@ -43,9 +43,9 @@ final class ActiveView: BaseView {
     // MARK: - UI Settings
 
     override func setUI() {
-        contentView.addSubviews(heroSection, tabView)
+        contentView.addSubviews(heroSection, navigateBar, tabView)
         scrollView.addSubview(contentView)
-        addSubviews(scrollView, navigateBar, musicPlayerBar)
+        addSubviews(scrollView, musicPlayerBar)
         showTabView(at: 0)
     }
     
@@ -68,7 +68,7 @@ final class ActiveView: BaseView {
         }
         
         navigateBar.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(contentView.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(44)
         }
