@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Then
 import Lottie
+import Kingfisher
 
 final class PlayView: BaseView {
     
@@ -166,6 +167,8 @@ final class PlayView: BaseView {
         albumImageView.do {
             $0.image = .imgPlayThumnail2
             $0.contentMode = .scaleAspectFit
+            $0.layer.cornerRadius = 4
+            $0.clipsToBounds = true
         }
         
         playMessageImage.do {
@@ -457,5 +460,8 @@ final class PlayView: BaseView {
         heartCount = likes
         isHeartSelected = isLiked
         nowTimeLabel.text = playTime
+        
+        let url = URL(string: imgURL)
+        albumImageView.kf.setImage(with: url)
     }
 }
