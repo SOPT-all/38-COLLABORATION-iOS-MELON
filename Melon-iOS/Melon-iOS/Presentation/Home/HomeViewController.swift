@@ -38,9 +38,7 @@ final class HomeViewController: BaseViewController {
             do {
                 let response = try await service.getChart(filter: filter)
                 
-                await MainActor.run {
-                    self.rootView.chartView.updateChart(items: response.songs)
-                }
+                self.rootView.chartView.updateChart(items: response.songs)
             } catch {
                 print("차트 조회 실패: \(error)")
             }
