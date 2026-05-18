@@ -38,7 +38,7 @@ final class SongAlbumTabView: BaseView {
     
     override func setLayout() {
         songSectionHeader.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(36)
+            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
         }
         
@@ -63,6 +63,7 @@ final class SongAlbumTabView: BaseView {
             $0.top.equalTo(albumSectionHeader.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(220)
+            $0.bottom.equalToSuperview()
         }
     }
     
