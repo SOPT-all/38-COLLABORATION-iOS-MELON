@@ -10,6 +10,7 @@
 		4F18C8182FB4E21200250CAB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4F18C8172FB4E21200250CAB /* Lottie */; };
 		4F5C7E052FB08907000DD8EA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5C7E042FB08907000DD8EA /* Then */; };
 		4F5C7E082FB0891A000DD8EA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5C7E072FB0891A000DD8EA /* SnapKit */; };
+		4F8D416B2FBACCF9001B944D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4F8D416A2FBACCF9001B944D /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8D416B2FBACCF9001B944D /* Kingfisher in Frameworks */,
 				4F5C7E052FB08907000DD8EA /* Then in Frameworks */,
 				4F5C7E082FB0891A000DD8EA /* SnapKit in Frameworks */,
 				4F18C8182FB4E21200250CAB /* Lottie in Frameworks */,
@@ -90,6 +92,7 @@
 				4F5C7E042FB08907000DD8EA /* Then */,
 				4F5C7E072FB0891A000DD8EA /* SnapKit */,
 				4F18C8172FB4E21200250CAB /* Lottie */,
+				4F8D416A2FBACCF9001B944D /* Kingfisher */,
 			);
 			productName = "Melon-iOS";
 			productReference = 4FA08A532FAC8104004763AF /* Melon-iOS.app */;
@@ -123,6 +126,7 @@
 				4F5C7E032FB08907000DD8EA /* XCRemoteSwiftPackageReference "Then" */,
 				4F5C7E062FB0891A000DD8EA /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4F18C8162FB4E21100250CAB /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				4F8D41692FBACCF8001B944D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4FA08A542FAC8104004763AF /* Products */;
@@ -157,6 +161,8 @@
 /* Begin XCBuildConfiguration section */
 		4FA08A672FAC8106004763AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4FA08A552FAC8104004763AF /* Melon-iOS */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -188,6 +194,8 @@
 		};
 		4FA08A682FAC8106004763AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4FA08A552FAC8104004763AF /* Melon-iOS */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -219,6 +227,8 @@
 		};
 		4FA08A692FAC8106004763AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4FA08A552FAC8104004763AF /* Melon-iOS */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -283,6 +293,8 @@
 		};
 		4FA08A6A2FAC8106004763AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4FA08A552FAC8104004763AF /* Melon-iOS */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -386,6 +398,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		4F8D41692FBACCF8001B944D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -403,6 +423,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F5C7E062FB0891A000DD8EA /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		4F8D416A2FBACCF9001B944D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F8D41692FBACCF8001B944D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

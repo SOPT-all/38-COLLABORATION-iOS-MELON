@@ -10,14 +10,16 @@ import UIKit
 import SnapKit
 import Then
 import Lottie
+import Kingfisher
 
 final class PlayView: BaseView {
     
     // MARK: - Properties
     
+    private var heartCount: Int = 0
     private var isHeartSelected = false
-    
     private var isSwipeGuideHidden = false
+    private var items = SongModel(songId: 0, songTitle: "", artistName: "", likeCount: 0, isLiked: false, playTime: "", imageUrl: "")
         
     // MARK: - UI Components
     
@@ -43,7 +45,7 @@ final class PlayView: BaseView {
     
     private let swipeGuideContainerView = UIView()
     
-    lazy var heartButton = ChipButton(text: "12,686", image: .icMiniheart)
+    lazy var heartButton = ChipButton(text: "\(heartCount)", image: .icMiniheart)
     
     private let heartAnimationView = LottieAnimationView(name: "heart_animation")
     
@@ -124,13 +126,13 @@ final class PlayView: BaseView {
         }
         
         songTitleLabel.do {
-            $0.text = "LOV3 (Feet. Bryan Chase어쩌구저쩌구잘리는부분"
+            $0.text = items.songTitle
             $0.textColor = .appWhite
             $0.font = .title_b_20
         }
         
         artistNameLabel.do {
-            $0.text = "식케이 (Sik-K), 김하온 (HAON), NOWIMYOU어쩌구저쩌구잘리는부분"
+            $0.text = items.artistName
             $0.textColor = .appWhite
             $0.font = .body_r_13
         }
@@ -165,6 +167,8 @@ final class PlayView: BaseView {
         albumImageView.do {
             $0.image = .imgPlayThumnail2
             $0.contentMode = .scaleAspectFit
+            $0.layer.cornerRadius = 4
+            $0.clipsToBounds = true
         }
         
         playMessageImage.do {
@@ -226,7 +230,7 @@ final class PlayView: BaseView {
         }
         
         nowTimeLabel.do {
-            $0.text = "1:07"
+            $0.text = items.playTime
             $0.textColor = .appWhite
             $0.font = .caption_r_12
         }
@@ -242,7 +246,7 @@ final class PlayView: BaseView {
         }
         
         previousButton.do {
-            $0.setImage(UIImage(resource: .icPlayPreviousBig), for: .normal)
+            $0.setImage(UIImage(resource: .icPlaypreviousBig), for: .normal)
         }
         
         playButton.do {
@@ -297,7 +301,7 @@ final class PlayView: BaseView {
         }
         
         artistChannelButton.snp.makeConstraints {
-            $0.top.equalTo(musicInformationStackView.snp.bottom).offset(16)
+            $0.top.lessThanOrEqualTo(musicInformationStackView.snp.bottom).offset(21)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(27)
         }
@@ -331,18 +335,18 @@ final class PlayView: BaseView {
         }
         
         heartAnimationView.snp.makeConstraints {
-            $0.centerX.equalTo(heartButton.snp.leading).offset(17)
+            $0.centerX.equalTo(heartButton.snp.leading).offset(28)
             $0.centerY.equalTo(heartButton).offset(-38)
             $0.size.equalTo(96)
         }
         
         songCustomButtonStackView.snp.makeConstraints {
-            $0.top.equalTo(albumImageView.snp.bottom).offset(22)
+            $0.top.equalTo(albumImageView.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
         }
         
         mixupButton.snp.makeConstraints {
-            $0.top.equalTo(songCustomButtonStackView.snp.top)
+            $0.centerY.equalTo(songCustomButtonStackView.snp.centerY)
             $0.trailing.equalToSuperview().inset(20)
         }
         
@@ -419,7 +423,7 @@ final class PlayView: BaseView {
         isHeartSelected.toggle()
         
         heartButton.configure(
-            text: "12,686",
+            text: "\(heartCount)",
             image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
         )
         
@@ -448,5 +452,16 @@ final class PlayView: BaseView {
     func togglePlay() {
         playButton.isSelected.toggle()
         playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
+    }
+    
+    func configure(title: String, name: String, imgURL: String, likes: Int, isLiked: Bool, playTime: String) {
+        songTitleLabel.text = title
+        artistNameLabel.text = name
+        heartCount = likes
+        isHeartSelected = isLiked
+        nowTimeLabel.text = playTime
+        
+        let url = URL(string: imgURL)
+        albumImageView.kf.setImage(with: url)
     }
 }

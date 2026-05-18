@@ -1,6 +1,15 @@
 {
-  "originHash" : "cd0eaa1335454bc4f7b9632730eb1ad3575d901815bd414027fdc796f4730c04",
+  "originHash" : "f219cf4a03d2046d93c497615c2b4ac70ee164269c000c73d842503824b98b76",
   "pins" : [
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "cf8be20d07654570554c8a8a4952bc8a5766a8b0",
+        "version" : "8.9.0"
+      }
+    },
     {
       "identity" : "lottie-ios",
       "kind" : "remoteSourceControl",
