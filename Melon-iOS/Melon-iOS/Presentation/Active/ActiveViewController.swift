@@ -56,5 +56,4 @@ final class ActiveViewController: BaseViewController {
             self?.getSongList(sort: sort)
         }
     }
-
 }
