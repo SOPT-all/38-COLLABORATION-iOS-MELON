@@ -9,6 +9,7 @@ import Foundation
 
 protocol SongDetailService {
     func getSongDetail(songId: Int) async throws -> SongDetailResponseDTO
+    func postLikeSong(songId: Int) async throws -> LikeResponseDTO
 }
 
 final class DefaultSongDetailService: SongDetailService {
@@ -20,6 +21,16 @@ final class DefaultSongDetailService: SongDetailService {
             return result
         } catch {
             print("네트워크 요청 에러: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func postLikeSong(songId: Int) async throws -> LikeResponseDTO {
+        do {
+            let result: LikeResponseDTO = try await network.request(endPoint: .like(songId))
+            return result
+        } catch {
+            print("네트워크 요청 에러: \(error)")
             throw error
         }
     }

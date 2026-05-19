@@ -418,11 +418,11 @@ final class PlayView: BaseView {
         }
     }
     
-    func toggleHeart() {
-        isHeartSelected.toggle()
+    func toggleHeart(isLiked: Bool) {
+        isHeartSelected = isLiked
         
         heartButton.configure(
-            text: "\(heartCount)",
+            text: isHeartSelected ? "\(heartCount + 1)" : "\(heartCount)",
             image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
         )
         
