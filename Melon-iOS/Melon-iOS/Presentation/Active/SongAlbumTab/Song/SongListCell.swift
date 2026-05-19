@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import Kingfisher
 
 final class SongListCell: UICollectionViewCell {
     // MARK: - Properties
@@ -103,8 +104,9 @@ final class SongListCell: UICollectionViewCell {
 }
 
 extension SongListCell {
-    func configure(_ songListData: SongListItemModel) {
-        songImage.image = songListData.albumImageUrl
+    func configure(_ songListData: artistSongDTO) {
+        let url = URL(string: songListData.albumImageUrl)
+        songImage.kf.setImage(with: url)
         trackTitle.text = songListData.title
         artistName.text = songListData.artist.name
     }
