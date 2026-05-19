@@ -22,7 +22,7 @@ final class ActiveView: BaseView {
     private let tabView = ActiveTabView(titles: ["곡•앨범", "팬 활동", "아티스트"], seletedIndex: 0)
     
     private var enabledTabView: UIView?
-    private let songAlbumTabView = SongAlbumTabView()
+    let songAlbumTabView = SongAlbumTabView()
     private let fanTabView = FanTabView()
     private let artistTabView = ArtistTabView()
     

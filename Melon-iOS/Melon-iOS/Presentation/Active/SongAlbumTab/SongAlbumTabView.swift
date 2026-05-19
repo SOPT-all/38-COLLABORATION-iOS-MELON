@@ -19,7 +19,7 @@ final class SongAlbumTabView: BaseView {
     
     private let songSectionHeader = ActiveViewSectionHeader(title: "곡")
     private let songFilterBarView = FilterBarView(items: songFilterList, selectedID: "1")
-    private let songCollectionView = SongListView()
+    let songCollectionView = SongListView()
     
     private let albumSectionHeader = ActiveViewSectionHeader(title: "최신 앨범")
     private let albumCollectionView = AlbumListView()
@@ -66,5 +66,4 @@ final class SongAlbumTabView: BaseView {
             $0.bottom.equalToSuperview()
         }
     }
-    
 }
