@@ -17,15 +17,12 @@ struct ArtistDetailResponseDTO: Decodable {
     let artists: [ArtistMemberDTO]
     let recentAlbums: [RecentAlbumDTO]
     let credit: String
+    let yearMonth: String
     let country: String
+    let gender: String
     let agency: String
     let awardHistory: [String]
     let description: String
-}
-
-enum ArtistType: String, Decodable {
-    case solo = "SOLO"
-    case group = "GROUP"
 }
 
 struct ArtistMemberDTO: Decodable {
