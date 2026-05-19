@@ -11,6 +11,13 @@ import SnapKit
 import Then
 
 final class ActiveView: BaseView {
+    // MARK: - Properties
+    
+    var onSongListSortChanged: ((ArtistSongListFilter) -> Void)? {
+        get { songAlbumTabView.onSongListSortChanged }
+        set { songAlbumTabView.onSongListSortChanged = newValue }
+    }
+
     // MARK: - UI Properties
 
     private let scrollView = UIScrollView()

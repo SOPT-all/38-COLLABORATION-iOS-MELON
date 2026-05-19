@@ -29,6 +29,7 @@ final class ActiveViewController: BaseViewController {
         super.viewDidLoad()
         
         getSongList(sort: .hot)
+        onSortChanged()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +48,12 @@ final class ActiveViewController: BaseViewController {
             } catch {
                 print("아티스트 곡 목록 조회 실패: \(error)")
             }
+        }
+    }
+    
+    private func onSortChanged() {
+        rootView.onSongListSortChanged = { [weak self] sort in
+            self?.getSongList(sort: sort)
         }
     }
 
