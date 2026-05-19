@@ -55,10 +55,12 @@ final class PlayViewController: BaseViewController {
     
     // MARK: - Functions
     
-    private func getSongDetail() {        
+    private func getSongDetail() {
+        makeRandomNumber()
+        
         Task {
             do {
-                let song = try await service.getSongDetail(songId: makeRandomNumber())
+                let song = try await service.getSongDetail(songId: songId)
                 let artistName = song.artists.map { $0.name }.joined(separator: ", ")
                 
                 rootView.configure(title: song.title, name: artistName, imgURL: song.album.imageUrl, likes: song.likeCount, isLiked: song.isLiked, playTime: song.playTime)
@@ -68,8 +70,7 @@ final class PlayViewController: BaseViewController {
         }
     }
     
-    func makeRandomNumber() -> Int {
+    func makeRandomNumber() {
         songId = Int.random(in: 1...84)
-        return songId
     }
 }
