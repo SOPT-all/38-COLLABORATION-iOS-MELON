@@ -16,9 +16,16 @@ final class HomeView: BaseView {
     
     private let homeHeader = HomeHeaderView()
     private let recommendationView = RecommendationSectionView()
-    private let chartView = ChartSectionView()
+    
+    let chartView = ChartSectionView()
+    
     private let eventView = EventSectionView()
     private let musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
+    
+    var onChartFilterChanged: ((ChartFilter) -> Void)? {
+        get { chartView.onFilterChanged }
+        set { chartView.onFilterChanged = newValue }
+    }
 
     override func setUI() {
         contentStackView.addArrangedSubviews(

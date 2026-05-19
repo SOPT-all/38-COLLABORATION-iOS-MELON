@@ -12,11 +12,15 @@ import Then
 
 final class ChartSectionView: BaseView {
     
-    private let chartItems: [ChartSong] = ChartSongDTO.dummy
+    private var chartItems: [ChartSongDTO] = []
+    var onFilterChanged: ((ChartFilter) -> Void)?
     
     private let chartHeaderView = HomeDetailSectionHeaderView(subtitle: "오늘 16:00 기준", title: "실시간 트렌드 멜론차트", icon: .iconBrand3Purple)
     
-    private let filterView = FilterBarView(items: ["1": "TOP100", "2": "HOT100", "3": "2006년 해외", "4": "달달한"], selectedID: "1")
+    private let filterView = FilterBarView(items: [ChartFilter.top100.rawValue: ChartFilter.top100.displayName,
+        ChartFilter.hot100.rawValue: ChartFilter.hot100.displayName,
+        ChartFilter.abroad2006.rawValue: ChartFilter.abroad2006.displayName,
+        ChartFilter.sweet.rawValue: ChartFilter.sweet.displayName], selectedID: ChartFilter.top100.rawValue)
     
     private let chartView = UICollectionView(frame: .zero, collectionViewLayout: ChartLayout.make())
 
@@ -24,8 +28,10 @@ final class ChartSectionView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setDelegate()
         register()
+        bindFilter()
     }
     
     required init?(coder: NSCoder) {
@@ -81,6 +87,18 @@ final class ChartSectionView: BaseView {
     private func register() {
         chartView.register(ChartCell.self, forCellWithReuseIdentifier: ChartCell.identifier)
     }
+    
+    private func bindFilter() {
+        filterView.onSelect = { [weak self] id, _ in
+            guard let filter = ChartFilter(rawValue: id) else { return }
+            self?.onFilterChanged?(filter)
+        }
+    }
+
+    func updateChart(items: [ChartSongDTO]) {
+        self.chartItems = items
+        chartView.reloadData()
+    }
 }
 
 extension ChartSectionView: UICollectionViewDataSource {
@@ -100,7 +118,10 @@ extension ChartSectionView: UICollectionViewDataSource {
         }
         
         let song = chartItems[indexPath.item]
-        cell.configure(with: song)
+        cell.configure(rank: indexPath.item + 1,
+                       title: song.title,
+                       artistName: song.artist.name,
+                       imgURL: song.albumImageUrl ?? "")
         
         return cell
     }
