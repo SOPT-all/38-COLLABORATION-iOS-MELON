@@ -7,25 +7,44 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 import Then
 
 final class ActiveHeroSection: BaseView {
     // MARK: - UI Properties
     
+    private let gradientLayer = CAGradientLayer()
+    
     private let artistImage = UIImageView()
     
-    private let artistInfoView = ActiveArtistInfo(artistName: "Hearts2Hearts (하츠투하츠)", starCount: "30,037", chatCount: "14,027", degree: 20)
+    let artistInfoView = ActiveArtistInfo()
     
     private let mixUpButton = UIButton()
     
     // MARK: - UI Setting
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer.frame = artistImage.bounds
+    }
+    
     override func setUI() {
         addSubviews(artistImage, artistInfoView, mixUpButton)
+        artistImage.layer.addSublayer(gradientLayer)
     }
     
     override func setStyle() {
+        gradientLayer.do {
+            $0.colors = [
+                UIColor.black.cgColor,
+                UIColor.clear.cgColor
+            ]
+            $0.startPoint = CGPoint(x: 0.5, y: 1)
+            $0.endPoint = CGPoint(x: 0.5, y: 0)
+        }
+        
         artistImage.do {
             $0.image = .imgActiveH2H
         }
@@ -51,10 +70,12 @@ final class ActiveHeroSection: BaseView {
     override func setLayout() {
         artistImage.snp.makeConstraints {
             $0.top.equalToSuperview()
+            $0.width.equalTo(375)
+            $0.height.equalTo(379)
         }
         
         artistInfoView.snp.makeConstraints {
-            $0.bottom.equalTo(mixUpButton.snp.top).offset(-14)
+            $0.bottom.equalTo(mixUpButton.snp.top)
             $0.horizontalEdges.equalToSuperview()
         }
         
@@ -64,5 +85,14 @@ final class ActiveHeroSection: BaseView {
             $0.width.equalTo(335)
             $0.height.equalTo(48)
         }
+    }
+    
+    // MARK: - Functions
+    
+    func configureActiveHeroSection(_ response: ArtistDetailResponseDTO) {
+        let url = URL(string: response.imageUrl)
+        artistImage.kf.setImage(with: url)
+        
+        artistInfoView.configureArtistInfo(response)
     }
 }

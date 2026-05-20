@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -84,8 +85,9 @@ final class AlbumListCell: UICollectionViewCell {
 }
 
 extension AlbumListCell {
-    func configure(_ albumListData: AlbumListModel) {
-        albumCoverImageView.image = albumListData.imageUrl
+    func configure(_ albumListData: RecentAlbum) {
+        let url = URL(string: albumListData.imageUrl)
+        albumCoverImageView.kf.setImage(with: url)
         albumNameLabel.text = albumListData.title
         artistNameLabel.text = albumListData.artistName
     }

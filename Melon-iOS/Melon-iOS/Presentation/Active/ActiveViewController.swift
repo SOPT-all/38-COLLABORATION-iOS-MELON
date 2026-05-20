@@ -46,6 +46,12 @@ final class ActiveViewController: BaseViewController {
             do {
                 let response = try await artistDetailService.getArtistDetail(artistId: artistId)
                 
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                let formatterdFanCount = numberFormatter.string(from: NSNumber(value: response.fanCount))
+                let formatterdCommentCount = numberFormatter.string(from: NSNumber(value: response.commentCount))
+                
+                rootView.heroSection.artistInfoView.configureFormatedCount(fanCount: formatterdFanCount ?? "0", commentCount: formatterdCommentCount ?? "0")
                 rootView.configureArtistDetail(response)
             } catch {
                 print("아티스트 상세정보 조회 실패: \(error)")
