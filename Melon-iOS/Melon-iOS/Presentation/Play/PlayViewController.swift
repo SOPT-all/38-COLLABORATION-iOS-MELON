@@ -13,7 +13,8 @@ final class PlayViewController: BaseViewController {
     
     private let rootView = PlayView()
     private let service = DefaultSongDetailService()
-
+    private var songId = 0
+    
     // MARK: - Life Cycle
     
     override func loadView() {
@@ -44,7 +45,7 @@ final class PlayViewController: BaseViewController {
     
     @objc
     private func heartButtonDidTap() {
-        rootView.toggleHeart()
+        likeToggle()
     }
     
     @objc
@@ -52,10 +53,14 @@ final class PlayViewController: BaseViewController {
         rootView.togglePlay()
     }
     
+    // MARK: - Functions
+    
     private func getSongDetail() {
+        makeRandomNumber()
+        
         Task {
             do {
-                let song = try await service.getSongDetail(songId: 1)
+                let song = try await service.getSongDetail(songId: songId)
                 let artistName = song.artists.map { $0.name }.joined(separator: ", ")
                 
                 rootView.configure(title: song.title, name: artistName, imgURL: song.album.imageUrl, likes: song.likeCount, isLiked: song.isLiked, playTime: song.playTime)
@@ -63,5 +68,20 @@ final class PlayViewController: BaseViewController {
                 print("곡 정보 조회 실패: \(error)")
             }
         }
+    }
+    
+    private func likeToggle() {
+        Task {
+            do {
+                let result = try await service.postLikeSong(songId: songId)
+                rootView.toggleHeart(isLiked: result.isLiked)
+            } catch {
+                print("곡 좋아요 실패: \(error)")
+            }
+        }
+    }
+    
+    private func makeRandomNumber() {
+        songId = Int.random(in: 10...24)
     }
 }
