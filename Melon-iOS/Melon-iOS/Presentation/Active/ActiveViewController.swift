@@ -19,14 +19,16 @@ final class ActiveViewController: BaseViewController {
     override func loadView() {
         view = rootView
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fetchArtistDetail()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    override func setView() {
-        fetchArtistDetail()
     }
     
     private func fetchArtistDetail() {
