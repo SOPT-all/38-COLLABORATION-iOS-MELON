@@ -32,7 +32,8 @@ final class ActiveViewController: BaseViewController {
     private func fetchArtistDetail() {
         Task {
             do {
-                let response = try await artistDetailService.getArtistDetail(artistId: 13)
+                let response = try await artistDetailService.getArtistDetail(artistId: 10)
+                
                 rootView.configureArtistDetail(response)
             } catch {
                 print("아티스트 상세정보 조회 실패: \(error)")
