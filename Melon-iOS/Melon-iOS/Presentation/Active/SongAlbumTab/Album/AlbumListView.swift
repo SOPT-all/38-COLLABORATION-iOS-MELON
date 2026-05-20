@@ -18,7 +18,7 @@ final class AlbumListView: BaseView {
         collectionViewLayout: ActiveLayout.albumList()
     )
     
-    private var itemList = AlbumListDTO.dummy()
+    private var itemList: [RecentAlbum] = []
     
     // MARK: - Initializer
     
@@ -41,6 +41,11 @@ final class AlbumListView: BaseView {
     
     private func register() {
         collcetionView.register(AlbumListCell.self, forCellWithReuseIdentifier: AlbumListCell.identifier)
+    }
+    
+    func updateRecentAlbum(album: [RecentAlbum]) {
+        itemList = album
+        collcetionView.reloadData()
     }
 
     // MARK: - UI Settings

@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -15,7 +16,7 @@ final class ActiveHeroSection: BaseView {
     
     private let artistImage = UIImageView()
     
-    private let artistInfoView = ActiveArtistInfo(artistName: "Hearts2Hearts (하츠투하츠)", starCount: "30,037", chatCount: "14,027", degree: 20)
+    let artistInfoView = ActiveArtistInfo()
     
     private let mixUpButton = UIButton()
     
@@ -26,10 +27,6 @@ final class ActiveHeroSection: BaseView {
     }
     
     override func setStyle() {
-        artistImage.do {
-            $0.image = .imgActiveH2H
-        }
-        
         mixUpButton.do {
             var config = UIButton.Configuration.plain()
             config.image = .imgMixup.resize(to: CGSize(width: 26, height: 26))
@@ -51,10 +48,12 @@ final class ActiveHeroSection: BaseView {
     override func setLayout() {
         artistImage.snp.makeConstraints {
             $0.top.equalToSuperview()
+            $0.width.equalTo(375)
+            $0.height.equalTo(379)
         }
         
         artistInfoView.snp.makeConstraints {
-            $0.bottom.equalTo(mixUpButton.snp.top).offset(-14)
+            $0.bottom.equalTo(mixUpButton.snp.top)
             $0.horizontalEdges.equalToSuperview()
         }
         
@@ -64,5 +63,14 @@ final class ActiveHeroSection: BaseView {
             $0.width.equalTo(335)
             $0.height.equalTo(48)
         }
+    }
+    
+    // MARK: - Functions
+    
+    func configureActiveHeroSection(_ response: ArtistDetailResponseDTO) {
+        let url = URL(string: response.imageUrl)
+        artistImage.kf.setImage(with: url)
+        
+        artistInfoView.configureArtistInfo(response)
     }
 }
