@@ -81,7 +81,7 @@ final class PlayViewController: BaseViewController {
         }
     }
     
-    func makeRandomNumber() {
+    private func makeRandomNumber() {
         songId = Int.random(in: 10...24)
     }
 }
