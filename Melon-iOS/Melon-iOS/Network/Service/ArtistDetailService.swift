@@ -19,7 +19,7 @@ final class DefaultArtistDetailService: ArtistDetailService {
             let result: ArtistDetailResponseDTO = try await network.request(endPoint: .artistDetail(artistId))
             return result
         } catch {
-            print("아티스트 상세 조회 에러: \(error.localizedDescription)")
+            print("네트워크 요청 에러: \(error.localizedDescription)")
             throw error
         }
     }
