@@ -66,7 +66,7 @@ final class HomeView: BaseView {
         
         musicPlayerBar.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(70)
         }
     }

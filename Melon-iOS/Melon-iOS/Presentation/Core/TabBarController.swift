@@ -41,7 +41,7 @@ final class TabBarController: UITabBarController {
         var viewController: UIViewController {
             switch self {
             case .home:
-                return ViewController()
+                return HomeViewController()
             case .forYou:
                 return UIViewController()
             case .search:
