@@ -14,6 +14,7 @@ final class PlayViewController: BaseViewController {
     private let rootView = PlayView()
     private let service = DefaultSongDetailService()
     private var songId = 0
+    private var artistId = 0
     
     // MARK: - Life Cycle
     
@@ -61,7 +62,9 @@ final class PlayViewController: BaseViewController {
     
     @objc
     private func artistChannelButtonDidTap() {
-        navigationController?.pushViewController(ActiveViewController(), animated: true)
+        let activeViewController = ActiveViewController()
+        activeViewController.bindArtistId(artistId: artistId)
+        navigationController?.pushViewController(activeViewController, animated: true)
     }
     
     // MARK: - Functions
@@ -75,6 +78,7 @@ final class PlayViewController: BaseViewController {
                 let artistName = song.artists.map { $0.name }.joined(separator: ", ")
                 
                 rootView.configure(title: song.title, name: artistName, imgURL: song.album.imageUrl, likes: song.likeCount, isLiked: song.isLiked, playTime: song.playTime)
+                artistId = song.artists.first?.artistId ?? 0
             } catch {
                 print("곡 정보 조회 실패: \(error)")
             }

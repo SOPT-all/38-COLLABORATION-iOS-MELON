@@ -13,7 +13,7 @@ import Then
 final class ActiveViewController: BaseViewController {
     // MARK: - Properties
     
-    var artistId: Int = 10
+    private var artistId = Int()
     
     private let songListService: SongListService = DefaultSongListService()
     
@@ -44,7 +44,7 @@ final class ActiveViewController: BaseViewController {
     private func fetchArtistDetail() {
         Task {
             do {
-                let response = try await artistDetailService.getArtistDetail(artistId: 10)
+                let response = try await artistDetailService.getArtistDetail(artistId: artistId)
                 
                 rootView.configureArtistDetail(response)
             } catch {
@@ -69,5 +69,9 @@ final class ActiveViewController: BaseViewController {
         rootView.onSongListSortChanged = { [weak self] sort in
             self?.getSongList(sort: sort)
         }
+    }
+    
+    func bindArtistId(artistId: Int) {
+        self.artistId = artistId
     }
 }
