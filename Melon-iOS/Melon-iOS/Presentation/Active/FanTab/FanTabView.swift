@@ -40,6 +40,7 @@ final class FanTabView: BaseView {
     override func setLayout() {
         contentStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(70)
         }
     }
 }
