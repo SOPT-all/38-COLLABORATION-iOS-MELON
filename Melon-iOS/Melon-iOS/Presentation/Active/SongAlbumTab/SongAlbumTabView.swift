@@ -29,7 +29,7 @@ final class SongAlbumTabView: BaseView {
     let songCollectionView = SongListView()
     
     private let albumSectionHeader = ActiveViewSectionHeader(title: "최신 앨범")
-    private let albumCollectionView = AlbumListView()
+    let albumCollectionView = AlbumListView()
     
     // MARK: - Initializer
     
