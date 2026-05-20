@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -18,9 +19,7 @@ class ArtistCell: UICollectionViewCell {
     
     private let artistImage = UIImageView()
     
-    private let artistLabelKr = UILabel()
-    
-    private let artistLabelEn = UILabel()
+    private let artistLabel = UILabel()
     
     //MARK: - Initializer
     
@@ -35,33 +34,32 @@ class ArtistCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        artistImage.kf.cancelDownloadTask()
+        artistImage.image = nil
+        artistLabel.text = nil
+    }
+    
     //MARK: - UI Setting
     
     private func setStyle() {
         artistImage.do {
-            $0.image = .imgActiveArtistH2Hjiwoo
+            $0.backgroundColor = .appBlack
             $0.contentMode = .scaleAspectFill
             $0.layer.cornerRadius = 50
             $0.clipsToBounds = true
         }
         
-        artistLabelKr.do {
-            $0.text = "지우"
+        artistLabel.do {
             $0.font = .body_r_15
             $0.textColor = .appWhite
-            $0.setContentCompressionResistancePriority(.required,for: .horizontal)
         }
-        artistLabelEn.do{
-            $0.text = "(JIWOO)"
-            $0.font = .body_r_15
-            $0.textColor = .appWhite
-            $0.setContentCompressionResistancePriority(.defaultLow,for: .horizontal)
-        }
-        
     }
     
     private func setUI() {
-        contentView.addSubviews(artistImage,artistLabelKr, artistLabelEn)
+        contentView.addSubviews(artistImage,artistLabel)
     }
     
     private func setLayout() {
@@ -71,15 +69,9 @@ class ArtistCell: UICollectionViewCell {
             $0.size.equalTo(100)
         }
         
-        artistLabelKr.snp.makeConstraints {
+        artistLabel.snp.makeConstraints {
             $0.top.equalTo(artistImage.snp.bottom).offset(8)
-            $0.leading.equalTo(artistImage.snp.leading).offset(5)
-            $0.bottom.equalToSuperview()
-        }
-        
-        artistLabelEn.snp.makeConstraints {
-            $0.top.equalTo(artistImage.snp.bottom).offset(8)
-            $0.leading.equalTo(artistLabelKr.snp.trailing).offset(4)
+            $0.leading.equalTo(artistImage.snp.leading).offset(10)
             $0.trailing.equalTo(artistImage.snp.trailing).inset(2)
             $0.bottom.equalToSuperview()
         }
@@ -87,11 +79,8 @@ class ArtistCell: UICollectionViewCell {
 }
 
 extension ArtistCell {
-    func configure(_ imageData: ArtistModel) {
-        artistImage.image = imageData.artistPicture
-        
-        let name = imageData.artistName.split(separator: " ")
-        artistLabelKr.text = String(name[0])
-        artistLabelEn.text = String(name[1])
+    func configure(_ artist: ArtistMember) {
+        artistImage.kf.setImage(with: URL(string: artist.imageUrl))
+        artistLabel.text = artist.name
     }
 }

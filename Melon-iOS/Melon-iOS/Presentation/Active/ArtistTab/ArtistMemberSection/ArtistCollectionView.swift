@@ -14,7 +14,7 @@ final class ArtistCollectionView: BaseView {
     
     //MARK: - Properties
     
-    private let imageList = ArtistModel.dummy()
+    private var artists: [ArtistMember] = []
     
     private let flowLayout = UICollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: 100, height: 127)
@@ -65,19 +65,24 @@ final class ArtistCollectionView: BaseView {
             $0.height.equalTo(127)
         }
     }
+    
+    func configure(_ artists: [ArtistMember]) {
+        self.artists = artists
+        collectionView.reloadData()
+    }
 }
 
 
 extension ArtistCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,numberOfItemsInSection section: Int) -> Int {
-        return imageList.count
+        return artists.count
     }
     
     func collectionView(_ collectionView: UICollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtistCell.identifier, for: indexPath
         ) as! ArtistCell
-        cell.configure(imageList[indexPath.row])
+        cell.configure(artists[indexPath.row])
         return cell
     }
 }

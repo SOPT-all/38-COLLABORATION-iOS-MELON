@@ -67,4 +67,14 @@ final class ArtistDetailSectionView: BaseView {
             $0.bottom.equalToSuperview()
         }
     }
+    
+    func configure(_ response: ArtistDetailResponseDTO) {
+        stack1Credit.configure(body: response.credit)
+        stack2Debut.configure(body: response.yearMonth)
+        stack3DebutSong.configure(response.recentAlbums[0])
+        stack4Type.configure(body: "\(response.country)/\(response.gender.displayText)/\(response.type.displayText)")
+        stack5Agency.configure(body: response.agency)
+        stack6Awards.configure(body: response.awardHistory.joined(separator: "\n"))
+        stack7Intro.configure(body: response.description)
+    }
 }

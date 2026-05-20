@@ -41,7 +41,6 @@ final class DetailLineView: BaseView {
             $0.text = head
             $0.font = .body_r_14
             $0.textColor = .gray300
-            $0.setContentCompressionResistancePriority(.required, for: .horizontal)
         }
         
         bodyLabel.do {
@@ -49,8 +48,7 @@ final class DetailLineView: BaseView {
             $0.font = .body_r_14
             $0.textColor = .gray100
             $0.numberOfLines = 3
-            $0.lineBreakMode = .byWordWrapping
-            $0.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+            $0.lineBreakMode = .byTruncatingTail
         }
     }
     
@@ -70,5 +68,9 @@ final class DetailLineView: BaseView {
             $0.bottom.equalToSuperview()
         }
         
+    }
+    
+    func configure(body: String) {
+        bodyLabel.text = body
     }
 }

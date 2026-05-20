@@ -9,11 +9,12 @@ enum EndPoint {
     case songDetail(Int)
     case chartList(ChartFilter)
     case artistSongList(Int, ArtistSongListFilter)
+    case artistDetail(Int)
     case like(Int)
     
     var requestType: HTTPMethodType {
         switch self {
-        case .songDetail, .chartList, .artistSongList:
+        case .songDetail, .chartList, .artistSongList, .artistDetail:
             return .get
         case .like:
             return .post
@@ -26,6 +27,8 @@ enum EndPoint {
             return "/v1/songs/\(songId)"
         case .chartList(let filter):
             return "/v1/chart?chartFilter=\(filter.rawValue)"
+        case .artistDetail(let artistId):
+            return "/v1/artists/\(artistId)"
         case .artistSongList(let artistId, let filter):
             return "/v1/artists/\(artistId)/songs?sort=\(filter.rawValue)"
         case .like(let songId):
@@ -35,7 +38,7 @@ enum EndPoint {
     
     var header: [String: String] {
         switch self {
-        case .songDetail, .artistSongList, .like:
+        case .songDetail, .artistDetail, .artistSongList, .like:
             return HeaderType.auth.value
         case .chartList:
             return HeaderType.basic.value

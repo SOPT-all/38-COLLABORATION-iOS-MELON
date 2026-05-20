@@ -16,6 +16,8 @@ final class ActiveViewController: BaseViewController {
     var artistId: Int = 10
     
     private let songListService: SongListService = DefaultSongListService()
+    
+    private let artistDetailService: ArtistDetailService = DefaultArtistDetailService()
 
     private let rootView = ActiveView()
     
@@ -28,6 +30,7 @@ final class ActiveViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchArtistDetail()
         getSongList(sort: .hot)
         onSortChanged()
     }
@@ -36,8 +39,19 @@ final class ActiveViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
     // MARK: - Functions
+    
+    private func fetchArtistDetail() {
+        Task {
+            do {
+                let response = try await artistDetailService.getArtistDetail(artistId: 10)
+                
+                rootView.configureArtistDetail(response)
+            } catch {
+                print("아티스트 상세정보 조회 실패: \(error)")
+            }
+        }
+    }
     
     private func getSongList(sort: ArtistSongListFilter) {
         Task {

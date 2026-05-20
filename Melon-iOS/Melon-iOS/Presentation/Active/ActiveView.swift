@@ -120,4 +120,8 @@ final class ActiveView: BaseView {
         }
         enabledTabView = newView
     }
+    
+    func configureArtistDetail(_ response: ArtistDetailResponseDTO) {
+        artistTabView.configure(response)
+    }
 }
