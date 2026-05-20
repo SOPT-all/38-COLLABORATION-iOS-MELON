@@ -44,7 +44,7 @@ final class ActiveViewController: BaseViewController {
     private func fetchArtistDetail() {
         Task {
             do {
-                let response = try await artistDetailService.getArtistDetail(artistId: 10)
+                let response = try await artistDetailService.getArtistDetail(artistId: artistId)
                 
                 rootView.configureArtistDetail(response)
             } catch {
