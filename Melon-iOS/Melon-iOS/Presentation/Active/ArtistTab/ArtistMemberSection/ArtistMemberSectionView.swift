@@ -36,4 +36,8 @@ final class ArtistMemberSectionView: BaseView {
             $0.bottom.equalToSuperview()
         }
     }
+    
+    func configure(_ artists: [ArtistMemberDTO]) {
+        artistBody.configure(artists)
+    }
 }

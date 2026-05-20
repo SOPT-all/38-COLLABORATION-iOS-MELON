@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import Kingfisher
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -39,7 +39,7 @@ class ArtistCell: UICollectionViewCell {
         
         // 컬렉션뷰 셀은 재사용되기 때문에 이전 멤버의 이미지 다운로드와 텍스트가 남지 않도록 초기화한다.
         artistImage.kf.cancelDownloadTask()
-        artistImage.image = .imgActiveArtistH2Hjiwoo
+        artistImage.image = nil
         artistLabel.text = nil
     }
     
@@ -47,18 +47,16 @@ class ArtistCell: UICollectionViewCell {
     
     private func setStyle() {
         artistImage.do {
-            $0.image = .imgActiveArtistH2Hjiwoo
+            $0.backgroundColor = .appBlack
             $0.contentMode = .scaleAspectFill
             $0.layer.cornerRadius = 50
             $0.clipsToBounds = true
         }
         
         artistLabel.do {
-            $0.text = "지우 (JIWOO)"
             $0.font = .body_r_15
             $0.textColor = .appWhite
         }
-        
     }
     
     private func setUI() {
@@ -83,7 +81,6 @@ class ArtistCell: UICollectionViewCell {
 
 extension ArtistCell {
     func configure(_ artist: ArtistMemberDTO) {
-        artistImage.backgroundColor = .black
         artistImage.kf.setImage(with: URL(string: artist.imageUrl))
         artistLabel.text = artist.name
     }
