@@ -39,6 +39,7 @@ final class PlayViewController: BaseViewController {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
         rootView.downButton.addTarget(self, action: #selector(downButotnDidTap), for: .touchUpInside)
+        rootView.artistChannelButton.addTarget(self, action: #selector(artistChannelButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -56,6 +57,11 @@ final class PlayViewController: BaseViewController {
     @objc
     private func downButotnDidTap() {
         dismiss(animated: true)
+    }
+    
+    @objc
+    private func artistChannelButtonDidTap() {
+        navigationController?.pushViewController(ActiveViewController(), animated: true)
     }
     
     // MARK: - Functions

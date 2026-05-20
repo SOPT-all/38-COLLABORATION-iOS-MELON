@@ -39,11 +39,15 @@ final class HomeViewController: BaseViewController {
     @objc
     private func musicPlayerBarDidTap() {
         let playViewController = PlayViewController()
-        if let sheet = playViewController.sheetPresentationController {
+        let navigationController = UINavigationController(rootViewController: playViewController)
+        navigationController.isNavigationBarHidden = true
+        navigationController.modalPresentationStyle = .pageSheet
+
+        if let sheet = navigationController.sheetPresentationController {
             sheet.detents = [.large()]
             sheet.prefersGrabberVisible = false
         }
-        present(playViewController, animated: true, completion: nil)
+        present(navigationController, animated: true, completion: nil)
     }
     
     // MARK: - Functions

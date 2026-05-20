@@ -32,7 +32,7 @@ final class PlayView: BaseView {
     
     lazy var downButton = UIButton()
     
-    private let artistChannelButton = UIButton()
+    lazy var artistChannelButton = UIButton()
     
     private let albumImageView = UIImageView()
     
@@ -114,8 +114,6 @@ final class PlayView: BaseView {
     }
     
     override func setStyle() {
-        backgroundColor = .appBlack
-
         optionButton.do {
             $0.setImage(UIImage(resource: .icMoreVertical2), for: .normal)
         }

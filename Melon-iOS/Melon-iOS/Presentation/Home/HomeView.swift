@@ -39,7 +39,6 @@ final class HomeView: BaseView {
     }
 
     override func setStyle() {
-        backgroundColor = .appBlack
         contentStackView.do {
             $0.axis = .vertical
             $0.alignment = .fill
