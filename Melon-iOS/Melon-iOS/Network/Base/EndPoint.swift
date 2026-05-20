@@ -30,12 +30,10 @@ enum EndPoint {
     
     var header: [String: String] {
         switch self {
-        case .songDetail:
+        case .songDetail, .artistDetail:
             return HeaderType.auth.value
         case .chartList:
             return HeaderType.basic.value
-        case .artistDetail:
-            return HeaderType.auth.value
         }
     }
 }
