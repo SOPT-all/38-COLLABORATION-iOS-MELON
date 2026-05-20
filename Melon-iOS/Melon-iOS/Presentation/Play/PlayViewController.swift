@@ -16,6 +16,8 @@ final class PlayViewController: BaseViewController {
     private var songId = 0
     private var artistId = 0
     
+    var onArtistChannelButtonTap: ((Int) -> Void)?
+    
     // MARK: - Life Cycle
     
     override func loadView() {
@@ -62,9 +64,12 @@ final class PlayViewController: BaseViewController {
     
     @objc
     private func artistChannelButtonDidTap() {
-        let activeViewController = ActiveViewController()
-        activeViewController.bindArtistId(artistId: artistId)
-        navigationController?.pushViewController(activeViewController, animated: true)
+        let artistId = artistId
+        let onArtistChannelButtonTap = onArtistChannelButtonTap
+        
+        dismiss(animated: false) {
+            onArtistChannelButtonTap?(artistId)
+        }
     }
     
     // MARK: - Functions

@@ -13,7 +13,7 @@ import Then
 final class ActiveTopNavigateBar: BaseView {
     // MARK: - UI Properties
     
-    private let previousButton = UIButton()
+    lazy var previousButton = UIButton()
     private let moreButton = UIButton()
     
     // MARK: - UI Setting

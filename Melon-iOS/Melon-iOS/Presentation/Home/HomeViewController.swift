@@ -39,11 +39,15 @@ final class HomeViewController: BaseViewController {
     @objc
     private func musicPlayerBarDidTap() {
         let playViewController = PlayViewController()
-        let navigationController = UINavigationController(rootViewController: playViewController)
-        navigationController.isNavigationBarHidden = true
-        navigationController.modalPresentationStyle = .fullScreen
+        playViewController.onArtistChannelButtonTap = { [weak self] artistId in
+            let activeViewController = ActiveViewController()
+            activeViewController.bindArtistId(artistId: artistId)
+            
+            self?.navigationController?.pushViewController(activeViewController, animated: true)
+        }
+        playViewController.modalPresentationStyle = .fullScreen
         
-        present(navigationController, animated: true, completion: nil)
+        present(playViewController, animated: true, completion: nil)
     }
     
     // MARK: - Functions

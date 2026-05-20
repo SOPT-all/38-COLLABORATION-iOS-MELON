@@ -38,6 +38,10 @@ final class ActiveViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    override func setAction() {
+        rootView.navigateBar.previousButton.addTarget(self, action: #selector(previousButtonDidTap), for: .touchUpInside)
+    }
     // MARK: - Functions
     
     private func fetchArtistDetail() {
@@ -78,5 +82,10 @@ final class ActiveViewController: BaseViewController {
     
     func bindArtistId(artistId: Int) {
         self.artistId = artistId
+    }
+    
+    @objc
+    private func previousButtonDidTap() {
+        navigationController?.popViewController(animated: true)
     }
 }
