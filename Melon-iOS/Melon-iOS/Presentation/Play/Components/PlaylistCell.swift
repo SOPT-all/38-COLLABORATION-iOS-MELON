@@ -24,6 +24,8 @@ final class PlaylistCell: BaseView {
     }
     
     override func setStyle() {
+        backgroundColor = .clear
+        
         albumImageView.do {
             $0.image = .imgHomeMelonchart1
             $0.contentMode = .scaleAspectFit
