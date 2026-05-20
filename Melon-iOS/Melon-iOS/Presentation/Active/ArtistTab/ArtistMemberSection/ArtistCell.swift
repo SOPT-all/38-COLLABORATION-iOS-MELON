@@ -37,7 +37,6 @@ class ArtistCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        // 컬렉션뷰 셀은 재사용되기 때문에 이전 멤버의 이미지 다운로드와 텍스트가 남지 않도록 초기화한다.
         artistImage.kf.cancelDownloadTask()
         artistImage.image = nil
         artistLabel.text = nil
@@ -80,7 +79,7 @@ class ArtistCell: UICollectionViewCell {
 }
 
 extension ArtistCell {
-    func configure(_ artist: ArtistMemberDTO) {
+    func configure(_ artist: ArtistMember) {
         artistImage.kf.setImage(with: URL(string: artist.imageUrl))
         artistLabel.text = artist.name
     }

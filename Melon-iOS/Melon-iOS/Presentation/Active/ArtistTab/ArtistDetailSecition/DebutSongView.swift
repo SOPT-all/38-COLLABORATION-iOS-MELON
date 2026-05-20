@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import Kingfisher
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -107,7 +107,7 @@ final class DebutSongView: BaseView {
         }
     }
     
-    func configure(_ album: RecentAlbumDTO) {
+    func configure(_ album: RecentAlbum) {
         imageView.kf.setImage(with: URL(string: album.imageUrl))
         titleLabel.text = album.title
         artistLabel.text = album.artistName

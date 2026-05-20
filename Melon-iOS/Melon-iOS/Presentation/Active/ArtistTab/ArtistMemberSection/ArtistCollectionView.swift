@@ -14,7 +14,7 @@ final class ArtistCollectionView: BaseView {
     
     //MARK: - Properties
     
-    private var artists: [ArtistMemberDTO] = []
+    private var artists: [ArtistMember] = []
     
     private let flowLayout = UICollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: 100, height: 127)
@@ -66,7 +66,7 @@ final class ArtistCollectionView: BaseView {
         }
     }
     
-    func configure(_ artists: [ArtistMemberDTO]) {
+    func configure(_ artists: [ArtistMember]) {
         self.artists = artists
         collectionView.reloadData()
     }

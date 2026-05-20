@@ -37,7 +37,7 @@ final class ArtistMemberSectionView: BaseView {
         }
     }
     
-    func configure(_ artists: [ArtistMemberDTO]) {
+    func configure(_ artists: [ArtistMember]) {
         artistBody.configure(artists)
     }
 }

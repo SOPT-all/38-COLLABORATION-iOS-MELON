@@ -14,8 +14,8 @@ struct ArtistDetailResponseDTO: Decodable {
     let activeDegree: Int
     let imageUrl: String
     let type: ArtistType
-    let artists: [ArtistMemberDTO]
-    let recentAlbums: [RecentAlbumDTO]
+    let artists: [ArtistMember]
+    let recentAlbums: [RecentAlbum]
     let credit: String
     let yearMonth: String
     let country: String
@@ -25,27 +25,13 @@ struct ArtistDetailResponseDTO: Decodable {
     let description: String
 }
 
-enum ArtistGender: String, Decodable {
-    case female = "F"
-    case male = "M"
-    
-    var displayText: String {
-        switch self {
-        case .female:
-            return "여성"
-        case .male:
-            return "남성"
-        }
-    }
-}
-
-struct ArtistMemberDTO: Decodable {
+struct ArtistMember: Decodable {
     let artistId: Int
     let name: String
     let imageUrl: String
 }
 
-struct RecentAlbumDTO: Decodable {
+struct RecentAlbum: Decodable {
     let albumId: Int
     let title: String
     let artistName: String
