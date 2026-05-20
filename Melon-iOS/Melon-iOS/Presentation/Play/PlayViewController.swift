@@ -24,7 +24,6 @@ final class PlayViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
         getSongDetail()
     }
     
@@ -39,6 +38,7 @@ final class PlayViewController: BaseViewController {
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
+        rootView.downButton.addTarget(self, action: #selector(downButotnDidTap), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -51,6 +51,11 @@ final class PlayViewController: BaseViewController {
     @objc
     private func playButtonDidTap() {
         rootView.togglePlay()
+    }
+    
+    @objc
+    private func downButotnDidTap() {
+        dismiss(animated: true)
     }
     
     // MARK: - Functions

@@ -30,7 +30,7 @@ final class PlayView: BaseView {
     
     private let musicInformationStackView = UIStackView()
     
-    private let downButton = UIButton()
+    lazy var downButton = UIButton()
     
     private let artistChannelButton = UIButton()
     
@@ -114,6 +114,8 @@ final class PlayView: BaseView {
     }
     
     override func setStyle() {
+        backgroundColor = .appBlack
+
         optionButton.do {
             $0.setImage(UIImage(resource: .icMoreVertical2), for: .normal)
         }
@@ -282,19 +284,19 @@ final class PlayView: BaseView {
     
     override func setLayout() {
         optionButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.equalToSuperview().inset(20)
             $0.size.equalTo(24)
         }
         
         musicInformationStackView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.equalTo(optionButton.snp.trailing).offset(23)
             $0.trailing.equalTo(downButton.snp.leading).offset(-33)
         }
         
         downButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(safeAreaLayoutGuide)
             $0.trailing.equalToSuperview().inset(20)
             $0.size.equalTo(24)
         }

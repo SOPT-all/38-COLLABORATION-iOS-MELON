@@ -20,7 +20,7 @@ final class HomeView: BaseView {
     let chartView = ChartSectionView()
     
     private let eventView = EventSectionView()
-    private let musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
+    lazy var musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
     
     var onChartFilterChanged: ((ChartFilter) -> Void)? {
         get { chartView.onFilterChanged }
