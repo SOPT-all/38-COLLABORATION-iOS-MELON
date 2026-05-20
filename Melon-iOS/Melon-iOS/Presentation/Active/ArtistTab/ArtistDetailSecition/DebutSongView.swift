@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -50,7 +51,6 @@ final class DebutSongView: BaseView {
             $0.text = "데뷔곡"
             $0.font = .body_r_14
             $0.textColor = .gray300
-            $0.setContentCompressionResistancePriority(.required, for: .horizontal)
         }
         
         imageView.do {
@@ -103,7 +103,13 @@ final class DebutSongView: BaseView {
         
         artistLabel.snp.makeConstraints {
             $0.leading.equalTo(imageView.snp.trailing).offset(10)
-            $0.top.equalTo(imageView.snp.centerY).offset(1)
+            $0.top.equalTo(imageView.snp.centerY).offset(2)
         }
+    }
+    
+    func configure(_ album: RecentAlbum) {
+        imageView.kf.setImage(with: URL(string: album.imageUrl))
+        titleLabel.text = album.title
+        artistLabel.text = album.artistName
     }
 }
