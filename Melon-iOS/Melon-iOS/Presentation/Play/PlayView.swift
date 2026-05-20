@@ -19,7 +19,6 @@ final class PlayView: BaseView {
     private var heartCount: Int = 0
     private var isHeartSelected = false
     private var isSwipeGuideHidden = false
-    private var items = SongModel(songId: 0, songTitle: "", artistName: "", likeCount: 0, isLiked: false, playTime: "", imageUrl: "")
         
     // MARK: - UI Components
     
@@ -126,13 +125,13 @@ final class PlayView: BaseView {
         }
         
         songTitleLabel.do {
-            $0.text = items.songTitle
+            $0.text = "RUDE!"
             $0.textColor = .appWhite
             $0.font = .title_b_20
         }
         
         artistNameLabel.do {
-            $0.text = items.artistName
+            $0.text = "Hearts2Hearts (하츠투하츠)"
             $0.textColor = .appWhite
             $0.font = .body_r_13
         }
@@ -230,7 +229,7 @@ final class PlayView: BaseView {
         }
         
         nowTimeLabel.do {
-            $0.text = items.playTime
+            $0.text = "1:07"
             $0.textColor = .appWhite
             $0.font = .caption_r_12
         }
@@ -419,11 +418,11 @@ final class PlayView: BaseView {
         }
     }
     
-    func toggleHeart() {
-        isHeartSelected.toggle()
+    func toggleHeart(isLiked: Bool) {
+        isHeartSelected = isLiked
         
         heartButton.configure(
-            text: "\(heartCount)",
+            text: isHeartSelected ? "\(heartCount + 1)" : "\(heartCount)",
             image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
         )
         
@@ -459,7 +458,7 @@ final class PlayView: BaseView {
         artistNameLabel.text = name
         heartCount = likes
         isHeartSelected = isLiked
-        nowTimeLabel.text = playTime
+        songTimeLabel.text = playTime
         
         let url = URL(string: imgURL)
         albumImageView.kf.setImage(with: url)

@@ -20,8 +20,9 @@ final class MusicPlayerBar: UIButton {
     // MARK: - UI Components
     
     private let songTitleLabel = UILabel()
-    
     private let songArtistLabel = UILabel()
+    
+    private let titleStackView = UIStackView()
     
     private let previousButton = UIButton()
     private let playButton = UIButton()
@@ -67,9 +68,10 @@ final class MusicPlayerBar: UIButton {
     private func setUI() {
         backgroundColor = .appBlack
         
+        titleStackView.addArrangedSubviews(songTitleLabel, songArtistLabel)
+        
         addSubviews(
-            songTitleLabel,
-            songArtistLabel,
+            titleStackView,
             playerButtonStackView
         )
         
@@ -92,6 +94,12 @@ final class MusicPlayerBar: UIButton {
             $0.text = songArtist
             $0.font = .caption_r_12
             $0.textColor = .gray500
+        }
+        
+        titleStackView.do {
+            $0.axis = .vertical
+            $0.spacing = 3
+            $0.alignment = .leading
         }
         
         playerButtonStackView.do {
@@ -119,13 +127,15 @@ final class MusicPlayerBar: UIButton {
     
     private func setLayout() {
         songTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(11)
-            $0.leading.equalToSuperview().inset(20)
             $0.height.equalTo(18)
         }
         
         songArtistLabel.snp.makeConstraints {
-            $0.top.equalTo(songTitleLabel.snp.bottom).offset(3)
+            $0.height.equalTo(19)
+        }
+        
+        titleStackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
         }
         
