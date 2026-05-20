@@ -23,6 +23,8 @@ final class ActiveTopNavigateBar: BaseView {
     }
     
     override func setStyle() {
+        backgroundColor = .clear
+        
         previousButton.do {
             $0.setImage(.icChevronLeft, for: .normal)
         }

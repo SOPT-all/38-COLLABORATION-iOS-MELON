@@ -41,12 +41,8 @@ final class HomeViewController: BaseViewController {
         let playViewController = PlayViewController()
         let navigationController = UINavigationController(rootViewController: playViewController)
         navigationController.isNavigationBarHidden = true
-        navigationController.modalPresentationStyle = .pageSheet
-
-        if let sheet = navigationController.sheetPresentationController {
-            sheet.detents = [.large()]
-            sheet.prefersGrabberVisible = false
-        }
+        navigationController.modalPresentationStyle = .fullScreen
+        
         present(navigationController, animated: true, completion: nil)
     }
     
