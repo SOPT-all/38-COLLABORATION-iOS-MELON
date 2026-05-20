@@ -30,26 +30,6 @@ final class ActiveArtistInfo: BaseView {
     
     private let shareButton = UIButton()
     
-    // MARK: - Initializer
-    
-    init() {
-        super.init(frame: .zero)
-
-        degreeIcon.image = {
-            switch degree {
-            case 20: return .imgActiveDegree20
-            case 40: return .imgActiveDegree40
-            case 60: return .imgActiveDegree60
-            case 80: return .imgActiveDegree80
-            default: return .imgActiveDegree0
-            }
-        }()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - UI Settings
     
     override func setUI() {
@@ -139,7 +119,20 @@ final class ActiveArtistInfo: BaseView {
     func configureArtistInfo(_ response: ArtistDetailResponseDTO) {
         artistNameLabel.text = response.name
         degree = response.activeDegree
-        starCountLabel.text = String(response.fanCount)
-        chatCountLabel.text = String(response.commentCount)
+        
+        degreeIcon.image = {
+            switch degree {
+            case 20..<40: return .imgActiveDegree20
+            case 40..<60: return .imgActiveDegree40
+            case 60..<80: return .imgActiveDegree60
+            case 80..<100: return .imgActiveDegree80
+            default: return .imgActiveDegree0
+            }
+        }()
+    }
+    
+    func configureFormatedCount(fanCount: String, commentCount: String) {
+        starCountLabel.text = fanCount
+        chatCountLabel.text = commentCount
     }
 }

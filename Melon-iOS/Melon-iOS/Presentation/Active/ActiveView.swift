@@ -25,7 +25,7 @@ final class ActiveView: BaseView {
     
     private let navigateBar = ActiveTopNavigateBar()
     
-    private let heroSection  = ActiveHeroSection()
+    let heroSection  = ActiveHeroSection()
     private let tabView = ActiveTabView(titles: ["곡•앨범", "팬 활동", "아티스트"], seletedIndex: 0)
     
     private var enabledTabView: UIView?
@@ -123,5 +123,6 @@ final class ActiveView: BaseView {
     
     func configureArtistDetail(_ response: ArtistDetailResponseDTO) {
         artistTabView.configure(response)
+        heroSection.configureActiveHeroSection(response)
     }
 }
