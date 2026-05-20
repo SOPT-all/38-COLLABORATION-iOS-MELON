@@ -4,7 +4,7 @@
 //
 //  Created by 초긍정행운의포춘쿠키 on 5/19/26.
 //
-import UIKit
+import Foundation
 
 struct ArtistDetailResponseDTO: Decodable {
     let artistId: Int
@@ -19,10 +19,24 @@ struct ArtistDetailResponseDTO: Decodable {
     let credit: String
     let yearMonth: String
     let country: String
-    let gender: String
+    let gender: ArtistGender
     let agency: String
     let awardHistory: [String]
     let description: String
+}
+
+enum ArtistGender: String, Decodable {
+    case female = "F"
+    case male = "M"
+    
+    var displayText: String {
+        switch self {
+        case .female:
+            return "여성"
+        case .male:
+            return "남성"
+        }
+    }
 }
 
 struct ArtistMemberDTO: Decodable {
