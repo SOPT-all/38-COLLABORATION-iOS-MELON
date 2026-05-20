@@ -12,13 +12,13 @@ import Then
 
 final class SongListView: BaseView {
     // MARK: - Properties
+    
+    private var songListItems: [artistSongDTO] = []
 
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: ActiveLayout.songList()
     )
-
-    private var itemList = SongListDTO.dummy()
     
     // MARK: - Initializer
     
@@ -44,6 +44,11 @@ final class SongListView: BaseView {
             SongListCell.self,
             forCellWithReuseIdentifier: SongListCell.identifier
         )
+    }
+    
+    func updateSongList(items: [artistSongDTO]) {
+        songListItems = items
+        collectionView.reloadData()
     }
 
     // MARK: - UI Settings
@@ -71,7 +76,7 @@ extension SongListView: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        itemList.count
+        songListItems.count
     }
 
     func collectionView(
@@ -87,7 +92,7 @@ extension SongListView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.configure(itemList[indexPath.item])
+        cell.configure(songListItems[indexPath.item])
         return cell
     }
 }

@@ -13,16 +13,35 @@ import Then
 final class SongAlbumTabView: BaseView {
     // MARK: - Properties
     
-    private static let songFilterList: KeyValuePairs<String, String> = ["1": "인기순", "2": "최신순", "3": "다운로드순", "4": "플레이리스트"]
+    var onSongListSortChanged: ((ArtistSongListFilter) -> Void)?
+    
+    private static let songFilterList: KeyValuePairs<String, String> = [
+        ArtistSongListFilter.hot.rawValue: ArtistSongListFilter.hot.displayName,
+        ArtistSongListFilter.latest.rawValue: ArtistSongListFilter.latest.displayName,
+        ArtistSongListFilter.download.rawValue: ArtistSongListFilter.download.displayName,
+        ArtistSongListFilter.play.rawValue: ArtistSongListFilter.play.displayName
+    ]
     
     // MARK: - UI Properties
     
     private let songSectionHeader = ActiveViewSectionHeader(title: "곡")
-    private let songFilterBarView = FilterBarView(items: songFilterList, selectedID: "1")
-    private let songCollectionView = SongListView()
+    private let songFilterBarView = FilterBarView(items: songFilterList, selectedID: ArtistSongListFilter.hot.rawValue)
+    let songCollectionView = SongListView()
     
     private let albumSectionHeader = ActiveViewSectionHeader(title: "최신 앨범")
     private let albumCollectionView = AlbumListView()
+    
+    // MARK: - Initializer
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        bindSort()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - UI Settings
     
@@ -67,4 +86,12 @@ final class SongAlbumTabView: BaseView {
         }
     }
     
+    // MARK: - Functions
+    
+    private func bindSort() {
+        songFilterBarView.onSelect = { [weak self] id, _ in
+            guard let sort = ArtistSongListFilter(rawValue: id) else {return}
+            self?.onSongListSortChanged?(sort)
+        }
+    }
 }
