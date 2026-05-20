@@ -11,6 +11,10 @@ import SnapKit
 import Then
 
 final class ActiveArtistInfo: BaseView {
+    // MARK: - Properties
+    
+    private var degree: Int = 0
+
     // MARK: - UI Properties
     
     private let artistNameLabel = UILabel()
@@ -28,11 +32,9 @@ final class ActiveArtistInfo: BaseView {
     
     // MARK: - Initializer
     
-    init(artistName: String, starCount: String, chatCount: String, degree: Int) {
+    init() {
         super.init(frame: .zero)
-        artistNameLabel.text = artistName
-        starCountLabel.text = starCount
-        chatCountLabel.text = chatCount
+
         degreeIcon.image = {
             switch degree {
             case 20: return .imgActiveDegree20
@@ -101,31 +103,43 @@ final class ActiveArtistInfo: BaseView {
     
     override func setLayout() {
         artistNameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
+            $0.bottom.equalTo(metaInfoStarStackView.snp.top).offset(-8)
             $0.width.equalTo(249)
         }
         
         degreeIcon.snp.makeConstraints {
             $0.top.equalToSuperview().inset(31)
             $0.trailing.equalToSuperview().inset(18)
+            $0.bottom.equalToSuperview().inset(31)
         }
         
         metaInfoStarStackView.snp.makeConstraints {
             $0.top.equalTo(artistNameLabel.snp.bottom).offset(8)
             $0.leading.equalTo(artistNameLabel)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(14)
         }
         
         metaInfoChatStackView.snp.makeConstraints {
-            $0.top.equalTo(metaInfoStarStackView)
+            $0.top.equalTo(metaInfoStarStackView.snp.top)
             $0.leading.equalTo(metaInfoStarStackView.snp.trailing).offset(12)
+            $0.bottom.equalTo(metaInfoStarStackView.snp.bottom)
         }
         
         shareButton.snp.makeConstraints {
             $0.top.equalTo(metaInfoStarStackView)
             $0.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalTo(metaInfoStarStackView.snp.bottom)
             $0.size.equalTo(24)
         }
+    }
+    
+    // MARK: - Functions
+    
+    func configureArtistInfo(_ response: ArtistDetailResponseDTO) {
+        artistNameLabel.text = response.name
+        degree = response.activeDegree
+        starCountLabel.text = String(response.fanCount)
+        chatCountLabel.text = String(response.commentCount)
     }
 }
