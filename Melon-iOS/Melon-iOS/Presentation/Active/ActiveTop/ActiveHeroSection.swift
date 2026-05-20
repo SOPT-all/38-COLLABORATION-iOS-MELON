@@ -14,6 +14,8 @@ import Then
 final class ActiveHeroSection: BaseView {
     // MARK: - UI Properties
     
+    private let gradientLayer = CAGradientLayer()
+    
     private let artistImage = UIImageView()
     
     let artistInfoView = ActiveArtistInfo()
@@ -22,11 +24,31 @@ final class ActiveHeroSection: BaseView {
     
     // MARK: - UI Setting
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer.frame = artistImage.bounds
+    }
+    
     override func setUI() {
         addSubviews(artistImage, artistInfoView, mixUpButton)
+        artistImage.layer.addSublayer(gradientLayer)
     }
     
     override func setStyle() {
+        gradientLayer.do {
+            $0.colors = [
+                UIColor.black.cgColor,
+                UIColor.clear.cgColor
+            ]
+            $0.startPoint = CGPoint(x: 0.5, y: 1)
+            $0.endPoint = CGPoint(x: 0.5, y: 0)
+        }
+        
+        artistImage.do {
+            $0.image = .imgActiveH2H
+        }
+        
         mixUpButton.do {
             var config = UIButton.Configuration.plain()
             config.image = .imgMixup.resize(to: CGSize(width: 26, height: 26))
