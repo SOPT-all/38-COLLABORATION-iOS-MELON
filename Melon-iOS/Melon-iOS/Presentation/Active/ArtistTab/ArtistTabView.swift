@@ -42,4 +42,9 @@ final class ArtistTabView: BaseView {
             $0.edges.equalToSuperview()
         }
     }
+    
+    func configure(_ response: ArtistDetailResponseDTO) {
+        artistMemberSection.configure(response.artists)
+        artistDetailSection.configure(response)
+    }
 }
