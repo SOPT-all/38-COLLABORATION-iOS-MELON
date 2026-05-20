@@ -13,7 +13,7 @@ import Then
 final class ActiveViewController: BaseViewController {
     // MARK: - Properties
     
-    var artistId: Int = 10
+    var artistId: Int = 13
     
     private let songListService: SongListService = DefaultSongListService()
     

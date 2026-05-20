@@ -124,5 +124,6 @@ final class ActiveView: BaseView {
     func configureArtistDetail(_ response: ArtistDetailResponseDTO) {
         artistTabView.configure(response)
         heroSection.configureActiveHeroSection(response)
+        songAlbumTabView.albumCollectionView.updateRecentAlbum(album: response.recentAlbums)
     }
 }
