@@ -58,7 +58,7 @@ final class PlayViewController: BaseViewController {
     }
     
     @objc
-    private func downButotnDidTap() {
+    private func downButtonDidTap() {
         dismiss(animated: true)
     }
     
