@@ -64,11 +64,11 @@ final class PlayView: BaseView {
     
     lazy var shuffleButton = UIButton()
     
-    private let previousButton = UIButton()
+    lazy var previousButton = UIButton()
     
     lazy var playButton = UIButton()
     
-    private let nextButton = UIButton()
+    lazy var nextButton = UIButton()
     
     private let playButtonStackView = UIStackView()
     

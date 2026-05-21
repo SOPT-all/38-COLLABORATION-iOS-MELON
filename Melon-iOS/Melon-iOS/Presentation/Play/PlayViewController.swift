@@ -45,6 +45,8 @@ final class PlayViewController: BaseViewController {
         rootView.repeatButton.addTarget(self, action: #selector(repeatButtonDidTap), for: .touchUpInside)
         rootView.downButton.addTarget(self, action: #selector(downButtonDidTap), for: .touchUpInside)
         rootView.artistChannelButton.addTarget(self, action: #selector(artistChannelButtonDidTap), for: .touchUpInside)
+        rootView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        rootView.previousButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -82,6 +84,12 @@ final class PlayViewController: BaseViewController {
         dismiss(animated: false) {
             onArtistChannelButtonTap?(artistId)
         }
+    }
+    
+    @objc
+    private func nextButtonDidTap() {
+        makeRandomNumber()
+        getSongDetail()
     }
     
     // MARK: - Functions
