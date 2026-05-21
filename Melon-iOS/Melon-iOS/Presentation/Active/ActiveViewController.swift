@@ -14,6 +14,8 @@ final class ActiveViewController: BaseViewController {
     // MARK: - Properties
     
     private var artistId = Int()
+    private var songTitle = String()
+    private var artistName = String()
     
     private let songListService: SongListService = DefaultSongListService()
     
@@ -33,6 +35,7 @@ final class ActiveViewController: BaseViewController {
         fetchArtistDetail()
         getSongList(sort: .hot)
         onSortChanged()
+        rootView.configurePlayBar(title: songTitle, name: artistName)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +85,11 @@ final class ActiveViewController: BaseViewController {
     
     func bindArtistId(artistId: Int) {
         self.artistId = artistId
+    }
+    
+    func bindSongInfo(title: String, name: String) {
+        songTitle = title
+        artistName = name
     }
     
     @objc

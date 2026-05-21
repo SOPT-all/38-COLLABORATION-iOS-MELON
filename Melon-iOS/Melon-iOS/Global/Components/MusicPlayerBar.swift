@@ -48,10 +48,10 @@ final class MusicPlayerBar: UIButton {
     }
     
     // MARK: - Setup Methods
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         layer.addBorder(
             position: .bottom,
             color: .gray600,
@@ -149,5 +149,10 @@ final class MusicPlayerBar: UIButton {
             $0.verticalEdges.equalToSuperview().inset(15)
             $0.trailing.equalToSuperview().inset(20)
         }
+    }
+    
+    func configure(title: String, artist: String) {
+        songTitleLabel.text = title
+        songArtistLabel.text = artist
     }
 }
