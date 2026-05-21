@@ -41,6 +41,8 @@ final class PlayViewController: BaseViewController {
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
+        rootView.shuffleButton.addTarget(self, action: #selector(shuffleButtonDidTap), for: .touchUpInside)
+        rootView.repeatButton.addTarget(self, action: #selector(repeatButtonDidTap), for: .touchUpInside)
         rootView.downButton.addTarget(self, action: #selector(downButtonDidTap), for: .touchUpInside)
         rootView.artistChannelButton.addTarget(self, action: #selector(artistChannelButtonDidTap), for: .touchUpInside)
     }
@@ -55,6 +57,16 @@ final class PlayViewController: BaseViewController {
     @objc
     private func playButtonDidTap() {
         rootView.togglePlay()
+    }
+    
+    @objc
+    private func shuffleButtonDidTap() {
+        rootView.toggleShuffle()
+    }
+    
+    @objc
+    private func repeatButtonDidTap() {
+        rootView.toggleRefeat()
     }
     
     @objc

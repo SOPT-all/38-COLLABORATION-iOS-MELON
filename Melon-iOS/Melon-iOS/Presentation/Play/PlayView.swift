@@ -62,7 +62,7 @@ final class PlayView: BaseView {
     
     private let songTimeLabel = UILabel()
     
-    private let shuffleButton = UIButton()
+    lazy var shuffleButton = UIButton()
     
     private let previousButton = UIButton()
     
@@ -72,7 +72,7 @@ final class PlayView: BaseView {
     
     private let playButtonStackView = UIStackView()
     
-    private let repeatButton = UIButton()
+    lazy var repeatButton = UIButton()
         
     private let equalizerButton = UIButton()
     
@@ -451,6 +451,16 @@ final class PlayView: BaseView {
     func togglePlay() {
         playButton.isSelected.toggle()
         playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
+    }
+    
+    func toggleShuffle() {
+        shuffleButton.isSelected.toggle()
+        shuffleButton.setImage(UIImage(resource: shuffleButton.isSelected ? .icShufflePressed : .icShuffle), for: .normal)
+    }
+    
+    func toggleRefeat() {
+        repeatButton.isSelected.toggle()
+        repeatButton.setImage(UIImage(resource: repeatButton.isSelected ? .icRepeatPressed : .icRepeat), for: .normal)
     }
     
     func configure(title: String, name: String, imgURL: String, likes: Int, isLiked: Bool, playTime: String) {
