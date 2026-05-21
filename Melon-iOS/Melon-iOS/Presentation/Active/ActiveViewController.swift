@@ -13,7 +13,7 @@ import Then
 final class ActiveViewController: BaseViewController {
     // MARK: - Properties
     
-    var artistId: Int = 13
+    private var artistId = Int()
     
     private let songListService: SongListService = DefaultSongListService()
     
@@ -37,7 +37,10 @@ final class ActiveViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func setAction() {
+        rootView.navigateBar.previousButton.addTarget(self, action: #selector(previousButtonDidTap), for: .touchUpInside)
     }
     // MARK: - Functions
     
@@ -75,5 +78,14 @@ final class ActiveViewController: BaseViewController {
         rootView.onSongListSortChanged = { [weak self] sort in
             self?.getSongList(sort: sort)
         }
+    }
+    
+    func bindArtistId(artistId: Int) {
+        self.artistId = artistId
+    }
+    
+    @objc
+    private func previousButtonDidTap() {
+        navigationController?.popViewController(animated: true)
     }
 }

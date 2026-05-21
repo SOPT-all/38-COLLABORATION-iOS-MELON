@@ -100,28 +100,34 @@ final class MusicPlayerBar: UIButton {
             $0.axis = .vertical
             $0.spacing = 3
             $0.alignment = .leading
+            $0.isUserInteractionEnabled = false
         }
         
         playerButtonStackView.do {
             $0.axis = .horizontal
             $0.alignment = .center
             $0.spacing = 10
+            $0.isUserInteractionEnabled = false
         }
         
         previousButton.do {
             $0.setImage(UIImage(resource: .icPlayPrevious), for: .normal)
+            $0.isUserInteractionEnabled = false
         }
         
         playButton.do {
             $0.setImage(UIImage(resource: .icPlayFilled).resize(to: CGSize(width: 28, height: 28)), for: .normal)
+            $0.isUserInteractionEnabled = false
         }
         
         nextButton.do {
             $0.setImage(UIImage(resource: .icPlayNext), for: .normal)
+            $0.isUserInteractionEnabled = false
         }
         
         songListButton.do {
             $0.setImage(UIImage(resource: .icPlaylist), for: .normal)
+            $0.isUserInteractionEnabled = false
         }
     }
     

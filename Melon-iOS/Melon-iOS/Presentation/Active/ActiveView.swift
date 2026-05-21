@@ -23,7 +23,7 @@ final class ActiveView: BaseView {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
-    private let navigateBar = ActiveTopNavigateBar()
+    let navigateBar = ActiveTopNavigateBar()
     
     let heroSection  = ActiveHeroSection()
     private let tabView = ActiveTabView(titles: ["곡•앨범", "팬 활동", "아티스트"], seletedIndex: 0)
@@ -93,7 +93,7 @@ final class ActiveView: BaseView {
         
         musicPlayerBar.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(70)
         }
     }

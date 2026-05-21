@@ -14,6 +14,9 @@ final class PlayViewController: BaseViewController {
     private let rootView = PlayView()
     private let service = DefaultSongDetailService()
     private var songId = 0
+    private var artistId = 0
+    
+    var onArtistChannelButtonTap: ((Int) -> Void)?
     
     // MARK: - Life Cycle
     
@@ -24,7 +27,6 @@ final class PlayViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
         getSongDetail()
     }
     
@@ -39,6 +41,8 @@ final class PlayViewController: BaseViewController {
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
+        rootView.downButton.addTarget(self, action: #selector(downButtonDidTap), for: .touchUpInside)
+        rootView.artistChannelButton.addTarget(self, action: #selector(artistChannelButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -53,6 +57,21 @@ final class PlayViewController: BaseViewController {
         rootView.togglePlay()
     }
     
+    @objc
+    private func downButtonDidTap() {
+        dismiss(animated: true)
+    }
+    
+    @objc
+    private func artistChannelButtonDidTap() {
+        let artistId = artistId
+        let onArtistChannelButtonTap = onArtistChannelButtonTap
+        
+        dismiss(animated: false) {
+            onArtistChannelButtonTap?(artistId)
+        }
+    }
+    
     // MARK: - Functions
     
     private func getSongDetail() {
@@ -64,6 +83,7 @@ final class PlayViewController: BaseViewController {
                 let artistName = song.artists.map { $0.name }.joined(separator: ", ")
                 
                 rootView.configure(title: song.title, name: artistName, imgURL: song.album.imageUrl, likes: song.likeCount, isLiked: song.isLiked, playTime: song.playTime)
+                artistId = song.artists.first?.artistId ?? 0
             } catch {
                 print("곡 정보 조회 실패: \(error)")
             }

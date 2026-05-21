@@ -40,6 +40,7 @@ final class ArtistTabView: BaseView {
     override func setLayout() {
         contentStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(70)
         }
     }
     

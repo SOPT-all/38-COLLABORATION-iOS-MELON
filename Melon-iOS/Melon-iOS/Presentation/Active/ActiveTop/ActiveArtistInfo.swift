@@ -39,6 +39,8 @@ final class ActiveArtistInfo: BaseView {
     }
     
     override func setStyle() {
+        backgroundColor = .clear
+        
         artistNameLabel.do {
             $0.textColor = .appWhite
             $0.font = .title_b_36

@@ -20,7 +20,7 @@ final class HomeView: BaseView {
     let chartView = ChartSectionView()
     
     private let eventView = EventSectionView()
-    private let musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
+    lazy var musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
     
     var onChartFilterChanged: ((ChartFilter) -> Void)? {
         get { chartView.onFilterChanged }
@@ -39,7 +39,6 @@ final class HomeView: BaseView {
     }
 
     override func setStyle() {
-        backgroundColor = .appBlack
         contentStackView.do {
             $0.axis = .vertical
             $0.alignment = .fill
@@ -66,7 +65,7 @@ final class HomeView: BaseView {
         
         musicPlayerBar.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(70)
         }
     }

@@ -15,6 +15,8 @@ final class HomeViewController: BaseViewController {
     
     private let rootView = HomeView()
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,8 +26,31 @@ final class HomeViewController: BaseViewController {
     
     override func loadView() {
         view = rootView
-        navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+    // MARK: - Setup Methods
+    
+    override func setAction() {
+        rootView.musicPlayerBar.addTarget(self, action: #selector(musicPlayerBarDidTap), for: .touchUpInside)
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func musicPlayerBarDidTap() {
+        let playViewController = PlayViewController()
+        playViewController.onArtistChannelButtonTap = { [weak self] artistId in
+            let activeViewController = ActiveViewController()
+            activeViewController.bindArtistId(artistId: artistId)
+            
+            self?.navigationController?.pushViewController(activeViewController, animated: true)
+        }
+        playViewController.modalPresentationStyle = .fullScreen
+        
+        present(playViewController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Functions
     
     private func bindFilter() {
         rootView.onChartFilterChanged = { [weak self] filter in

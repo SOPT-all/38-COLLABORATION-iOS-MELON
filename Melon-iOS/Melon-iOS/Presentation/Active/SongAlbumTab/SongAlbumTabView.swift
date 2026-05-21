@@ -82,7 +82,7 @@ final class SongAlbumTabView: BaseView {
             $0.top.equalTo(albumSectionHeader.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(220)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(70)
         }
     }
     
