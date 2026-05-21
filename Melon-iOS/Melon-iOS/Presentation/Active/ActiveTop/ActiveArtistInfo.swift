@@ -12,16 +12,16 @@ import Then
 
 final class ActiveArtistInfo: BaseView {
     // MARK: - Properties
-    
+
     private var degree: Int = 0
 
     // MARK: - UI Properties
-    
+
     private let artistNameLabel = UILabel()
     private let degreeIcon = UIImageView()
-    
+
     private let metaInfoStarStackView = UIStackView()
-    private let starButton = UIButton()
+    let starButton = UIButton()
     private let starCountLabel = UILabel()
     
     private let metaInfoChatStackView = UIStackView()
@@ -136,5 +136,9 @@ final class ActiveArtistInfo: BaseView {
     func configureFormatedCount(fanCount: String, commentCount: String) {
         starCountLabel.text = fanCount
         chatCountLabel.text = commentCount
+    }
+
+    func updateStarCount(_ text: String) {
+        starCountLabel.text = text
     }
 }

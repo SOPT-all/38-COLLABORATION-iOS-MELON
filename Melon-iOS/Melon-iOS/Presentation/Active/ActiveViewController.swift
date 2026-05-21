@@ -14,6 +14,7 @@ final class ActiveViewController: BaseViewController {
     // MARK: - Properties
     
     private var artistId = Int()
+    private var rawFanCount: Int = 0
     private var songTitle = String()
     private var artistName = String()
     
@@ -44,6 +45,7 @@ final class ActiveViewController: BaseViewController {
     
     override func setAction() {
         rootView.navigateBar.previousButton.addTarget(self, action: #selector(previousButtonDidTap), for: .touchUpInside)
+        rootView.heroSection.artistInfoView.starButton.addTarget(self, action: #selector(starButtonTapped), for: .touchUpInside)
     }
     // MARK: - Functions
     
@@ -57,6 +59,7 @@ final class ActiveViewController: BaseViewController {
                 let formatterdFanCount = numberFormatter.string(from: NSNumber(value: response.fanCount))
                 let formatterdCommentCount = numberFormatter.string(from: NSNumber(value: response.commentCount))
                 
+                self.rawFanCount = response.fanCount
                 rootView.heroSection.artistInfoView.configureFormatedCount(fanCount: formatterdFanCount ?? "0", commentCount: formatterdCommentCount ?? "0")
                 rootView.configureArtistDetail(response)
             } catch {
@@ -95,5 +98,15 @@ final class ActiveViewController: BaseViewController {
     @objc
     private func previousButtonDidTap() {
         navigationController?.popViewController(animated: true)
+    }
+
+    @objc
+    private func starButtonTapped() {
+        let artistInfoView = rootView.heroSection.artistInfoView
+        artistInfoView.starButton.isSelected.toggle()
+        rawFanCount += artistInfoView.starButton.isSelected ? 1 : -1
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        artistInfoView.updateStarCount(numberFormatter.string(from: NSNumber(value: rawFanCount)) ?? "\(rawFanCount)")
     }
 }
