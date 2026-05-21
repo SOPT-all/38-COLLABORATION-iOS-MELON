@@ -27,6 +27,7 @@ final class PlayViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        makeRandomNumber()
         getSongDetail()
     }
     
@@ -95,8 +96,6 @@ final class PlayViewController: BaseViewController {
     // MARK: - Functions
     
     private func getSongDetail() {
-        makeRandomNumber()
-        
         Task {
             do {
                 let song = try await service.getSongDetail(songId: songId)

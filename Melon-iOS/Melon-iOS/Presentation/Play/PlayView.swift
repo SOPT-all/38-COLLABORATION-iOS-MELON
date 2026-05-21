@@ -420,9 +420,9 @@ final class PlayView: BaseView {
     
     func toggleHeart(isLiked: Bool) {
         isHeartSelected = isLiked
-        
+        heartCount = isHeartSelected ? heartCount + 1 : heartCount - 1
         heartButton.configure(
-            text: isHeartSelected ? "\(heartCount + 1)" : "\(heartCount)",
+            text: "\(heartCount)",
             image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
         )
         
@@ -472,5 +472,18 @@ final class PlayView: BaseView {
         
         let url = URL(string: imgURL)
         albumImageView.kf.setImage(with: url)
+        
+        heartButton.configure(
+            text: "\(heartCount)",
+            image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
+        )
+        
+        shuffleButton.isSelected = false
+        playButton.isSelected = false
+        repeatButton.isSelected = false
+        
+        shuffleButton.setImage(UIImage(resource: shuffleButton.isSelected ? .icShufflePressed : .icShuffle), for: .normal)
+        playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
+        repeatButton.setImage(UIImage(resource: repeatButton.isSelected ? .icRepeatPressed : .icRepeat), for: .normal)
     }
 }
