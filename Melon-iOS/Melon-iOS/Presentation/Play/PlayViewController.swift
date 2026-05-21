@@ -41,7 +41,7 @@ final class PlayViewController: BaseViewController {
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
-        rootView.downButton.addTarget(self, action: #selector(downButotnDidTap), for: .touchUpInside)
+        rootView.downButton.addTarget(self, action: #selector(downButtonDidTap), for: .touchUpInside)
         rootView.artistChannelButton.addTarget(self, action: #selector(artistChannelButtonDidTap), for: .touchUpInside)
     }
     
