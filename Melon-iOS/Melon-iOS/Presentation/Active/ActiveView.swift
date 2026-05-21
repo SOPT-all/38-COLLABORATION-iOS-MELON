@@ -17,9 +17,9 @@ final class ActiveView: BaseView {
         get { songAlbumTabView.onSongListSortChanged }
         set { songAlbumTabView.onSongListSortChanged = newValue }
     }
-
+    
     // MARK: - UI Properties
-
+    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -33,7 +33,7 @@ final class ActiveView: BaseView {
     private let fanTabView = FanTabView()
     private let artistTabView = ArtistTabView()
     
-    private let musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
+    private var musicPlayerBar = MusicPlayerBar(title: "KARMA COLLECTOR", artist: "식케이 (Sik-k), 김하온 (HAON),N...")
     
     // MARK: - Initializer
     
@@ -48,7 +48,7 @@ final class ActiveView: BaseView {
     }
     
     // MARK: - UI Settings
-
+    
     override func setUI() {
         contentView.addSubviews(heroSection, navigateBar, tabView)
         scrollView.addSubview(contentView)
@@ -85,7 +85,7 @@ final class ActiveView: BaseView {
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(522)
         }
-
+        
         tabView.snp.makeConstraints {
             $0.top.equalTo(heroSection.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
@@ -125,5 +125,9 @@ final class ActiveView: BaseView {
         artistTabView.configure(response)
         heroSection.configureActiveHeroSection(response)
         songAlbumTabView.albumCollectionView.updateRecentAlbum(album: response.recentAlbums)
+    }
+    
+    func configurePlayBar(title: String, name: String) {
+        musicPlayerBar.configure(title: title, artist: name)
     }
 }

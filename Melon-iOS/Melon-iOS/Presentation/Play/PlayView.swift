@@ -62,17 +62,17 @@ final class PlayView: BaseView {
     
     private let songTimeLabel = UILabel()
     
-    private let shuffleButton = UIButton()
+    lazy var shuffleButton = UIButton()
     
-    private let previousButton = UIButton()
+    lazy var previousButton = UIButton()
     
     lazy var playButton = UIButton()
     
-    private let nextButton = UIButton()
+    lazy var nextButton = UIButton()
     
     private let playButtonStackView = UIStackView()
     
-    private let repeatButton = UIButton()
+    lazy var repeatButton = UIButton()
         
     private let equalizerButton = UIButton()
     
@@ -420,9 +420,9 @@ final class PlayView: BaseView {
     
     func toggleHeart(isLiked: Bool) {
         isHeartSelected = isLiked
-        
+        heartCount = isHeartSelected ? heartCount + 1 : heartCount - 1
         heartButton.configure(
-            text: isHeartSelected ? "\(heartCount + 1)" : "\(heartCount)",
+            text: "\(heartCount)",
             image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
         )
         
@@ -453,6 +453,16 @@ final class PlayView: BaseView {
         playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
     }
     
+    func toggleShuffle() {
+        shuffleButton.isSelected.toggle()
+        shuffleButton.setImage(UIImage(resource: shuffleButton.isSelected ? .icShufflePressed : .icShuffle), for: .normal)
+    }
+    
+    func toggleRefeat() {
+        repeatButton.isSelected.toggle()
+        repeatButton.setImage(UIImage(resource: repeatButton.isSelected ? .icRepeatPressed : .icRepeat), for: .normal)
+    }
+    
     func configure(title: String, name: String, imgURL: String, likes: Int, isLiked: Bool, playTime: String) {
         songTitleLabel.text = title
         artistNameLabel.text = name
@@ -462,5 +472,18 @@ final class PlayView: BaseView {
         
         let url = URL(string: imgURL)
         albumImageView.kf.setImage(with: url)
+        
+        heartButton.configure(
+            text: "\(heartCount)",
+            image: isHeartSelected ? .icMiniheartPressed : .icMiniheart
+        )
+        
+        shuffleButton.isSelected = false
+        playButton.isSelected = false
+        repeatButton.isSelected = false
+        
+        shuffleButton.setImage(UIImage(resource: shuffleButton.isSelected ? .icShufflePressed : .icShuffle), for: .normal)
+        playButton.setImage(UIImage(resource: playButton.isSelected ? .icStopBig : .icPlayBig), for: .normal)
+        repeatButton.setImage(UIImage(resource: repeatButton.isSelected ? .icRepeatPressed : .icRepeat), for: .normal)
     }
 }

@@ -39,9 +39,10 @@ final class HomeViewController: BaseViewController {
     @objc
     private func musicPlayerBarDidTap() {
         let playViewController = PlayViewController()
-        playViewController.onArtistChannelButtonTap = { [weak self] artistId in
+        playViewController.onArtistChannelButtonTap = { [weak self] artistId, songTitle, artistName in
             let activeViewController = ActiveViewController()
             activeViewController.bindArtistId(artistId: artistId)
+            activeViewController.bindSongInfo(title: songTitle, name: artistName)
             
             self?.navigationController?.pushViewController(activeViewController, animated: true)
         }

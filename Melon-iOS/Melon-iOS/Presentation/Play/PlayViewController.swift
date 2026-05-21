@@ -15,8 +15,10 @@ final class PlayViewController: BaseViewController {
     private let service = DefaultSongDetailService()
     private var songId = 0
     private var artistId = 0
+    private var songTitle = ""
+    private var artistName = ""
     
-    var onArtistChannelButtonTap: ((Int) -> Void)?
+    var onArtistChannelButtonTap: ((Int, String, String) -> Void)?
     
     // MARK: - Life Cycle
     
@@ -27,6 +29,7 @@ final class PlayViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        makeRandomNumber()
         getSongDetail()
     }
     
@@ -41,8 +44,12 @@ final class PlayViewController: BaseViewController {
     override func setAction() {
         rootView.heartButton.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         rootView.playButton.addTarget(self, action: #selector(playButtonDidTap), for: .touchUpInside)
+        rootView.shuffleButton.addTarget(self, action: #selector(shuffleButtonDidTap), for: .touchUpInside)
+        rootView.repeatButton.addTarget(self, action: #selector(repeatButtonDidTap), for: .touchUpInside)
         rootView.downButton.addTarget(self, action: #selector(downButtonDidTap), for: .touchUpInside)
         rootView.artistChannelButton.addTarget(self, action: #selector(artistChannelButtonDidTap), for: .touchUpInside)
+        rootView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        rootView.previousButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -58,6 +65,16 @@ final class PlayViewController: BaseViewController {
     }
     
     @objc
+    private func shuffleButtonDidTap() {
+        rootView.toggleShuffle()
+    }
+    
+    @objc
+    private func repeatButtonDidTap() {
+        rootView.toggleRefeat()
+    }
+    
+    @objc
     private func downButtonDidTap() {
         dismiss(animated: true)
     }
@@ -65,18 +82,25 @@ final class PlayViewController: BaseViewController {
     @objc
     private func artistChannelButtonDidTap() {
         let artistId = artistId
+        let songTitle = songTitle
+        let artistName = artistName
+
         let onArtistChannelButtonTap = onArtistChannelButtonTap
         
         dismiss(animated: false) {
-            onArtistChannelButtonTap?(artistId)
+            onArtistChannelButtonTap?(artistId, songTitle, artistName)
         }
+    }
+    
+    @objc
+    private func nextButtonDidTap() {
+        makeRandomNumber()
+        getSongDetail()
     }
     
     // MARK: - Functions
     
     private func getSongDetail() {
-        makeRandomNumber()
-        
         Task {
             do {
                 let song = try await service.getSongDetail(songId: songId)
@@ -84,6 +108,8 @@ final class PlayViewController: BaseViewController {
                 
                 rootView.configure(title: song.title, name: artistName, imgURL: song.album.imageUrl, likes: song.likeCount, isLiked: song.isLiked, playTime: song.playTime)
                 artistId = song.artists.first?.artistId ?? 0
+                songTitle = song.title
+                self.artistName = artistName
             } catch {
                 print("곡 정보 조회 실패: \(error)")
             }
