@@ -5,7 +5,13 @@
 | [**이상엽**](https://github.com/sangyup12) | [**임성환**](https://github.com/limtjdghks) | [**이승희**](https://github.com/sssthnnhee) | [**최주희**](https://github.com/dearosmar) |
 | :---: | :---: | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/d6e20740-b9cf-49e0-96b9-c1bb219ffdf5" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/2ecccdd4-0e5b-45e1-8e03-6b18264d8490" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/842c9eff-1930-41d6-865a-f2735f297243" width="170" alt="-"> | <img src="https://github.com/user-attachments/assets/aa7d4818-bbf8-4f24-9897-14029ae9bc59" width="170" alt="-"> |
-| `iOS Lead`<br>`-` | `iOS Developer`<br>`-` | `iOS Developer`<br>`-` | `iOS Developer`<br>`-` |
+| `iOS Lead`<br>`Play 뷰` | `iOS Developer`<br>`Active 뷰` | `iOS Developer`<br>`Active 뷰` | `iOS Developer`<br>`Home 뷰` |
+
+## 🍈 시연 영상
+
+| **Home** | **Play** | **Active** | 
+| :---: | :---: | :---: | 
+| <img src="https://github.com/user-attachments/assets/e507df8a-a437-4788-880a-e45ab25b71ff" width="250" alt="멜론 앱 UI 스크린샷 1"> | <img src="https://github.com/user-attachments/assets/4267e639-6b8d-4316-ae4d-6c09cf34bacd" width="250" alt="멜론 앱 UI 스크린샷 2"> | <img src="https://github.com/user-attachments/assets/582c233c-4d11-43f6-91e2-d735701d6d41" width="250" alt="멜론 앱 UI 스크린샷 3"> | 
 
 ## 🛠️ Library & Stack
 
@@ -74,19 +80,22 @@ Add/#3
 │   └── 📃 SceneDelegate.swift
 ├── 📁 Global
 │   ├── 📃 LaunchScreen.storyboard
-│   ├── 📁 Enums
+│   ├── 📁 Base
 │   ├── 📁 Components
+│   ├── 📁 Enum
 │   ├── 📁 Extensions
 │   └── 📁 Resources
 │       ├── 📃 Assets.xcassets
 │       └── 📁 Fonts
-├── 📁 Presentation
-│   └── 📁 Home
-│       ├── 📁 View
-│       └── 📁 ViewController
 ├── 📁 Network
-│   ├── 📁 Service
 │   ├── 📁 Base
-│   └── 📁 DTO
+│   ├── 📁 DTO
+│   └── 📁 Service
+├── 📁 Presentation
+│   ├── 📁 Core
+│       └── 📃 TabBarController.swift
+│   ├── 📁 Home
+│   ├── 📁 Play
+│   └── 📁 Active
 └── 📃 Info.plist
 ```
